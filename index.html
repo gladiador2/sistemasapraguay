@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas Paraguay | Desarrollo de Software • Fénix • Facturación Electrónica</title>
+    <meta name="description" content="Sistemas Paraguay: Desarrollo de software, apps móviles, páginas web, ecommerce y SaaS. Conocé Fénix, nuestro sistema estrella de facturación electrónica integrada con SIFEN. Descargá gratis Tu Primer Sistema POS.">
+    <style>
+        :root {
+            --rojo: #D52B1E;
+            --rojo-oscuro: #A82015;
+            --blanco: #FFFFFF;
+            --azul: #0038A8;
+            --azul-oscuro: #00277A;
+            --dorado: #C8963E;
+            --gris-100: #f5f5f5;
+            --gris-200: #e8e8e8;
+            --gris-300: #d0d0d0;
+            --gris-700: #4a4a4a;
+            --gris-800: #2d2d2d;
+            --gris-900: #1a1a1a;
+            --sombra-suave: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --sombra-media: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --sombra-fuerte: 0 16px 48px rgba(0, 0, 0, 0.18);
+            --borde-radius: 16px;
+            --borde-radius-sm: 10px;
+            --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --fuente-titulos: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--gris-800);
+            background: var(--blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== HEADER / NAV ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            transition: var(--transicion);
+            padding: 0 1.5rem;
+        }
+        .header.scrolled {
+            box-shadow: var(--sombra-suave);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: var(--gris-900);
+            letter-spacing: -0.3px;
+            transition: var(--transicion);
+        }
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--rojo) 0%, var(--rojo-oscuro) 50%, var(--azul) 50%, var(--azul-oscuro) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 900;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(213, 43, 30, 0.25);
+        }
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: var(--dorado);
+            border-radius: 50%;
+            top: 6px;
+            right: 6px;
+            opacity: 0.85;
+            box-shadow: 0 0 8px rgba(200, 150, 62, 0.5);
+        }
+        .logo-text span {
+            color: var(--rojo);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.3rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gris-700);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: var(--transicion);
+            white-space: nowrap;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(213, 43, 30, 0.07);
+            color: var(--rojo);
+        }
+        .btn-nav-destacado {
+            background: var(--rojo) !important;
+            color: #fff !important;
+            padding: 0.6rem 1.4rem !important;
+            border-radius: 25px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 14px rgba(213, 43, 30, 0.3);
+            animation: pulse-nav 2.5s ease-in-out infinite;
+        }
+        @keyframes pulse-nav {
+            0%,
+            100% {
+                box-shadow: 0 4px 14px rgba(213, 43, 30, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 24px rgba(213, 43, 30, 0.55);
+            }
+        }
+        .btn-nav-destacado:hover {
+            background: var(--rojo-oscuro) !important;
+            transform: translateY(-2px);
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 26px;
+            height: 3px;
+            background: var(--gris-800);
+            border-radius: 3px;
+            transition: var(--transicion);
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                flex-direction: column;
+                background: #fff;
+                padding: 90px 2rem 2rem;
+                gap: 0.5rem;
+                box-shadow: -8px 0 30px rgba(0, 0, 0, 0.12);
+                transition: var(--transicion);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                font-size: 1rem;
+                padding: 0.7rem 1.2rem;
+                width: 100%;
+                text-align: left;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.4);
+                z-index: 999;
+            }
+            .overlay.active {
+                display: block;
+            }
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(175deg, #fefefe 0%, #f9f6f3 40%, #fdf5f4 70%, #f8f5fc 100%);
+        }
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.06;
+            background-image: radial-gradient(circle at 20% 30%, var(--rojo) 1px, transparent 1px),
+                radial-gradient(circle at 75% 60%, var(--azul) 1px, transparent 1px),
+                radial-gradient(circle at 50% 80%, var(--dorado) 1.5px, transparent 1.5px);
+            background-size: 50px 50px, 60px 60px, 40px 40px;
+            background-position: 0 0, 20px 20px, 10px 10px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(213, 43, 30, 0.08);
+            color: var(--rojo);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0.4rem 1.2rem;
+            border-radius: 25px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-family: var(--fuente-titulos);
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            color: var(--gris-900);
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+        }
+        .hero h1 .rojo {
+            color: var(--rojo);
+            position: relative;
+        }
+        .hero h1 .rojo::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(213, 43, 30, 0.18);
+            border-radius: 4px;
+            z-index: -1;
+        }
+        .hero h1 .azul {
+            color: var(--azul);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gris-700);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: var(--transicion);
+            white-space: nowrap;
+            letter-spacing: 0.2px;
+        }
+        .btn-primario {
+            background: var(--rojo);
+            color: #fff;
+            box-shadow: 0 6px 22px rgba(213, 43, 30, 0.35);
+        }
+        .btn-primario:hover {
+            background: var(--rojo-oscuro);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(213, 43, 30, 0.45);
+        }
+        .btn-secundario {
+            background: transparent;
+            color: var(--azul);
+            border: 2px solid var(--azul);
+        }
+        .btn-secundario:hover {
+            background: var(--azul);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .btn-descarga {
+            background: var(--dorado);
+            color: #1a1a1a;
+            box-shadow: 0 6px 22px rgba(200, 150, 62, 0.4);
+            animation: pulse-dorado 2.2s ease-in-out infinite;
+        }
+        @keyframes pulse-dorado {
+            0%,
+            100% {
+                box-shadow: 0 6px 22px rgba(200, 150, 62, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 30px rgba(200, 150, 62, 0.65);
+            }
+        }
+        .btn-descarga:hover {
+            background: #b88632;
+            transform: translateY(-3px);
+        }
+        .hero-floating-card {
+            position: absolute;
+            background: #fff;
+            border-radius: var(--borde-radius);
+            padding: 1rem 1.4rem;
+            box-shadow: var(--sombra-media);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            z-index: 2;
+            animation: float 5s ease-in-out infinite;
+        }
+        .hero-floating-card.card-1 {
+            top: 18%;
+            left: 6%;
+            animation-delay: 0s;
+        }
+        .hero-floating-card.card-2 {
+            bottom: 22%;
+            right: 5%;
+            animation-delay: 1.5s;
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-18px);
+            }
+        }
+        .hero-floating-card .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot-red {
+            background: var(--rojo);
+        }
+        .dot-blue {
+            background: var(--azul);
+        }
+        .dot-gold {
+            background: var(--dorado);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .hero-floating-card {
+                display: none;
+            }
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ========== SECCIONES GENERALES ========== */
+        .seccion {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .seccion-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        .seccion-header .etiqueta {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--rojo);
+            margin-bottom: 0.6rem;
+        }
+        .seccion-header h2 {
+            font-family: var(--fuente-titulos);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gris-900);
+            letter-spacing: -0.5px;
+            margin-bottom: 0.8rem;
+        }
+        .seccion-header p {
+            color: var(--gris-700);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .seccion-header h2 {
+                font-size: 1.8rem;
+            }
+            .seccion {
+                padding: 3rem 1.2rem;
+            }
+        }
+
+        /* ========== SERVICIOS (CATÁLOGO) ========== */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        .servicio-card {
+            background: #fff;
+            border-radius: var(--borde-radius);
+            padding: 2rem 1.6rem;
+            box-shadow: var(--sombra-suave);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: var(--transicion);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .servicio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-media);
+        }
+        .servicio-card .icono {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 1.2rem;
+            font-weight: 700;
+        }
+        .icono-apps {
+            background: rgba(0, 56, 168, 0.1);
+            color: var(--azul);
+        }
+        .icono-web {
+            background: rgba(213, 43, 30, 0.1);
+            color: var(--rojo);
+        }
+        .icono-ecom {
+            background: rgba(200, 150, 62, 0.15);
+            color: var(--dorado);
+        }
+        .icono-saas {
+            background: rgba(100, 60, 180, 0.1);
+            color: #643cb4;
+        }
+        .servicio-card h3 {
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--gris-900);
+        }
+        .servicio-card p {
+            font-size: 0.9rem;
+            color: var(--gris-700);
+            line-height: 1.5;
+        }
+
+        /* ========== FENIX - SISTEMA ESTRELLA ========== */
+        .fenix-seccion {
+            background: linear-gradient(160deg, #1a1a1a 0%, #1f1a18 30%, #1a1d24 70%, #111118 100%);
+            color: #fff;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .fenix-seccion::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(213, 43, 30, 0.2) 0%, transparent 70%);
+            top: -10%;
+            right: -5%;
+            pointer-events: none;
+        }
+        .fenix-seccion::after {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(0, 56, 168, 0.2) 0%, transparent 70%);
+            bottom: -10%;
+            left: -5%;
+            pointer-events: none;
+        }
+        .fenix-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .fenix-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffb74d;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .fenix-container h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        .fenix-container h2 .fenix-nombre {
+            background: linear-gradient(135deg, #ff6b4a, #ffb74d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .fenix-container .siglas {
+            font-size: 0.9rem;
+            color: #ccc;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+        }
+        .fenix-container p {
+            color: #bbb;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        .fenix-features {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.7rem;
+            margin-bottom: 2rem;
+        }
+        .fenix-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+        .fenix-features li .check {
+            color: #ffb74d;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .fenix-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fenix-card-visual {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        .fenix-emoji {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 1rem;
+            animation: float 4s ease-in-out infinite;
+        }
+        .fenix-card-visual h4 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffb74d;
+        }
+        .fenix-card-visual .sifen-tag {
+            display: inline-block;
+            background: rgba(0, 56, 168, 0.5);
+            color: #fff;
+            padding: 0.3rem 1rem;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-top: 0.8rem;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 768px) {
+            .fenix-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .fenix-container h2 {
+                font-size: 2rem;
+            }
+            .fenix-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== TU PRIMER SISTEMA ========== */
+        .tps-seccion {
+            background: #fdfaf5;
+            position: relative;
+        }
+        .tps-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .tps-info h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gris-900);
+            letter-spacing: -0.5px;
+            margin-bottom: 0.6rem;
+        }
+        .tps-info .gratis-badge {
+            display: inline-block;
+            background: #27ae60;
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.8rem;
+            padding: 0.35rem 1.2rem;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+        .tps-info p {
+            color: var(--gris-700);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .tps-modulos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+        .modulo-tag {
+            background: #fff;
+            border: 1px solid var(--gris-200);
+            border-radius: 10px;
+            padding: 0.7rem 1rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-align: center;
+            color: var(--gris-800);
+            transition: var(--transicion);
+        }
+        .modulo-tag:hover {
+            border-color: var(--dorado);
+            background: #fffdf7;
+        }
+        .tps-migracion {
+            background: #fff;
+            border: 2px dashed var(--dorado);
+            border-radius: var(--borde-radius-sm);
+            padding: 1.2rem 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--gris-700);
+            font-size: 0.9rem;
+        }
+        .tps-migracion strong {
+            color: var(--rojo);
+        }
+        .tps-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tps-mockup {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--sombra-media);
+            text-align: center;
+            width: 100%;
+            max-width: 380px;
+        }
+        .tps-mockup .pantalla {
+            background: #f0f0f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 2px solid #e0e0e0;
+        }
+        .tps-mockup .pantalla .linea {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.4rem;
+        }
+        .tps-mockup .btn-mock {
+            display: block;
+            width: 100%;
+            background: var(--dorado);
+            color: #1a1a1a;
+            padding: 0.7rem;
+            border-radius: 25px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transicion);
+            border: none;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .tps-container {
+                grid-template-columns: 1fr;
+            }
+            .tps-info h2 {
+                font-size: 1.9rem;
+            }
+            .tps-modulos {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ========== CTA FINAL ========== */
+        .cta-seccion {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--rojo) 0%, var(--rojo-oscuro) 60%, #8b1a10 100%);
+            color: #fff;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-seccion::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            top: -20%;
+            left: 10%;
+            pointer-events: none;
+        }
+        .cta-seccion h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-seccion p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-seccion .btn {
+            position: relative;
+            z-index: 1;
+        }
+        .btn-cta-wsp {
+            background: #25D366;
+            color: #fff;
+            font-weight: 800;
+            padding: 0.9rem 2.2rem;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+            transition: var(--transicion);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-cta-wsp:hover {
+            background: #1ebc57;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 34px rgba(37, 211, 102, 0.6);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--gris-900);
+            color: #bbb;
+            padding: 3rem 2rem 2rem;
+        }
+        .footer-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .footer h4 {
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transicion);
+            font-size: 0.9rem;
+        }
+        .footer a:hover {
+            color: var(--dorado);
+        }
+        .footer ul {
+            list-style: none;
+        }
+        .footer ul li {
+            margin-bottom: 0.4rem;
+        }
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        .footer .wsp-footer {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #25D366;
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* ========== WHATSAPP FLOAT ========== */
+        .wsp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            width: 58px;
+            height: 58px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+            cursor: pointer;
+            transition: var(--transicion);
+            animation: pulse-wsp 2.5s ease-in-out infinite;
+            text-decoration: none;
+        }
+        @keyframes pulse-wsp {
+            0%,
+            100% {
+                box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+            }
+            50% {
+                box-shadow: 0 8px 38px rgba(37, 211, 102, 0.75);
+                transform: scale(1.06);
+            }
+        }
+        .wsp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 34px rgba(37, 211, 102, 0.65);
+            animation: none;
+        }
+        .wsp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: #fff;
+        }
+        .wsp-tooltip {
+            position: fixed;
+            bottom: 34px;
+            right: 96px;
+            z-index: 999;
+            background: #fff;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: var(--sombra-media);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+        .wsp-float:hover+.wsp-tooltip {
+            opacity: 1;
+        }
+
+        /* ========== ANIMACIONES SCROLL ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- OVERLAY PARA MENÚ MÓVIL -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="#inicio" class="logo">
+                <div class="logo-icon">SP</div>
+                <div class="logo-text">Sistemas <span>Paraguay</span></div>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#fenix">Fénix</a></li>
+                <li><a href="#tuprimersistema">Tu Primer Sistema</a></li>
+                <li><a href="#contacto" class="btn-nav-destacado">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-floating-card card-1">
+            <span class="dot dot-red"></span> Facturación Electrónica SIFEN
+        </div>
+        <div class="hero-floating-card card-2">
+            <span class="dot dot-gold"></span> POS Gratuito Disponible
+        </div>
+        <div class="hero-content">
+            <span class="hero-badge">🇵🇾 Tecnología 100% Paraguaya</span>
+            <h1>Software que <span class="rojo">impulsa</span> tu negocio al <span class="azul">futuro</span></h1>
+            <p>Desarrollamos aplicaciones móviles, páginas web, ecommerce y SaaS. Somos líderes en facturación electrónica con nuestro sistema estrella <strong>Fénix</strong>, integrado a la SIFEN.</p>
+            <div class="hero-buttons">
+                <a href="#fenix" class="btn btn-primario">⚡ Conocé Fénix</a>
+                <a href="#tuprimersistema" class="btn btn-descarga">📥 Descargar Sistema Gratis</a>
+                <a href="#servicios" class="btn btn-secundario">Ver Catálogo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS / CATÁLOGO -->
+    <section class="seccion" id="servicios">
+        <div class="seccion-header reveal">
+            <span class="etiqueta">Catálogo de Servicios</span>
+            <h2>Soluciones digitales a medida</h2>
+            <p>Desde apps hasta plataformas SaaS, cubrimos todas las necesidades tecnológicas de tu empresa.</p>
+        </div>
+        <div class="servicios-grid reveal">
+            <div class="servicio-card">
+                <div class="icono icono-apps">📱</div>
+                <h3>Apps Móviles</h3>
+                <p>Desarrollamos aplicaciones nativas para iOS y Android, con diseño intuitivo y alto rendimiento.</p>
+            </div>
+            <div class="servicio-card">
+                <div class="icono icono-web">🌐</div>
+                <h3>Páginas Web</h3>
+                <p>Sitios web modernos, responsivos y optimizados para SEO. Desde landing pages hasta portales corporativos.</p>
+            </div>
+            <div class="servicio-card">
+                <div class="icono icono-ecom">🛒</div>
+                <h3>Ecommerce</h3>
+                <p>Tiendas online completas con pasarelas de pago, gestión de inventario y panel administrativo.</p>
+            </div>
+            <div class="servicio-card">
+                <div class="icono icono-saas">☁️</div>
+                <h3>SaaS</h3>
+                <p>Software como servicio en la nube. Plataformas escalables, seguras y con suscripción mensual.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FENIX - SISTEMA ESTRELLA -->
+    <section class="fenix-seccion" id="fenix">
+        <div class="fenix-container reveal">
+            <div>
+                <span class="fenix-badge">🔥 Sistema Estrella</span>
+                <p class="siglas">F.E.N.I.X.</p>
+                <h2><span class="fenix-nombre">Fénix</span>: Facturación Electrónica Nacional Integrada y eXprees</h2>
+                <p>El sistema emblema de <strong>Sistemas Paraguay</strong>. Diseñado para enviar, administrar y gestionar documentos electrónicos en total cumplimiento con la <strong>SIFEN</strong> (Sistema Integrado de Facturación Electrónica Nacional). Rápido, seguro y siempre actualizado.</p>
+                <ul class="fenix-features">
+                    <li><span class="check">✓</span> Comunicación directa con SIFEN</li>
+                    <li><span class="check">✓</span> Envío y recepción de DE</li>
+                    <li><span class="check">✓</span> Dashboard en tiempo real</li>
+                    <li><span class="check">✓</span> Respaldos automáticos</li>
+                    <li><span class="check">✓</span> Multiempresa y sucursales</li>
+                    <li><span class="check">✓</span> Soporte técnico 24/7</li>
+                </ul>
+                <a href="#contacto" class="btn btn-primario">💬 Consultar por Fénix</a>
+            </div>
+            <div class="fenix-visual">
+                <div class="fenix-card-visual">
+                    <span class="fenix-emoji">🦅🔥</span>
+                    <h4>Fénix</h4>
+                    <p style="color:#ccc;font-size:0.9rem;">Facturación Electrónica</p>
+                    <span class="sifen-tag">🔗 Integrado SIFEN</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TU PRIMER SISTEMA -->
+    <section class="seccion tps-seccion" id="tuprimersistema">
+        <div class="tps-container reveal">
+            <div class="tps-info">
+                <span class="gratis-badge">🎁 100% Gratis</span>
+                <h2>Tu Primer Sistema</h2>
+                <p>Un <strong>sistema POS completo</strong> con control de inventario, compras y ventas. Ideal para pequeños negocios que quieren dar el salto digital sin inversión inicial. <strong>Descargalo ya sin costo.</strong></p>
+                <div class="tps-modulos">
+                    <span class="modulo-tag">🧾 Punto de Venta</span>
+                    <span class="modulo-tag">📦 Inventario</span>
+                    <span class="modulo-tag">🛍️ Compras</span>
+                    <span class="modulo-tag">💰 Ventas</span>
+                    <span class="modulo-tag">📊 Reportes</span>
+                    <span class="modulo-tag">👥 Clientes</span>
+                </div>
+                <div class="tps-migracion">
+                    ¿Tu negocio creció? <strong>Migrá a Fénix</strong> cuando lo necesites y accedé a facturación electrónica, sucursales y más funcionalidades avanzadas.
+                </div>
+                <br>
+                <a href="descargas/tu-primer-sistema-setup.exe" class="btn btn-descarga" download onclick="alert('¡Descarga iniciada! El archivo de instalación de Tu Primer Sistema comenzará a descargarse.')">
+                    ⬇️ Descargar Tu Primer Sistema (Gratis)
+                </a>
+            </div>
+            <div class="tps-visual">
+                <div class="tps-mockup">
+                    <p style="font-weight:800;color:#333;margin-bottom:0.6rem;">🖥️ Tu Primer Sistema</p>
+                    <div class="pantalla">
+                        <div class="linea"><span>Venta #1284</span><span>₲ 85.000</span></div>
+                        <div class="linea"><span>Stock: 342</span><span>✅ Activo</span></div>
+                        <div class="linea"><span>Caja hoy</span><span>₲ 1.240.000</span></div>
+                    </div>
+                    <div class="btn-mock">💡 POS · Inventario · Ventas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-seccion" id="contacto">
+        <h2 class="reveal">¿Listo para transformar tu empresa?</h2>
+        <p class="reveal">Escribinos por WhatsApp y conversemos sobre tu proyecto. Estamos en Paraguay, atendemos a todo el país.</p>
+        <a href="https://wa.me/595984935082?text=Hola%20Sistemas%20Paraguay,%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn-cta-wsp reveal">
+            💬 Chatear por WhatsApp • +595 984 935 082
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h4>Sistemas Paraguay</h4>
+                <p style="font-size:0.9rem;">Desarrollo de software con identidad paraguaya. Apps, web, ecommerce, SaaS y facturación electrónica.</p>
+            </div>
+            <div>
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#servicios">Apps Móviles</a></li>
+                    <li><a href="#servicios">Páginas Web</a></li>
+                    <li><a href="#servicios">Ecommerce</a></li>
+                    <li><a href="#servicios">SaaS</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Productos</h4>
+                <ul>
+                    <li><a href="#fenix">Fénix (Facturación Electrónica)</a></li>
+                    <li><a href="#tuprimersistema">Tu Primer Sistema (POS Gratis)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contacto</h4>
+                <a href="https://wa.me/595984935082?text=Hola%20Sistemas%20Paraguay" target="_blank" rel="noopener noreferrer" class="wsp-footer">
+                    💬 +595 984 935 082
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Sistemas Paraguay. Todos los derechos reservados. Hecho con ❤️ en Paraguay 🇵🇾
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/595984935082?text=Hola%20Sistemas%20Paraguay,%20quisiera%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer" class="wsp-float" aria-label="Chatear por WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </a>
+    <span class="wsp-tooltip">¡Chateá con nosotros!</span>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Menú móvil
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const header = document.getElementById('header');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                // Actualizar enlace activo
+                document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        // Efecto scroll en header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Revelar elementos al hacer scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // Smooth scroll para todos los enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset -
+                        headerHeight - 10;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
