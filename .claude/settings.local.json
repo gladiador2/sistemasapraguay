@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.apple.com)",
+      "Bash(npx -y nanobanana-mcp-server --version)",
+      "Bash(Select-String -Path \"C:\\\\Users\\\\jukyl\\\\Desktop\\\\sistemasparaguay\\\\index-v2.html\" -Pattern \"images.unsplash.com\")",
+      "Bash(Measure-Object)",
+      "Bash(Select-Object -ExpandProperty Count)",
+      "PowerShell(Select-String *)"
+    ]
+  }
+}
