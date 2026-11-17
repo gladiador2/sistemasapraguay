@@ -1,0 +1,9 @@
+# Configuracion minima para GitHub Pages.
+# El sitio es HTML estatico: Jekyll solo copia los archivos tal cual.
+# Lo que esta en "exclude" queda en el repositorio pero NO se publica en la web.
+# Las carpetas que empiezan con "_" (como _archivo) tampoco se publican.
+exclude:
+  - README.md
+  - CLAUDE.md
+  - docs
+  - memory

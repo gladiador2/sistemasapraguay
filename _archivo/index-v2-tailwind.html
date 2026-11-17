@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistemas Paraguay | Fénix · Facturación Electrónica · Tu Primer Sistema</title>
+  <meta name="description" content="Desarrollo de software paraguayo. Apps móviles, web, ecommerce y SaaS. Fénix: facturación electrónica integrada con SIFEN. Tu Primer Sistema POS gratuito." />
+  <link rel="icon" type="image/x-icon" href="imagenes/ICONO-Sistemas-Paraguay-.ico" />
+  <link rel="apple-touch-icon" href="imagenes/ICONO%20Sistemas%20Paraguay%20.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['-apple-system','BlinkMacSystemFont','"Segoe UI"','system-ui','sans-serif'],
+          },
+          colors: {
+            py: {
+              red:    '#D52B1E',
+              'red-d':'#A82015',
+              'red-l':'#f94f40',
+              blue:   '#0038A8',
+              'blue-d':'#00277A',
+              'blue-l':'#2255d4',
+              gold:   '#C8963E',
+              'gold-d':'#a07830',
+              'gold-l':'#e8b85a',
+            }
+          },
+          keyframes: {
+            fadeUp:  { from:{opacity:'0',transform:'translateY(32px)'}, to:{opacity:'1',transform:'translateY(0)'} },
+            fadeIn:  { from:{opacity:'0'}, to:{opacity:'1'} },
+            float:   { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-18px)'} },
+            floatSm: { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-10px)'} },
+            pulseRed:{ '0%,100%':{boxShadow:'0 4px 20px rgba(213,43,30,.35)'}, '50%':{boxShadow:'0 4px 32px rgba(213,43,30,.6)'} },
+            pulseWsp:{ '0%,100%':{boxShadow:'0 8px 28px rgba(37,211,102,.5)'}, '50%':{boxShadow:'0 8px 38px rgba(37,211,102,.75)',transform:'scale(1.06)'} },
+            shimmer: { '0%':{backgroundPosition:'0% center'}, '100%':{backgroundPosition:'200% center'} },
+            spin3d:  { from:{transform:'rotateY(0deg)'}, to:{transform:'rotateY(360deg)'} },
+            flicker: { '0%,100%':{opacity:'1'}, '50%':{opacity:'.85'} },
+          },
+          animation: {
+            'fade-up':    'fadeUp .85s cubic-bezier(.25,.46,.45,.94) forwards',
+            'fade-in':    'fadeIn .6s ease forwards',
+            'float':      'float 5s ease-in-out infinite',
+            'float-sm':   'floatSm 4s ease-in-out infinite',
+            'pulse-red':  'pulseRed 2.5s ease-in-out infinite',
+            'pulse-wsp':  'pulseWsp 2.5s ease-in-out infinite',
+            'shimmer':    'shimmer 4s linear infinite',
+            'flicker':    'flicker 3s ease-in-out infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html  { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body  { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; color: #1a1a1a; background:#fff; overflow-x:hidden; }
+
+    /* Reveal on scroll */
+    .reveal { opacity:0; transform:translateY(32px); transition:opacity .75s cubic-bezier(.25,.46,.45,.94), transform .75s cubic-bezier(.25,.46,.45,.94); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-scale { opacity:0; transform:scale(.95); transition:opacity .75s cubic-bezier(.25,.46,.45,.94), transform .75s cubic-bezier(.25,.46,.45,.94); }
+    .reveal-scale.visible { opacity:1; transform:scale(1); }
+    .stagger > *:nth-child(1){transition-delay:.05s}
+    .stagger > *:nth-child(2){transition-delay:.12s}
+    .stagger > *:nth-child(3){transition-delay:.19s}
+    .stagger > *:nth-child(4){transition-delay:.26s}
+    .stagger > *:nth-child(5){transition-delay:.33s}
+    .stagger > *:nth-child(6){transition-delay:.40s}
+
+    /* Gradient text */
+    .grad-fire  { background:linear-gradient(135deg,#ff6b4a,#ffb74d,#ff6b4a); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 4s linear infinite; }
+    .grad-flag  { background:linear-gradient(135deg,#D52B1E,#C8963E,#0038A8); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 5s linear infinite; }
+    .grad-cool  { background:linear-gradient(135deg,#2255d4,#843dff,#2255d4); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 4s linear infinite; }
+
+    /* Nav mobile */
+    #mobile-menu { transition:opacity .25s ease, transform .25s ease; }
+    #mobile-menu:not(.open) { opacity:0; pointer-events:none; transform:translateY(-8px); }
+    #mobile-menu.open { opacity:1; pointer-events:all; transform:translateY(0); }
+
+    /* Card hover zoom */
+    .card-zoom { overflow:hidden; }
+    .card-zoom .zoom-target { transition:transform .6s cubic-bezier(.25,.46,.45,.94); }
+    .card-zoom:hover .zoom-target { transform:scale(1.04); }
+
+    /* Btn */
+    .btn-lift { transition:transform .2s cubic-bezier(.25,.46,.45,.94), box-shadow .2s cubic-bezier(.25,.46,.45,.94); }
+    .btn-lift:hover { transform:translateY(-2px); }
+    .btn-lift:active { transform:scale(.98); }
+
+    /* Ticker */
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-inner { display:flex; animation:ticker 30s linear infinite; white-space:nowrap; }
+    .ticker-wrap:hover .ticker-inner { animation-play-state:paused; }
+
+    /* Hero dots pattern */
+    .hero-dots { background-image:radial-gradient(circle,rgba(213,43,30,.12) 1px,transparent 1px), radial-gradient(circle,rgba(0,56,168,.1) 1px,transparent 1px); background-size:48px 48px, 64px 64px; background-position:0 0, 24px 24px; }
+
+    /* Phoenix glow */
+    .phoenix-glow { filter:drop-shadow(0 0 24px rgba(255,107,74,.5)) drop-shadow(0 0 48px rgba(255,183,77,.3)); }
+
+    /* SIFEN badge shimmer */
+    .sifen-badge { background:linear-gradient(90deg,#0038A8,#2255d4,#0038A8); background-size:200%; animation:shimmer 3s linear infinite; }
+
+    /* Paraguay flag stripe */
+    .flag-stripe { background:linear-gradient(90deg, #D52B1E 33.33%, #fff 33.33% 66.66%, #0038A8 66.66%); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:#f5f5f5} ::-webkit-scrollbar-thumb{background:#d0d0d0;border-radius:3px}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAV — Frosted glass, 70px, Paraguay identity
+     ═══════════════════════════════════════════════════════════ -->
+<header id="main-nav"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
+  style="background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06);">
+
+  <nav class="max-w-[1280px] mx-auto px-6 h-[70px] flex items-center justify-between gap-4">
+
+    <!-- LOGO -->
+    <a href="#inicio" class="flex items-center flex-shrink-0 group">
+      <img
+        src="imagenes/Logo%20Sistemas%20Paraguay.png"
+        alt="Sistemas Paraguay"
+        class="h-10 w-auto object-contain transition-opacity group-hover:opacity-80"
+        loading="eager"
+      />
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden lg:flex items-center gap-1 text-[14px] font-semibold text-[#4a4a4a]">
+      <li><a href="#inicio"          class="px-4 py-2 rounded-full hover:bg-[#D52B1E]/08 hover:text-[#D52B1E] transition-all">Inicio</a></li>
+      <li><a href="#servicios"       class="px-4 py-2 rounded-full hover:bg-[#D52B1E]/08 hover:text-[#D52B1E] transition-all">Servicios</a></li>
+      <li><a href="#fenix"           class="px-4 py-2 rounded-full hover:bg-[#D52B1E]/08 hover:text-[#D52B1E] transition-all">Fénix</a></li>
+      <li><a href="#tuprimersistema" class="px-4 py-2 rounded-full hover:bg-[#D52B1E]/08 hover:text-[#D52B1E] transition-all">Tu Primer Sistema</a></li>
+      <li>
+        <a href="https://wa.me/595984935082?text=Hola%20Sistemas%20Paraguay" target="_blank" rel="noopener"
+           class="btn-lift animate-pulse-red ml-2 bg-[#D52B1E] text-white px-5 py-2 rounded-full font-bold shadow-[0_4px_14px_rgba(213,43,30,.35)] hover:bg-[#A82015] transition-colors">
+          Contacto
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile toggle -->
+    <button id="nav-toggle" aria-label="Menú" aria-expanded="false"
+      class="lg:hidden flex flex-col gap-[5px] p-2 rounded-lg" style="z-index:101">
+      <span class="block w-6 h-[2.5px] rounded-full transition-all duration-300 origin-center" style="background:#1a1a1a" id="bar1"></span>
+      <span class="block w-6 h-[2.5px] rounded-full transition-all duration-300" style="background:#1a1a1a" id="bar2"></span>
+      <span class="block w-6 h-[2.5px] rounded-full transition-all duration-300 origin-center" style="background:#1a1a1a" id="bar3"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu"
+    class="lg:hidden absolute top-[70px] inset-x-0 border-t border-[#e8e8e8] px-6 py-5 shadow-2xl"
+    style="background:rgba(255,255,255,0.98);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);z-index:100;">
+    <ul class="flex flex-col gap-1 text-[17px] font-semibold">
+      <li><a href="#inicio"          class="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-[#f5f5f7] text-[#1a1a1a] border-b border-[#f5f5f5]">🏠 Inicio</a></li>
+      <li><a href="#servicios"       class="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-[#f5f5f7] text-[#1a1a1a] border-b border-[#f5f5f5]">💼 Servicios</a></li>
+      <li><a href="#fenix"           class="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-[#f5f5f7] text-[#1a1a1a] border-b border-[#f5f5f5]">🔥 Fénix</a></li>
+      <li><a href="#tuprimersistema" class="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-[#f5f5f7] text-[#1a1a1a] border-b border-[#f5f5f5]">📦 Tu Primer Sistema</a></li>
+      <li class="pt-2">
+        <a href="https://wa.me/595984935082" target="_blank" rel="noopener"
+           class="flex items-center justify-center gap-2 bg-[#D52B1E] text-white py-3 rounded-2xl font-bold w-full">
+          <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Contactar por WhatsApp
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO — Full-screen, bandera PY como identidad visual
+     ═══════════════════════════════════════════════════════════ -->
+<section id="inicio"
+  class="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden pt-[70px]"
+  style="background:linear-gradient(170deg,#0c0c0f 0%,#0f0d18 40%,#0d1220 70%,#070810 100%)">
+
+  <!-- Fondo Sistemas Paraguay -->
+  <img
+    src="imagenes/fondoSistemaParaguay.webp"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-[0.08] mix-blend-luminosity pointer-events-none"
+    loading="eager"
+  />
+  <!-- Ñandutí flotante derecha -->
+  <div class="hidden lg:block absolute right-[-100px] top-1/2 -translate-y-1/2 w-[560px] h-[560px] pointer-events-none animate-float-sm" style="animation-delay:.8s">
+    <img
+      src="imagenes/ñanduti.png"
+      alt=""
+      aria-hidden="true"
+      class="w-full h-full object-contain opacity-[0.10]"
+      loading="eager"
+    />
+  </div>
+
+  <!-- Blobs de color bandera -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full opacity-20"
+      style="background:radial-gradient(circle,#D52B1E,transparent 65%);filter:blur(80px)"></div>
+    <div class="absolute bottom-[10%] right-[8%] w-[450px] h-[450px] rounded-full opacity-15"
+      style="background:radial-gradient(circle,#0038A8,transparent 65%);filter:blur(80px)"></div>
+    <div class="absolute top-[45%] left-[45%] w-[300px] h-[300px] rounded-full opacity-10"
+      style="background:radial-gradient(circle,#C8963E,transparent 65%);filter:blur(60px)"></div>
+  </div>
+
+  <!-- Dots pattern -->
+  <div class="absolute inset-0 hero-dots opacity-100 pointer-events-none"></div>
+
+  <!-- Franja decorativa bandera PY - top -->
+  <div class="absolute top-0 inset-x-0 h-1 flag-stripe opacity-60"></div>
+
+  <!-- Floating cards -->
+  <div class="hidden md:flex absolute top-[22%] left-[5%] animate-float items-center gap-2.5
+              bg-white/10 backdrop-blur-xl border border-white/15 text-white
+              text-[13px] font-bold px-4 py-2.5 rounded-2xl shadow-xl" style="animation-delay:0s">
+    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="#C8963E" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+    </svg>
+    <span>SIFEN · Facturación Electrónica</span>
+  </div>
+  <div class="hidden md:flex absolute bottom-[25%] right-[5%] animate-float items-center gap-2.5
+              bg-white/10 backdrop-blur-xl border border-white/15 text-white
+              text-[13px] font-bold px-4 py-2.5 rounded-2xl shadow-xl" style="animation-delay:1.5s">
+    <svg class="w-5 h-5 flex-shrink-0 text-[#C8963E]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a4 4 0 014-4h.5M12 8V6a4 4 0 00-4-4H8"/>
+      <rect x="2" y="8" width="20" height="14" rx="2" stroke-width="2" fill="none"/>
+    </svg>
+    <span>POS Gratuito · Descargá ya</span>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-[860px] px-6">
+
+    <!-- Badge Paraguayo -->
+    <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/85
+                text-[12px] font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-7
+                shadow-[0_0_0_0_rgba(213,43,30,.4)] animate-[pulseRed_2.5s_ease-in-out_infinite]"
+         style="opacity:0;animation:fadeUp .85s cubic-bezier(.25,.46,.45,.94) .1s forwards, pulseRed 3s ease-in-out 1s infinite;">
+      <!-- Mini bandera PY SVG -->
+      <svg viewBox="0 0 21 14" class="w-5 h-3.5 rounded-[2px] shadow-sm flex-shrink-0">
+        <rect width="21" height="14" fill="#D52B1E"/>
+        <rect y="4.67" width="21" height="4.67" fill="#fff"/>
+        <rect y="9.33" width="21" height="4.67" fill="#0038A8"/>
+        <circle cx="10.5" cy="7" r="2.2" fill="none" stroke="#C8963E" stroke-width=".8"/>
+        <circle cx="10.5" cy="7" r="1.1" fill="#C8963E" opacity=".7"/>
+      </svg>
+      Tecnología 100% Paraguaya
+    </div>
+
+    <!-- Headline -->
+    <h1 class="font-black tracking-tight leading-[1.1] text-white"
+        style="font-size:clamp(2.4rem,7vw,5.5rem);opacity:0;animation:fadeUp .85s cubic-bezier(.25,.46,.45,.94) .22s forwards;">
+      Software que
+      <span class="grad-fire"> impulsa</span><br>
+      tu negocio al
+      <span class="grad-cool"> futuro</span>
+    </h1>
+
+    <!-- Sub -->
+    <p class="mt-6 text-[19px] md:text-[21px] font-light text-white/70 leading-relaxed max-w-[640px] mx-auto"
+       style="opacity:0;animation:fadeUp .85s cubic-bezier(.25,.46,.45,.94) .38s forwards;">
+      Apps móviles, páginas web, ecommerce y SaaS. Somos líderes en facturación electrónica con
+      <strong class="text-white font-semibold">Fénix</strong>, integrado directamente con la
+      <strong class="text-[#C8963E] font-semibold">SIFEN</strong>.
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-3"
+         style="opacity:0;animation:fadeUp .85s cubic-bezier(.25,.46,.45,.94) .52s forwards;">
+      <a href="#fenix"
+         class="btn-lift animate-pulse-red bg-[#D52B1E] text-white text-[17px] font-bold px-7 py-3 rounded-full shadow-[0_6px_22px_rgba(213,43,30,.45)] hover:bg-[#A82015] transition-colors flex items-center gap-2">
+        <!-- Flame icon -->
+        <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>
+        </svg>
+        Conocé Fénix
+      </a>
+      <a href="#tuprimersistema"
+         class="btn-lift bg-[#C8963E] text-[#1a1a1a] text-[17px] font-bold px-7 py-3 rounded-full shadow-[0_6px_22px_rgba(200,150,62,.4)] hover:bg-[#a07830] transition-colors flex items-center gap-2">
+        <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+        </svg>
+        Descargar Gratis
+      </a>
+      <a href="#servicios"
+         class="btn-lift border-2 border-white/30 text-white text-[17px] font-semibold px-7 py-3 rounded-full hover:border-white/60 hover:bg-white/8 transition-all">
+        Ver catálogo
+      </a>
+    </div>
+
+    <!-- Hero visual: multiplataforma real -->
+    <div class="mt-12 w-full max-w-[800px] mx-auto"
+         style="opacity:0;animation:fadeUp 1s cubic-bezier(.25,.46,.45,.94) .7s forwards;">
+      <div class="relative">
+        <!-- Glow detrás -->
+        <div class="absolute inset-x-16 bottom-0 h-20 rounded-full opacity-40"
+             style="background:radial-gradient(ellipse,rgba(0,56,168,.6),rgba(213,43,30,.3),transparent);filter:blur(30px)"></div>
+        <img
+          src="imagenes/multiplataforma.jpg"
+          alt="Sistemas Paraguay — multiplataforma: desktop, tablet y móvil"
+          class="relative w-full object-contain rounded-2xl shadow-[0_32px_80px_rgba(0,0,0,.5)]"
+          loading="eager"
+          style="border:1px solid rgba(255,255,255,.08)"
+        />
+        <!-- Stats flotantes sobre la imagen -->
+        <div class="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[12px] font-bold px-3 py-1.5 rounded-full">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#27ae60] animate-pulse"></span>
+          SIFEN Conectado
+        </div>
+        <div class="absolute top-4 right-4 flex items-center gap-2 bg-black/60 backdrop-blur-md border border-white/10 text-[#C8963E] text-[12px] font-bold px-3 py-1.5 rounded-full">
+          iOS · Android · Web
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/30 text-[11px] font-medium tracking-widest uppercase">
+    <span>Scroll</span>
+    <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+
+  <!-- Bottom flag stripe -->
+  <div class="absolute bottom-0 inset-x-0 h-1 flag-stripe opacity-40"></div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     ANNOUNCE — Eyebrow headline
+     ═══════════════════════════════════════════════════════════ -->
+<section class="bg-[#f7f7f9] py-20 px-6 text-center border-b border-[#e8e8e8] relative overflow-hidden">
+  <!-- Arte guaraní decorativo -->
+  <img
+    src="imagenes/ñanduti.png"
+    alt=""
+    aria-hidden="true"
+    class="absolute left-[-60px] top-1/2 -translate-y-1/2 w-52 h-52 object-contain opacity-[0.12] pointer-events-none"
+    loading="lazy"
+  />
+  <img
+    src="imagenes/ñanduti.png"
+    alt=""
+    aria-hidden="true"
+    class="absolute right-[-60px] top-1/2 -translate-y-1/2 w-52 h-52 object-contain opacity-[0.12] pointer-events-none scale-x-[-1]"
+    loading="lazy"
+  />
+  <div class="max-w-[680px] mx-auto reveal relative z-10">
+    <p class="text-[12px] font-black tracking-[.25em] uppercase text-[#D52B1E] mb-4">Por qué elegirnos</p>
+    <h2 class="font-black leading-tight text-[#1a1a1a]" style="font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-.02em;">
+      Soluciones <span class="grad-flag">digitales</span><br>con alma paraguaya.
+    </h2>
+    <p class="mt-5 text-[19px] text-[#4a4a4a] font-light leading-relaxed">
+      Más de 5 años construyendo software que entiende el mercado local. Facturación, ventas, inventario — todo en un solo ecosistema.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SERVICIOS — 2×2 Apple shelf grid
+     ═══════════════════════════════════════════════════════════ -->
+<section id="servicios" class="bg-[#f7f7f9] pb-4 px-3">
+  <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 stagger">
+
+    <!-- Card 1: Apps Móviles — Oscura con azul PY -->
+    <div class="reveal card-zoom rounded-[28px] overflow-hidden flex flex-col min-h-[520px] relative"
+         style="background:linear-gradient(145deg,#0a0f1e,#0d1a3a,#0038A8)">
+      <div class="absolute inset-0" style="background:radial-gradient(circle at 80% 20%,rgba(0,56,168,.6),transparent 60%)"></div>
+      <div class="relative z-10 p-10 flex flex-col h-full">
+        <p class="text-[11px] font-black tracking-[.2em] uppercase text-white/50 mb-3">Desarrollo</p>
+        <h3 class="text-[40px] font-black leading-none text-white tracking-tight">
+          Apps<br>Móviles
+        </h3>
+        <p class="mt-3 text-[17px] font-light text-white/70 max-w-[280px] leading-relaxed">
+          iOS y Android nativos. Diseño intuitivo, rendimiento extremo.
+        </p>
+        <div class="flex gap-5 mt-4">
+          <a href="#contacto" class="text-[15px] text-white hover:text-[#C8963E] font-semibold flex items-center gap-1 transition-colors">Más info <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+          <a href="#contacto" class="text-[15px] text-[#C8963E] hover:text-white font-semibold flex items-center gap-1 transition-colors">Cotizar <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+        <!-- Visual: equipo de desarrollo -->
+        <div class="zoom-target flex-1 flex items-end justify-center pt-4 pb-2">
+          <img
+            src="imagenes/FabricaSoftwware.png"
+            alt="Fábrica de software"
+            class="w-full max-w-[320px] object-contain drop-shadow-2xl"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Páginas Web — Blanca -->
+    <div class="reveal card-zoom bg-white rounded-[28px] overflow-hidden flex flex-col min-h-[520px]">
+      <div class="p-10 flex flex-col h-full">
+        <p class="text-[11px] font-black tracking-[.2em] uppercase text-[#86868b] mb-3">Presencia digital</p>
+        <h3 class="text-[40px] font-black leading-none text-[#1a1a1a] tracking-tight">
+          Páginas<br>Web
+        </h3>
+        <p class="mt-3 text-[17px] font-light text-[#4a4a4a] max-w-[280px] leading-relaxed">
+          Responsivas, rápidas y optimizadas para SEO. Desde landing pages a portales.
+        </p>
+        <div class="flex gap-5 mt-4">
+          <a href="#contacto" class="text-[15px] text-[#0038A8] hover:text-[#D52B1E] font-semibold flex items-center gap-1 transition-colors">Más info <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+          <a href="#contacto" class="text-[15px] text-[#D52B1E] hover:text-[#A82015] font-semibold flex items-center gap-1 transition-colors">Cotizar <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+        <!-- Visual: foto real web design -->
+        <div class="zoom-target flex-1 flex items-end justify-center pt-6">
+          <img
+            src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=380&fit=crop&q=85&auto=format"
+            alt="Diseño web en laptop"
+            class="w-full max-w-[340px] h-48 object-cover rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,.12)] border border-[#e8e8e8]"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Ecommerce — Foto real con overlay -->
+    <div class="reveal card-zoom rounded-[28px] overflow-hidden flex flex-col min-h-[420px] relative">
+      <!-- Foto de fondo Unsplash -->
+      <img
+        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop&q=80&auto=format"
+        alt="Ecommerce tienda online"
+        class="zoom-target absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+      />
+      <!-- Overlay degradado dorado oscuro -->
+      <div class="absolute inset-0" style="background:linear-gradient(145deg,rgba(26,18,6,.92) 0%,rgba(45,31,8,.85) 50%,rgba(61,42,10,.75) 100%)"></div>
+      <div class="absolute inset-0" style="background:radial-gradient(circle at 20% 80%,rgba(200,150,62,.25),transparent 60%)"></div>
+      <div class="relative z-10 p-10 flex flex-col h-full">
+        <p class="text-[11px] font-black tracking-[.2em] uppercase text-[#C8963E]/70 mb-3">Ventas online</p>
+        <h3 class="text-[40px] font-black leading-none text-white tracking-tight">
+          Ecommerce
+        </h3>
+        <p class="mt-3 text-[17px] font-light text-white/65 max-w-[300px] leading-relaxed">
+          Tiendas online completas con pagos, inventario y panel admin.
+        </p>
+        <div class="flex gap-5 mt-4">
+          <a href="#contacto" class="text-[15px] text-[#C8963E] font-semibold flex items-center gap-1 hover:text-white transition-colors">Más info <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+          <a href="#contacto" class="text-[15px] text-white/60 font-semibold flex items-center gap-1 hover:text-[#C8963E] transition-colors">Cotizar <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+        <!-- Badge flotante -->
+        <div class="flex-1 flex items-end pb-2">
+          <span class="inline-flex items-center gap-2 bg-[#C8963E]/20 border border-[#C8963E]/40 text-[#C8963E] text-[13px] font-bold px-4 py-2 rounded-full backdrop-blur-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            Pasarelas de pago integradas
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: SaaS — Foto tech con overlay azul -->
+    <div class="reveal card-zoom rounded-[28px] overflow-hidden flex flex-col min-h-[420px] relative">
+      <!-- Foto de fondo Unsplash: data center / nube -->
+      <img
+        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop&q=80&auto=format"
+        alt="Infraestructura en la nube"
+        class="zoom-target absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+      />
+      <!-- Overlay azul Paraguay -->
+      <div class="absolute inset-0" style="background:linear-gradient(145deg,rgba(0,39,122,.93) 0%,rgba(0,56,168,.85) 60%,rgba(0,80,200,.70) 100%)"></div>
+      <div class="p-10 relative z-10 flex flex-col h-full">
+        <p class="text-[11px] font-black tracking-[.2em] uppercase text-white/50 mb-3">En la nube</p>
+        <h3 class="text-[40px] font-black leading-none text-white tracking-tight">
+          SaaS
+        </h3>
+        <p class="mt-3 text-[17px] font-light text-white/70 max-w-[280px] leading-relaxed">
+          Plataformas escalables en la nube. Suscripción mensual, acceso desde cualquier lugar.
+        </p>
+        <div class="flex gap-5 mt-4">
+          <a href="#contacto" class="text-[15px] text-white font-semibold flex items-center gap-1 hover:text-[#C8963E] transition-colors">Más info <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+          <a href="#contacto" class="text-[15px] text-[#C8963E] font-semibold flex items-center gap-1 hover:text-white transition-colors">Cotizar <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+        <!-- Badge flotante -->
+        <div class="flex-1 flex items-end pb-2">
+          <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-[13px] font-bold px-4 py-2 rounded-full backdrop-blur-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+            Infraestructura 99.9% uptime
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FÉNIX — Sistema estrella, sección oscura premium
+     ═══════════════════════════════════════════════════════════ -->
+<section id="fenix" class="relative overflow-hidden py-2 bg-[#f7f7f9]">
+  <div class="mx-3 rounded-[28px] overflow-hidden relative"
+       style="background:linear-gradient(160deg,#111015 0%,#16101a 35%,#1a1018 70%,#0f0f16 100%)">
+
+    <!-- Foto circuito impreso como textura sutil -->
+    <img
+      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&h=900&fit=crop&q=50&auto=format"
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover opacity-[0.05] mix-blend-luminosity pointer-events-none"
+      loading="lazy"
+    />
+    <!-- Glows -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-25" style="background:radial-gradient(circle,#D52B1E,transparent 65%);filter:blur(80px)"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-20" style="background:radial-gradient(circle,#0038A8,transparent 65%);filter:blur(80px)"></div>
+    </div>
+
+    <div class="relative z-10 max-w-[1100px] mx-auto px-8 md:px-16 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+      <!-- Left: texto -->
+      <div class="reveal">
+        <span class="inline-block bg-white/10 text-[#ffb74d] text-[11px] font-black tracking-[.2em] uppercase px-4 py-1.5 rounded-full mb-4 backdrop-blur-sm">
+          🔥 Sistema Estrella
+        </span>
+        <p class="text-[13px] font-black tracking-[.3em] uppercase text-white/40 mb-2">F · E · N · I · X</p>
+        <h2 class="font-black leading-tight text-white" style="font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.02em;">
+          <span class="grad-fire">Fénix</span><br>
+          Facturación<br>Electrónica
+        </h2>
+        <p class="mt-2 text-[13px] font-semibold tracking-widest uppercase text-white/35">
+          Facturación Electrónica Nacional Integrada y eXpress
+        </p>
+        <p class="mt-5 text-[17px] text-white/65 leading-relaxed font-light max-w-[460px]">
+          El sistema emblema de Sistemas Paraguay. Diseñado para enviar, administrar y gestionar documentos electrónicos en total cumplimiento con la
+          <strong class="text-white font-semibold">SIFEN</strong>. Rápido, seguro y siempre actualizado.
+        </p>
+
+        <!-- Features grid -->
+        <div class="mt-7 grid grid-cols-2 gap-3">
+          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
+            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
+            Comunicación SIFEN directa
+          </div>
+          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
+            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
+            Envío y recepción de DE
+          </div>
+          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
+            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
+            Dashboard en tiempo real
+          </div>
+          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
+            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
+            Respaldos automáticos
+          </div>
+          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
+            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
+            Multiempresa y sucursales
+          </div>
+          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
+            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
+            Soporte técnico 24/7
+          </div>
+        </div>
+
+        <a href="https://wa.me/595984935082?text=Hola,%20quisiera%20informaci%C3%B3n%20sobre%20F%C3%A9nix"
+           target="_blank" rel="noopener"
+           class="btn-lift mt-8 inline-flex items-center gap-2.5 bg-[#D52B1E] text-white text-[17px] font-bold px-7 py-3.5 rounded-full shadow-[0_6px_22px_rgba(213,43,30,.45)] hover:bg-[#A82015] transition-colors">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consultar por Fénix
+        </a>
+      </div>
+
+      <!-- Right: imágenes reales Fénix -->
+      <div class="reveal-scale flex flex-col items-center justify-center gap-6">
+
+        <!-- Logo Fénix versión light (blanco, sobre fondo oscuro) -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-full opacity-50 animate-flicker"
+               style="background:radial-gradient(circle,rgba(213,43,30,.4),rgba(0,56,168,.3),transparent 70%);filter:blur(40px)"></div>
+          <img
+            src="imagenes/Fenix_ligth.png"
+            alt="Logo Fénix"
+            class="relative z-10 w-72 object-contain drop-shadow-2xl"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Badge DENIT — certificación oficial -->
+        <div class="flex items-center gap-3 bg-white/08 border border-white/15 rounded-2xl px-4 py-3 backdrop-blur-sm">
+          <img
+            src="imagenes/Logo-DENIT.svg"
+            alt="DENIT Paraguay"
+            class="h-8 w-auto object-contain brightness-0 invert opacity-80"
+            loading="lazy"
+          />
+          <div class="text-left">
+            <p class="text-[11px] font-black uppercase tracking-wider text-white/50">Integrado oficialmente con</p>
+            <p class="text-[13px] font-bold text-white leading-tight">DENIT · Sistema SIFEN</p>
+          </div>
+        </div>
+
+        <!-- Ilustración facturación electrónica -->
+        <div class="relative w-full max-w-[340px]">
+          <img
+            src="imagenes/FacturaElectronica.png"
+            alt="Facturación electrónica"
+            class="w-full object-contain drop-shadow-xl animate-float-sm"
+            style="animation-delay:.4s"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- SIFEN badge -->
+        <div class="sifen-badge text-white text-[12px] font-black tracking-widest uppercase px-5 py-2 rounded-full shadow-lg">
+          🔗 Integrado con SIFEN
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     TU PRIMER SISTEMA — Free POS, light section
+     ═══════════════════════════════════════════════════════════ -->
+<section id="tuprimersistema" class="bg-[#fdfaf5] py-2 px-3 mt-3">
+  <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-16 px-6 md:px-10 bg-white rounded-[28px] shadow-[0_2px_40px_rgba(0,0,0,.06)]">
+
+    <!-- Left: info -->
+    <div class="reveal">
+      <span class="inline-block bg-[#27ae60] text-white text-[11px] font-black tracking-[.2em] uppercase px-4 py-1.5 rounded-full mb-5 shadow-[0_4px_14px_rgba(39,174,96,.3)]">
+        🎁 100% Gratis para siempre
+      </span>
+      <h2 class="font-black leading-tight text-[#1a1a1a] tracking-tight" style="font-size:clamp(2rem,4.5vw,3rem);">
+        Tu Primer<br>
+        <span class="text-[#C8963E]">Sistema</span>
+      </h2>
+      <p class="mt-4 text-[17px] text-[#4a4a4a] leading-relaxed font-light max-w-[440px]">
+        Un <strong class="font-semibold text-[#1a1a1a]">sistema POS completo</strong> con control de inventario, compras y ventas. Ideal para pequeños negocios que quieren dar el salto digital <strong class="font-semibold text-[#1a1a1a]">sin inversión inicial.</strong>
+      </p>
+
+      <!-- Módulos -->
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
+          <svg class="w-4 h-4 text-[#C8963E]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          Punto de Venta
+        </div>
+        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
+          <svg class="w-4 h-4 text-[#0038A8]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          Inventario
+        </div>
+        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
+          <svg class="w-4 h-4 text-[#D52B1E]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          Compras
+        </div>
+        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
+          <svg class="w-4 h-4 text-[#27ae60]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Ventas
+        </div>
+        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
+          <svg class="w-4 h-4 text-[#9b59b6]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          Reportes
+        </div>
+        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
+          <svg class="w-4 h-4 text-[#e67e22]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Clientes
+        </div>
+      </div>
+
+      <!-- Migración note -->
+      <div class="mt-5 flex items-start gap-3 bg-[#fffcf2] border-2 border-dashed border-[#C8963E]/50 rounded-2xl p-4">
+        <svg class="w-5 h-5 text-[#C8963E] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
+        <p class="text-[14px] text-[#4a4a4a] font-medium leading-relaxed">
+          ¿Tu negocio creció? <strong class="text-[#D52B1E] font-bold">Migrá a Fénix</strong> cuando lo necesites y accedé a facturación electrónica, sucursales y funcionalidades avanzadas.
+        </p>
+      </div>
+
+      <a href="descargas/tu-primer-sistema-setup.exe"
+         class="btn-lift mt-7 inline-flex items-center gap-3 bg-[#C8963E] text-[#1a1a1a] text-[17px] font-black px-7 py-3.5 rounded-full shadow-[0_6px_22px_rgba(200,150,62,.4)] hover:bg-[#a07830] transition-colors"
+         download>
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+        </svg>
+        Descargar Tu Primer Sistema — Gratis
+      </a>
+    </div>
+
+    <!-- Right: imagen real del producto -->
+    <div class="reveal-scale flex flex-col items-center justify-center gap-5">
+      <!-- Glow de fondo -->
+      <div class="relative flex items-center justify-center">
+        <div class="absolute w-72 h-72 rounded-full opacity-30"
+             style="background:radial-gradient(circle,#C8963E,#D52B1E,transparent 70%);filter:blur(50px)"></div>
+        <img
+          src="imagenes/logoPrimerSistema.png"
+          alt="Tu Primer Sistema — Sistema POS para Pymes"
+          class="relative z-10 w-full max-w-[420px] object-contain drop-shadow-2xl animate-float-sm"
+          style="animation-delay:.2s"
+          loading="lazy"
+        />
+      </div>
+      <!-- Ilustración persona facturando -->
+      <img
+        src="imagenes/POS.png"
+        alt="Persona usando el sistema de ventas"
+        class="w-full max-w-[320px] object-contain drop-shadow-lg"
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     TICKER — Features marquee
+     ═══════════════════════════════════════════════════════════ -->
+<div class="bg-[#1a1a1a] py-4 overflow-hidden ticker-wrap my-0">
+  <div class="ticker-inner select-none">
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Facturación Electrónica</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">SIFEN Integrado</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Apps Móviles iOS & Android</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Páginas Web Profesionales</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Ecommerce Completo</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-[#C8963E]/60">POS Gratuito</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Soporte 24/7</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Tecnología Paraguaya</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">SaaS en la Nube</span>
+    <span class="px-3 text-white/20">·</span>
+    <!-- Clone for seamless loop -->
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Facturación Electrónica</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">SIFEN Integrado</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Apps Móviles iOS & Android</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Páginas Web Profesionales</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Ecommerce Completo</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-[#C8963E]/60">POS Gratuito</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Soporte 24/7</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Tecnología Paraguaya</span>
+    <span class="px-3 text-white/20">·</span>
+    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">SaaS en la Nube</span>
+    <span class="px-3 text-white/20">·</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     STATS — Count-up numbers
+     ═══════════════════════════════════════════════════════════ -->
+<section class="bg-[#1a1a1a] py-24 px-6 relative overflow-hidden">
+  <!-- Foto de equipo de fondo, muy sutil -->
+  <img
+    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&h=700&fit=crop&q=60&auto=format"
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-[0.07] mix-blend-luminosity pointer-events-none"
+    loading="lazy"
+  />
+  <div class="max-w-[980px] mx-auto text-center mb-14 reveal relative z-10">
+    <h2 class="font-black text-white tracking-tight" style="font-size:clamp(2rem,5vw,3rem);">Números que hablan.</h2>
+    <p class="mt-2 text-[17px] text-[#86868b] font-light">Resultados reales. Clientes reales. Paraguay.</p>
+  </div>
+  <div class="max-w-[980px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 stagger relative z-10">
+    <div class="reveal text-center">
+      <p class="font-black text-white leading-none" style="font-size:clamp(2.5rem,6vw,4rem);">
+        <span data-countup="500">0</span>+
+      </p>
+      <p class="mt-2 text-[14px] text-[#86868b] font-medium">Clientes activos</p>
+    </div>
+    <div class="reveal text-center">
+      <p class="font-black text-[#C8963E] leading-none" style="font-size:clamp(2.5rem,6vw,4rem);">
+        <span data-countup="98">0</span>%
+      </p>
+      <p class="mt-2 text-[14px] text-[#86868b] font-medium">Satisfacción</p>
+    </div>
+    <div class="reveal text-center">
+      <p class="font-black text-white leading-none" style="font-size:clamp(2.5rem,6vw,4rem);">
+        <span data-countup="5">0</span>+
+      </p>
+      <p class="mt-2 text-[14px] text-[#86868b] font-medium">Años de experiencia</p>
+    </div>
+    <div class="reveal text-center">
+      <p class="font-black text-[#D52B1E] leading-none" style="font-size:clamp(2.5rem,6vw,4rem);">
+        24/7
+      </p>
+      <p class="mt-2 text-[14px] text-[#86868b] font-medium">Soporte técnico</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA FINAL — Rojo PY, WhatsApp
+     ═══════════════════════════════════════════════════════════ -->
+<section id="contacto" class="relative overflow-hidden py-32 px-6 text-center"
+  style="background:linear-gradient(135deg,#D52B1E 0%,#A82015 55%,#7a1008 100%)">
+
+  <!-- Pattern overlay -->
+  <div class="absolute inset-0 hero-dots opacity-10 pointer-events-none"></div>
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-0 left-[10%] w-80 h-80 rounded-full opacity-15" style="background:radial-gradient(circle,rgba(255,255,255,.3),transparent);filter:blur(60px)"></div>
+  </div>
+
+  <!-- Franja bandera top -->
+  <div class="absolute top-0 inset-x-0 h-1" style="background:linear-gradient(90deg,#fff 33%,#fff 33% 66%,#0038A8 66%)"></div>
+
+  <div class="relative max-w-[680px] mx-auto reveal">
+    <!-- Mini bandera PY -->
+    <div class="flex justify-center mb-5">
+      <svg viewBox="0 0 42 28" class="w-12 h-8 rounded-md shadow-lg">
+        <rect width="42" height="28" fill="#D52B1E"/>
+        <rect y="9.33" width="42" height="9.33" fill="#fff"/>
+        <rect y="18.67" width="42" height="9.33" fill="#0038A8"/>
+        <circle cx="21" cy="14" r="4.5" fill="none" stroke="#C8963E" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <h2 class="font-black leading-tight text-white" style="font-size:clamp(2rem,6vw,3.5rem);letter-spacing:-.02em;">
+      ¿Listo para transformar<br>tu empresa?
+    </h2>
+    <p class="mt-5 text-[19px] font-light text-white/80 leading-relaxed">
+      Escribinos por WhatsApp y conversemos sobre tu proyecto.<br>
+      Estamos en Paraguay, atendemos a todo el país.
+    </p>
+    <a href="https://wa.me/595984935082?text=Hola%20Sistemas%20Paraguay,%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios."
+       target="_blank" rel="noopener noreferrer"
+       class="btn-lift mt-10 inline-flex items-center gap-3 bg-[#25D366] text-white text-[19px] font-black px-8 py-4 rounded-full shadow-[0_8px_28px_rgba(37,211,102,.5)] hover:bg-[#1ebc57] transition-colors">
+      <svg class="w-6 h-6 fill-white flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chatear por WhatsApp · +595 984 935 082
+    </a>
+    <p class="mt-4 text-[13px] text-white/50">Sin compromisos. Respondemos en minutos.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER — Multi-column, dark
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="bg-[#111015] pt-14 pb-6 px-6">
+  <div class="max-w-[1100px] mx-auto">
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 pb-10 border-b border-white/08">
+
+      <!-- Brand col -->
+      <div class="col-span-2 lg:col-span-1">
+        <!-- Logo footer real -->
+        <div class="mb-4">
+          <img
+            src="imagenes/ICONO.png"
+            alt="Sistemas Paraguay"
+            class="h-9 w-auto object-contain brightness-0 invert opacity-90"
+            loading="lazy"
+          />
+          <p class="text-[10px] text-white/30 font-semibold tracking-wider mt-2">Hecho con ❤️ en Paraguay</p>
+        </div>
+        <p class="text-[13px] text-[#86868b] leading-relaxed">
+          Desarrollo de software con identidad paraguaya. Apps, web, ecommerce, SaaS y facturación electrónica.
+        </p>
+        <!-- WhatsApp footer btn -->
+        <a href="https://wa.me/595984935082" target="_blank" rel="noopener"
+           class="mt-4 inline-flex items-center gap-2 bg-[#25D366] text-white text-[12px] font-bold px-4 py-2 rounded-full hover:bg-[#1ebc57] transition-colors">
+          <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          +595 984 935 082
+        </a>
+      </div>
+
+      <!-- Servicios -->
+      <div>
+        <h4 class="text-[12px] font-black uppercase tracking-[.15em] text-white mb-4">Servicios</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#servicios" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Apps Móviles</a></li>
+          <li><a href="#servicios" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Páginas Web</a></li>
+          <li><a href="#servicios" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Ecommerce</a></li>
+          <li><a href="#servicios" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">SaaS</a></li>
+        </ul>
+      </div>
+
+      <!-- Productos -->
+      <div>
+        <h4 class="text-[12px] font-black uppercase tracking-[.15em] text-white mb-4">Productos</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#fenix" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Fénix · Facturación</a></li>
+          <li><a href="#tuprimersistema" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Tu Primer Sistema (POS)</a></li>
+          <li><a href="#fenix" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Integración SIFEN</a></li>
+        </ul>
+      </div>
+
+      <!-- Empresa -->
+      <div>
+        <h4 class="text-[12px] font-black uppercase tracking-[.15em] text-white mb-4">Empresa</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#inicio" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Nosotros</a></li>
+          <li><a href="#contacto" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Contacto</a></li>
+          <li><a href="mailto:info@sistemasparaguay.com" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Email</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h4 class="text-[12px] font-black uppercase tracking-[.15em] text-white mb-4">Contacto</h4>
+        <ul class="space-y-2.5">
+          <li class="text-[13px] text-[#86868b] font-medium">📍 Asunción, Paraguay</li>
+          <li><a href="https://wa.me/595984935082" target="_blank" rel="noopener" class="text-[13px] text-[#86868b] hover:text-[#25D366] transition-colors font-medium">📱 +595 984 935 082</a></li>
+          <li class="text-[13px] text-[#86868b] font-medium">🕐 Lun–Vie 8:00–18:00</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
+      <p class="text-[12px] text-[#515154]">
+        © 2026 Sistemas Paraguay. Todos los derechos reservados.
+      </p>
+      <div class="flex items-center gap-1.5">
+        <svg viewBox="0 0 21 14" class="w-6 h-4 rounded-[2px]">
+          <rect width="21" height="14" fill="#D52B1E"/>
+          <rect y="4.67" width="21" height="4.67" fill="#fff"/>
+          <rect y="9.33" width="21" height="4.67" fill="#0038A8"/>
+        </svg>
+        <span class="text-[12px] text-[#515154]">Hecho con orgullo en Paraguay</span>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     WHATSAPP FLOAT BUTTON
+     ═══════════════════════════════════════════════════════════ -->
+<a href="https://wa.me/595984935082?text=Hola%20Sistemas%20Paraguay,%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
+   target="_blank" rel="noopener noreferrer"
+   class="fixed bottom-7 right-7 z-[999] w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center
+          shadow-[0_8px_28px_rgba(37,211,102,.5)] animate-pulse-wsp hover:scale-110 hover:[animation:none]
+          transition-transform"
+   aria-label="Chatear por WhatsApp">
+  <svg class="w-[30px] h-[30px] fill-white" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+<!-- Tooltip -->
+<div class="fixed bottom-[34px] right-[74px] z-[999] bg-white text-[#1a1a1a] text-[13px] font-bold
+            px-3 py-1.5 rounded-full shadow-lg pointer-events-none opacity-0 hover:opacity-0
+            whitespace-nowrap transition-opacity" id="wsp-tip">
+  ¡Chateá con nosotros!
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  /* --- Nav scroll --- */
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 40){
+      nav.style.background = 'rgba(255,255,255,.97)';
+      nav.style.boxShadow  = '0 1px 0 rgba(0,0,0,.08)';
+    } else {
+      nav.style.background = 'rgba(255,255,255,.88)';
+      nav.style.boxShadow  = 'none';
+    }
+  }, { passive: true });
+
+  /* --- Mobile nav toggle --- */
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('mobile-menu');
+  const b1     = document.getElementById('bar1');
+  const b2     = document.getElementById('bar2');
+  const b3     = document.getElementById('bar3');
+  let open = false;
+  toggle.addEventListener('click', () => {
+    open = !open;
+    menu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    if(open){
+      b1.style.transform = 'rotate(45deg) translate(5px,6px)';
+      b2.style.opacity   = '0';
+      b3.style.transform = 'rotate(-45deg) translate(5px,-6px)';
+    } else {
+      b1.style.transform = b3.style.transform = '';
+      b2.style.opacity   = '1';
+    }
+  });
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      open = false;
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+      b1.style.transform = b3.style.transform = '';
+      b2.style.opacity = '1';
+    });
+  });
+
+  /* --- Smooth scroll --- */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      const offset = nav.offsetHeight + 10;
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
+    });
+  });
+
+  /* --- Scroll reveal --- */
+  const revealEls = document.querySelectorAll('.reveal, .reveal-scale');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  /* --- Count-up --- */
+  function countUp(el){
+    const target = parseFloat(el.dataset.countup);
+    const dur = 1600;
+    const start = performance.now();
+    const isFloat = String(target).includes('.');
+    (function step(now){
+      const p = Math.min((now-start)/dur, 1);
+      const eased = 1 - Math.pow(1-p, 3);
+      el.textContent = isFloat ? (eased*target).toFixed(1) : Math.floor(eased*target).toLocaleString();
+      if(p < 1) requestAnimationFrame(step);
+    })(performance.now());
+  }
+  const cio = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ countUp(e.target); cio.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-countup]').forEach(el => cio.observe(el));
+
+  /* --- WSP tooltip hover --- */
+  const wspBtn = document.querySelector('.wsp-float, a[aria-label="Chatear por WhatsApp"]');
+  const wspTip = document.getElementById('wsp-tip');
+  if(wspBtn && wspTip){
+    wspBtn.addEventListener('mouseenter', () => wspTip.style.opacity = '1');
+    wspBtn.addEventListener('mouseleave', () => wspTip.style.opacity = '0');
+  }
+})();
+</script>
+
+</body>
+</html>

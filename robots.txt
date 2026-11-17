@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sistemasparaguay.com.py/sitemap.xml

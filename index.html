@@ -1,1070 +1,568 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-PY">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sistemas Paraguay | Fénix · Facturación Electrónica · Tu Primer Sistema</title>
-  <meta name="description" content="Desarrollo de software paraguayo. Apps móviles, web, ecommerce y SaaS. Fénix: facturación electrónica integrada con SIFEN. Tu Primer Sistema POS gratuito." />
-  <link rel="icon" type="image/x-icon" href="imagenes/ICONO-Sistemas-Paraguay-.ico" />
-  <link rel="apple-touch-icon" href="imagenes/ICONO%20Sistemas%20Paraguay%20.png" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistemas Paraguay · Software tejido a tu medida</title>
+  <meta name="description" content="Páginas web, apps, tiendas online y sistemas a medida para negocios de todo Paraguay. Facturación electrónica SIFEN con Fénix y punto de venta gratis.">
+  <link rel="canonical" href="https://sistemasparaguay.com.py/">
+  <meta name="theme-color" content="#FBF7F0">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['-apple-system','BlinkMacSystemFont','"Segoe UI"','system-ui','sans-serif'],
-          },
-          colors: {
-            py: {
-              red:    '#D52B1E',
-              'red-d':'#A82015',
-              'red-l':'#f94f40',
-              blue:   '#0038A8',
-              'blue-d':'#00277A',
-              'blue-l':'#2255d4',
-              gold:   '#C8963E',
-              'gold-d':'#a07830',
-              'gold-l':'#e8b85a',
-            }
-          },
-          keyframes: {
-            fadeUp:  { from:{opacity:'0',transform:'translateY(32px)'}, to:{opacity:'1',transform:'translateY(0)'} },
-            fadeIn:  { from:{opacity:'0'}, to:{opacity:'1'} },
-            float:   { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-18px)'} },
-            floatSm: { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-10px)'} },
-            pulseRed:{ '0%,100%':{boxShadow:'0 4px 20px rgba(213,43,30,.35)'}, '50%':{boxShadow:'0 4px 32px rgba(213,43,30,.6)'} },
-            pulseWsp:{ '0%,100%':{boxShadow:'0 8px 28px rgba(37,211,102,.5)'}, '50%':{boxShadow:'0 8px 38px rgba(37,211,102,.75)',transform:'scale(1.06)'} },
-            shimmer: { '0%':{backgroundPosition:'0% center'}, '100%':{backgroundPosition:'200% center'} },
-            spin3d:  { from:{transform:'rotateY(0deg)'}, to:{transform:'rotateY(360deg)'} },
-            flicker: { '0%,100%':{opacity:'1'}, '50%':{opacity:'.85'} },
-          },
-          animation: {
-            'fade-up':    'fadeUp .85s cubic-bezier(.25,.46,.45,.94) forwards',
-            'fade-in':    'fadeIn .6s ease forwards',
-            'float':      'float 5s ease-in-out infinite',
-            'float-sm':   'floatSm 4s ease-in-out infinite',
-            'pulse-red':  'pulseRed 2.5s ease-in-out infinite',
-            'pulse-wsp':  'pulseWsp 2.5s ease-in-out infinite',
-            'shimmer':    'shimmer 4s linear infinite',
-            'flicker':    'flicker 3s ease-in-out infinite',
-          }
-        }
-      }
+  <!-- Vista previa al compartir en redes y WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PY">
+  <meta property="og:site_name" content="Sistemas Paraguay">
+  <meta property="og:title" content="Sistemas Paraguay · Software tejido a tu medida">
+  <meta property="og:description" content="Páginas web, apps, tiendas online y sistemas a medida para negocios de todo Paraguay. Facturación electrónica SIFEN con Fénix y punto de venta gratis.">
+  <meta property="og:url" content="https://sistemasparaguay.com.py/">
+  <meta property="og:image" content="https://sistemasparaguay.com.py/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sistemas Paraguay: software tejido a tu medida">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Íconos -->
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Tipografías de marca: Bricolage Grotesque (títulos) y Figtree (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Figtree:wght@400..800&amp;display=swap">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="assets/js/main.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sistemas Paraguay",
+    "url": "https://sistemasparaguay.com.py/",
+    "logo": "https://sistemasparaguay.com.py/assets/img/marca/isotipo-512.png",
+    "slogan": "Software tejido a tu medida",
+    "description": "Empresa paraguaya de desarrollo de software: páginas web, apps móviles, tiendas online, sistemas a medida, plataformas SaaS y facturación electrónica.",
+    "email": "hola@sistemasparaguay.com.py",
+    "telephone": "+595984935082",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Asunción",
+      "addressCountry": "PY"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Paraguay"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+595984935082",
+      "contactType": "customer service",
+      "areaServed": "PY",
+      "availableLanguage": "Spanish"
     }
+  }
   </script>
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html  { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body  { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; color: #1a1a1a; background:#fff; overflow-x:hidden; }
-
-    /* Reveal on scroll */
-    .reveal { opacity:0; transform:translateY(32px); transition:opacity .75s cubic-bezier(.25,.46,.45,.94), transform .75s cubic-bezier(.25,.46,.45,.94); }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .reveal-scale { opacity:0; transform:scale(.95); transition:opacity .75s cubic-bezier(.25,.46,.45,.94), transform .75s cubic-bezier(.25,.46,.45,.94); }
-    .reveal-scale.visible { opacity:1; transform:scale(1); }
-    .stagger > *:nth-child(1){transition-delay:.05s}
-    .stagger > *:nth-child(2){transition-delay:.12s}
-    .stagger > *:nth-child(3){transition-delay:.19s}
-    .stagger > *:nth-child(4){transition-delay:.26s}
-    .stagger > *:nth-child(5){transition-delay:.33s}
-    .stagger > *:nth-child(6){transition-delay:.40s}
-
-    /* Gradient text */
-    .grad-fire  { background:linear-gradient(135deg,#ff6b4a,#ffb74d,#ff6b4a); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 4s linear infinite; }
-    .grad-flag  { background:linear-gradient(135deg,#D52B1E,#C8963E,#0038A8); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 5s linear infinite; }
-    .grad-cool  { background:linear-gradient(135deg,#2255d4,#843dff,#2255d4); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:shimmer 4s linear infinite; }
-
-    /* Nav mobile */
-    #mobile-menu { transition:opacity .25s ease, transform .25s ease; }
-    #mobile-menu:not(.open) { opacity:0; pointer-events:none; transform:translateY(-8px); }
-    #mobile-menu.open { opacity:1; pointer-events:all; transform:translateY(0); }
-
-    /* Card hover zoom */
-    .card-zoom { overflow:hidden; }
-    .card-zoom .zoom-target { transition:transform .6s cubic-bezier(.25,.46,.45,.94); }
-    .card-zoom:hover .zoom-target { transform:scale(1.04); }
-
-    /* Btn */
-    .btn-lift { transition:transform .2s cubic-bezier(.25,.46,.45,.94), box-shadow .2s cubic-bezier(.25,.46,.45,.94); }
-    .btn-lift:hover { transform:translateY(-2px); }
-    .btn-lift:active { transform:scale(.98); }
-
-    /* Ticker */
-    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    .ticker-inner { display:flex; animation:ticker 30s linear infinite; white-space:nowrap; }
-    .ticker-wrap:hover .ticker-inner { animation-play-state:paused; }
-
-    /* Hero dots pattern */
-    .hero-dots { background-image:radial-gradient(circle,rgba(213,43,30,.12) 1px,transparent 1px), radial-gradient(circle,rgba(0,56,168,.1) 1px,transparent 1px); background-size:48px 48px, 64px 64px; background-position:0 0, 24px 24px; }
-
-    /* Phoenix glow */
-    .phoenix-glow { filter:drop-shadow(0 0 24px rgba(255,107,74,.5)) drop-shadow(0 0 48px rgba(255,183,77,.3)); }
-
-    /* SIFEN badge shimmer */
-    .sifen-badge { background:linear-gradient(90deg,#0038A8,#2255d4,#0038A8); background-size:200%; animation:shimmer 3s linear infinite; }
-
-    /* Paraguay flag stripe */
-    .flag-stripe { background:linear-gradient(90deg, #D52B1E 33.33%, #fff 33.33% 66.66%, #0038A8 66.66%); }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:#f5f5f5} ::-webkit-scrollbar-thumb{background:#d0d0d0;border-radius:3px}
-  </style>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="nanduti" viewBox="0 0 200 200"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M100 84L100 10M104.14 84.55L123.29 13.07M108 86.14L145 22.06M111.31 88.69L163.64 36.36M113.86 92L177.94 55M115.45 95.86L186.93 76.71M116 100L190 100M115.45 104.14L186.93 123.29M113.86 108L177.94 145M111.31 111.31L163.64 163.64M108 113.86L145 177.94M104.14 115.45L123.29 186.93M100 116L100 190M95.86 115.45L76.71 186.93M92 113.86L55 177.94M88.69 111.31L36.36 163.64M86.14 108L22.06 145M84.55 104.14L13.07 123.29M84 100L10 100M84.55 95.86L13.07 76.71M86.14 92L22.06 55M88.69 88.69L36.36 36.36M92 86.14L55 22.06M95.86 84.55L76.71 13.07"/><path d="M100 66Q103.99 69.66 108.8 67.16Q111.71 71.73 117 70.56Q118.63 75.72 124.04 75.96Q124.28 81.37 129.44 83Q128.27 88.29 132.84 91.2Q130.34 96.01 134 100Q130.34 103.99 132.84 108.8Q128.27 111.71 129.44 117Q124.28 118.63 124.04 124.04Q118.63 124.28 117 129.44Q111.71 128.27 108.8 132.84Q103.99 130.34 100 134Q96.01 130.34 91.2 132.84Q88.29 128.27 83 129.44Q81.37 124.28 75.96 124.04Q75.72 118.63 70.56 117Q71.73 111.71 67.16 108.8Q69.66 103.99 66 100Q69.66 96.01 67.16 91.2Q71.73 88.29 70.56 83Q75.72 81.37 75.96 75.96Q81.37 75.72 83 70.56Q88.29 71.73 91.2 67.16Q96.01 69.66 100 66Z"/><path d="M100 46Q106.56 50.21 113.98 47.84Q119.22 53.6 127 53.23Q130.57 60.16 138.18 61.82Q139.84 69.43 146.77 73Q146.4 80.78 152.16 86.02Q149.79 93.44 154 100Q149.79 106.56 152.16 113.98Q146.4 119.22 146.77 127Q139.84 130.57 138.18 138.18Q130.57 139.84 127 146.77Q119.22 146.4 113.98 152.16Q106.56 149.79 100 154Q93.44 149.79 86.02 152.16Q80.78 146.4 73 146.77Q69.43 139.84 61.82 138.18Q60.16 130.57 53.23 127Q53.6 119.22 47.84 113.98Q50.21 106.56 46 100Q50.21 93.44 47.84 86.02Q53.6 80.78 53.23 73Q60.16 69.43 61.82 61.82Q69.43 60.16 73 53.23Q80.78 53.6 86.02 47.84Q93.44 50.21 100 46Z"/><path d="M100 26Q109.18 30.3 119.15 28.52Q126.9 35.05 137 35.91Q142.8 44.23 152.33 47.67Q155.77 57.2 164.09 63Q164.95 73.1 171.48 80.85Q169.7 90.82 174 100Q169.7 109.18 171.48 119.15Q164.95 126.9 164.09 137Q155.77 142.8 152.33 152.33Q142.8 155.77 137 164.09Q126.9 164.95 119.15 171.48Q109.18 169.7 100 174Q90.82 169.7 80.85 171.48Q73.1 164.95 63 164.09Q57.2 155.77 47.67 152.33Q44.23 142.8 35.91 137Q35.05 126.9 28.52 119.15Q30.3 109.18 26 100Q30.3 90.82 28.52 80.85Q35.05 73.1 35.91 63Q44.23 57.2 47.67 47.67Q57.2 44.23 63 35.91Q73.1 35.05 80.85 28.52Q90.82 30.3 100 26Z"/><path d="M100 10Q112.45 5.42 123.29 13.07Q136.51 11.86 145 22.06Q158.08 24.31 163.64 36.36Q175.69 41.92 177.94 55Q188.14 63.49 186.93 76.71Q194.58 87.55 190 100Q194.58 112.45 186.93 123.29Q188.14 136.51 177.94 145Q175.69 158.08 163.64 163.64Q158.08 175.69 145 177.94Q136.51 188.14 123.29 186.93Q112.45 194.58 100 190Q87.55 194.58 76.71 186.93Q63.49 188.14 55 177.94Q41.92 175.69 36.36 163.64Q24.31 158.08 22.06 145Q11.86 136.51 13.07 123.29Q5.42 112.45 10 100Q5.42 87.55 13.07 76.71Q11.86 63.49 22.06 55Q24.31 41.92 36.36 36.36Q41.92 24.31 55 22.06Q63.49 11.86 76.71 13.07Q87.55 5.42 100 10Z"/><ellipse cx="100" cy="90.5" rx="4.2" ry="8.5" transform="rotate(22.5 100 100)"/><ellipse cx="100" cy="90.5" rx="4.2" ry="8.5" transform="rotate(67.5 100 100)"/><ellipse cx="100" cy="90.5" rx="4.2" ry="8.5" transform="rotate(112.5 100 100)"/><ellipse cx="100" cy="90.5" rx="4.2" ry="8.5" transform="rotate(157.5 100 100)"/><ellipse cx="100" cy="90.5" rx="4.2" ry="8.5" transform="rotate(202.5 100 100)"/><ellipse cx="100" cy="90.5" rx="4.2" ry="8.5" transform="rotate(247.5 100 100)"/><ellipse cx="100" cy="90.5" rx="4.2" ry="8.5" transform="rotate(292.5 100 100)"/><ellipse cx="100" cy="90.5" rx="4.2" ry="8.5" transform="rotate(337.5 100 100)"/></g><g fill="currentColor"><circle cx="112.53" cy="4.82" r="2.1"/><circle cx="136.74" cy="11.31" r="2.1"/><circle cx="158.44" cy="23.84" r="2.1"/><circle cx="176.16" cy="41.56" r="2.1"/><circle cx="188.69" cy="63.26" r="2.1"/><circle cx="195.18" cy="87.47" r="2.1"/><circle cx="195.18" cy="112.53" r="2.1"/><circle cx="188.69" cy="136.74" r="2.1"/><circle cx="176.16" cy="158.44" r="2.1"/><circle cx="158.44" cy="176.16" r="2.1"/><circle cx="136.74" cy="188.69" r="2.1"/><circle cx="112.53" cy="195.18" r="2.1"/><circle cx="87.47" cy="195.18" r="2.1"/><circle cx="63.26" cy="188.69" r="2.1"/><circle cx="41.56" cy="176.16" r="2.1"/><circle cx="23.84" cy="158.44" r="2.1"/><circle cx="11.31" cy="136.74" r="2.1"/><circle cx="4.82" cy="112.53" r="2.1"/><circle cx="4.82" cy="87.47" r="2.1"/><circle cx="11.31" cy="63.26" r="2.1"/><circle cx="23.84" cy="41.56" r="2.1"/><circle cx="41.56" cy="23.84" r="2.1"/><circle cx="63.26" cy="11.31" r="2.1"/><circle cx="87.47" cy="4.82" r="2.1"/><circle cx="108.35" cy="36.55" r="1.6"/><circle cx="124.49" cy="40.87" r="1.6"/><circle cx="138.96" cy="49.23" r="1.6"/><circle cx="150.77" cy="61.04" r="1.6"/><circle cx="159.13" cy="75.51" r="1.6"/><circle cx="163.45" cy="91.65" r="1.6"/><circle cx="163.45" cy="108.35" r="1.6"/><circle cx="159.13" cy="124.49" r="1.6"/><circle cx="150.77" cy="138.96" r="1.6"/><circle cx="138.96" cy="150.77" r="1.6"/><circle cx="124.49" cy="159.13" r="1.6"/><circle cx="108.35" cy="163.45" r="1.6"/><circle cx="91.65" cy="163.45" r="1.6"/><circle cx="75.51" cy="159.13" r="1.6"/><circle cx="61.04" cy="150.77" r="1.6"/><circle cx="49.23" cy="138.96" r="1.6"/><circle cx="40.87" cy="124.49" r="1.6"/><circle cx="36.55" cy="108.35" r="1.6"/><circle cx="36.55" cy="91.65" r="1.6"/><circle cx="40.87" cy="75.51" r="1.6"/><circle cx="49.23" cy="61.04" r="1.6"/><circle cx="61.04" cy="49.23" r="1.6"/><circle cx="75.51" cy="40.87" r="1.6"/><circle cx="91.65" cy="36.55" r="1.6"/><circle cx="111.39" cy="57.5" r="1.5"/><circle cx="131.11" cy="68.89" r="1.5"/><circle cx="142.5" cy="88.61" r="1.5"/><circle cx="142.5" cy="111.39" r="1.5"/><circle cx="131.11" cy="131.11" r="1.5"/><circle cx="111.39" cy="142.5" r="1.5"/><circle cx="88.61" cy="142.5" r="1.5"/><circle cx="68.89" cy="131.11" r="1.5"/><circle cx="57.5" cy="111.39" r="1.5"/><circle cx="57.5" cy="88.61" r="1.5"/><circle cx="68.89" cy="68.89" r="1.5"/><circle cx="88.61" cy="57.5" r="1.5"/></g><circle cx="100" cy="100" r="3.2" fill="currentColor"/></symbol></svg>
 
-<!-- ═══════════════════════════════════════════════════════════
-     NAV — Frosted glass, 70px, Paraguay identity
-     ═══════════════════════════════════════════════════════════ -->
-<header id="main-nav"
-  class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
-  style="background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06);">
-
-  <nav class="max-w-[1280px] mx-auto px-6 h-[70px] flex items-center justify-between gap-4">
-
-    <!-- LOGO -->
-    <a href="#inicio" class="flex items-center flex-shrink-0 group">
-      <img
-        src="imagenes/Logo%20Sistemas%20Paraguay.png"
-        alt="Sistemas Paraguay"
-        class="h-10 w-auto object-contain transition-opacity group-hover:opacity-80"
-        loading="eager"
-      />
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html">
+      <svg class="brand__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><rect width="100" height="100" rx="27" fill="#2453D6"/><g stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M50 37.5L50 17M56.25 39.17L66.5 21.42M60.83 43.75L78.58 33.5M62.5 50L83 50M60.83 56.25L78.58 66.5M56.25 60.83L66.5 78.58M50 62.5L50 83M43.75 60.83L33.5 78.58M39.17 56.25L21.42 66.5M37.5 50L17 50M39.17 43.75L21.42 33.5M43.75 39.17L33.5 21.42"/><path d="M50 26.5Q55.11 30.93 61.75 29.65Q63.96 36.04 70.35 38.25Q69.07 44.89 73.5 50Q69.07 55.11 70.35 61.75Q63.96 63.96 61.75 70.35Q55.11 69.07 50 73.5Q44.89 69.07 38.25 70.35Q36.04 63.96 29.65 61.75Q30.93 55.11 26.5 50Q30.93 44.89 29.65 38.25Q36.04 36.04 38.25 29.65Q44.89 30.93 50 26.5Z"/></g><g fill="#fff"><circle cx="50" cy="13.2" r="3.8"/><circle cx="68.4" cy="18.13" r="3.8"/><circle cx="81.87" cy="31.6" r="3.8"/><circle cx="86.8" cy="50" r="3.8"/><circle cx="81.87" cy="68.4" r="3.8"/><circle cx="68.4" cy="81.87" r="3.8"/><circle cx="50" cy="86.8" r="3.8"/><circle cx="31.6" cy="81.87" r="3.8"/><circle cx="18.13" cy="68.4" r="3.8"/><circle cx="13.2" cy="50" r="3.8"/><circle cx="18.13" cy="31.6" r="3.8"/><circle cx="31.6" cy="18.13" r="3.8"/></g><circle cx="50" cy="50" r="9.6" fill="#E5432E" stroke="#fff" stroke-width="3.2"/></svg>
+      <span class="brand__name"><b>Sistemas</b><span>Paraguay</span></span>
     </a>
-
-    <!-- Desktop links -->
-    <ul class="hidden lg:flex items-center gap-1 text-[14px] font-semibold text-[#4a4a4a]">
-      <li><a href="#inicio"          class="px-4 py-2 rounded-full hover:bg-[#D52B1E]/08 hover:text-[#D52B1E] transition-all">Inicio</a></li>
-      <li><a href="#servicios"       class="px-4 py-2 rounded-full hover:bg-[#D52B1E]/08 hover:text-[#D52B1E] transition-all">Servicios</a></li>
-      <li><a href="#fenix"           class="px-4 py-2 rounded-full hover:bg-[#D52B1E]/08 hover:text-[#D52B1E] transition-all">Fénix</a></li>
-      <li><a href="#tuprimersistema" class="px-4 py-2 rounded-full hover:bg-[#D52B1E]/08 hover:text-[#D52B1E] transition-all">Tu Primer Sistema</a></li>
-      <li>
-        <a href="https://wa.me/595984935082?text=Hola%20Sistemas%20Paraguay" target="_blank" rel="noopener"
-           class="btn-lift animate-pulse-red ml-2 bg-[#D52B1E] text-white px-5 py-2 rounded-full font-bold shadow-[0_4px_14px_rgba(213,43,30,.35)] hover:bg-[#A82015] transition-colors">
-          Contacto
-        </a>
-      </li>
-    </ul>
-
-    <!-- Mobile toggle -->
-    <button id="nav-toggle" aria-label="Menú" aria-expanded="false"
-      class="lg:hidden flex flex-col gap-[5px] p-2 rounded-lg" style="z-index:101">
-      <span class="block w-6 h-[2.5px] rounded-full transition-all duration-300 origin-center" style="background:#1a1a1a" id="bar1"></span>
-      <span class="block w-6 h-[2.5px] rounded-full transition-all duration-300" style="background:#1a1a1a" id="bar2"></span>
-      <span class="block w-6 h-[2.5px] rounded-full transition-all duration-300 origin-center" style="background:#1a1a1a" id="bar3"></span>
-    </button>
-  </nav>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu"
-    class="lg:hidden absolute top-[70px] inset-x-0 border-t border-[#e8e8e8] px-6 py-5 shadow-2xl"
-    style="background:rgba(255,255,255,0.98);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);z-index:100;">
-    <ul class="flex flex-col gap-1 text-[17px] font-semibold">
-      <li><a href="#inicio"          class="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-[#f5f5f7] text-[#1a1a1a] border-b border-[#f5f5f5]">🏠 Inicio</a></li>
-      <li><a href="#servicios"       class="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-[#f5f5f7] text-[#1a1a1a] border-b border-[#f5f5f5]">💼 Servicios</a></li>
-      <li><a href="#fenix"           class="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-[#f5f5f7] text-[#1a1a1a] border-b border-[#f5f5f5]">🔥 Fénix</a></li>
-      <li><a href="#tuprimersistema" class="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-[#f5f5f7] text-[#1a1a1a] border-b border-[#f5f5f5]">📦 Tu Primer Sistema</a></li>
-      <li class="pt-2">
-        <a href="https://wa.me/595984935082" target="_blank" rel="noopener"
-           class="flex items-center justify-center gap-2 bg-[#D52B1E] text-white py-3 rounded-2xl font-bold w-full">
-          <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Contactar por WhatsApp
-        </a>
-      </li>
-    </ul>
+    <nav class="nav" aria-label="Principal">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="index.html" aria-current="page">Inicio</a></li><li><a class="nav__link" href="servicios.html">Servicios</a></li><li><a class="nav__link" href="fenix.html">Fénix</a></li><li><a class="nav__link" href="tu-primer-sistema.html">Tu Primer Sistema</a></li><li><a class="nav__link" href="nosotros.html">Nosotros</a></li><li><a class="nav__link" href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn--sm header-cta" href="contacto.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg> Hablemos</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú"><svg class="icon icon--open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg><svg class="icon icon--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+    </div>
   </div>
 </header>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     HERO — Full-screen, bandera PY como identidad visual
-     ═══════════════════════════════════════════════════════════ -->
-<section id="inicio"
-  class="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden pt-[70px]"
-  style="background:linear-gradient(170deg,#0c0c0f 0%,#0f0d18 40%,#0d1220 70%,#070810 100%)">
-
-  <!-- Fondo Sistemas Paraguay -->
-  <img
-    src="imagenes/fondoSistemaParaguay.webp"
-    alt=""
-    aria-hidden="true"
-    class="absolute inset-0 w-full h-full object-cover opacity-[0.08] mix-blend-luminosity pointer-events-none"
-    loading="eager"
-  />
-  <!-- Ñandutí flotante derecha -->
-  <div class="hidden lg:block absolute right-[-100px] top-1/2 -translate-y-1/2 w-[560px] h-[560px] pointer-events-none animate-float-sm" style="animation-delay:.8s">
-    <img
-      src="imagenes/ñanduti.png"
-      alt=""
-      aria-hidden="true"
-      class="w-full h-full object-contain opacity-[0.10]"
-      loading="eager"
-    />
-  </div>
-
-  <!-- Blobs de color bandera -->
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-    <div class="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full opacity-20"
-      style="background:radial-gradient(circle,#D52B1E,transparent 65%);filter:blur(80px)"></div>
-    <div class="absolute bottom-[10%] right-[8%] w-[450px] h-[450px] rounded-full opacity-15"
-      style="background:radial-gradient(circle,#0038A8,transparent 65%);filter:blur(80px)"></div>
-    <div class="absolute top-[45%] left-[45%] w-[300px] h-[300px] rounded-full opacity-10"
-      style="background:radial-gradient(circle,#C8963E,transparent 65%);filter:blur(60px)"></div>
-  </div>
-
-  <!-- Dots pattern -->
-  <div class="absolute inset-0 hero-dots opacity-100 pointer-events-none"></div>
-
-  <!-- Franja decorativa bandera PY - top -->
-  <div class="absolute top-0 inset-x-0 h-1 flag-stripe opacity-60"></div>
-
-  <!-- Floating cards -->
-  <div class="hidden md:flex absolute top-[22%] left-[5%] animate-float items-center gap-2.5
-              bg-white/10 backdrop-blur-xl border border-white/15 text-white
-              text-[13px] font-bold px-4 py-2.5 rounded-2xl shadow-xl" style="animation-delay:0s">
-    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="#C8963E" stroke-width="2.5">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-    </svg>
-    <span>SIFEN · Facturación Electrónica</span>
-  </div>
-  <div class="hidden md:flex absolute bottom-[25%] right-[5%] animate-float items-center gap-2.5
-              bg-white/10 backdrop-blur-xl border border-white/15 text-white
-              text-[13px] font-bold px-4 py-2.5 rounded-2xl shadow-xl" style="animation-delay:1.5s">
-    <svg class="w-5 h-5 flex-shrink-0 text-[#C8963E]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a4 4 0 014-4h.5M12 8V6a4 4 0 00-4-4H8"/>
-      <rect x="2" y="8" width="20" height="14" rx="2" stroke-width="2" fill="none"/>
-    </svg>
-    <span>POS Gratuito · Descargá ya</span>
-  </div>
-
-  <!-- Content -->
-  <div class="relative z-10 max-w-[860px] px-6">
-
-    <!-- Badge Paraguayo -->
-    <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/85
-                text-[12px] font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-7
-                shadow-[0_0_0_0_rgba(213,43,30,.4)] animate-[pulseRed_2.5s_ease-in-out_infinite]"
-         style="opacity:0;animation:fadeUp .85s cubic-bezier(.25,.46,.45,.94) .1s forwards, pulseRed 3s ease-in-out 1s infinite;">
-      <!-- Mini bandera PY SVG -->
-      <svg viewBox="0 0 21 14" class="w-5 h-3.5 rounded-[2px] shadow-sm flex-shrink-0">
-        <rect width="21" height="14" fill="#D52B1E"/>
-        <rect y="4.67" width="21" height="4.67" fill="#fff"/>
-        <rect y="9.33" width="21" height="4.67" fill="#0038A8"/>
-        <circle cx="10.5" cy="7" r="2.2" fill="none" stroke="#C8963E" stroke-width=".8"/>
-        <circle cx="10.5" cy="7" r="1.1" fill="#C8963E" opacity=".7"/>
-      </svg>
-      Tecnología 100% Paraguaya
-    </div>
-
-    <!-- Headline -->
-    <h1 class="font-black tracking-tight leading-[1.1] text-white"
-        style="font-size:clamp(2.4rem,7vw,5.5rem);opacity:0;animation:fadeUp .85s cubic-bezier(.25,.46,.45,.94) .22s forwards;">
-      Software que
-      <span class="grad-fire"> impulsa</span><br>
-      tu negocio al
-      <span class="grad-cool"> futuro</span>
-    </h1>
-
-    <!-- Sub -->
-    <p class="mt-6 text-[19px] md:text-[21px] font-light text-white/70 leading-relaxed max-w-[640px] mx-auto"
-       style="opacity:0;animation:fadeUp .85s cubic-bezier(.25,.46,.45,.94) .38s forwards;">
-      Apps móviles, páginas web, ecommerce y SaaS. Somos líderes en facturación electrónica con
-      <strong class="text-white font-semibold">Fénix</strong>, integrado directamente con la
-      <strong class="text-[#C8963E] font-semibold">SIFEN</strong>.
-    </p>
-
-    <!-- CTAs -->
-    <div class="mt-9 flex flex-wrap items-center justify-center gap-3"
-         style="opacity:0;animation:fadeUp .85s cubic-bezier(.25,.46,.45,.94) .52s forwards;">
-      <a href="#fenix"
-         class="btn-lift animate-pulse-red bg-[#D52B1E] text-white text-[17px] font-bold px-7 py-3 rounded-full shadow-[0_6px_22px_rgba(213,43,30,.45)] hover:bg-[#A82015] transition-colors flex items-center gap-2">
-        <!-- Flame icon -->
-        <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>
-        </svg>
-        Conocé Fénix
-      </a>
-      <a href="#tuprimersistema"
-         class="btn-lift bg-[#C8963E] text-[#1a1a1a] text-[17px] font-bold px-7 py-3 rounded-full shadow-[0_6px_22px_rgba(200,150,62,.4)] hover:bg-[#a07830] transition-colors flex items-center gap-2">
-        <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-        </svg>
-        Descargar Gratis
-      </a>
-      <a href="#servicios"
-         class="btn-lift border-2 border-white/30 text-white text-[17px] font-semibold px-7 py-3 rounded-full hover:border-white/60 hover:bg-white/8 transition-all">
-        Ver catálogo
-      </a>
-    </div>
-
-    <!-- Hero visual: multiplataforma real -->
-    <div class="mt-12 w-full max-w-[800px] mx-auto"
-         style="opacity:0;animation:fadeUp 1s cubic-bezier(.25,.46,.45,.94) .7s forwards;">
-      <div class="relative">
-        <!-- Glow detrás -->
-        <div class="absolute inset-x-16 bottom-0 h-20 rounded-full opacity-40"
-             style="background:radial-gradient(ellipse,rgba(0,56,168,.6),rgba(213,43,30,.3),transparent);filter:blur(30px)"></div>
-        <img
-          src="imagenes/multiplataforma.jpg"
-          alt="Sistemas Paraguay — multiplataforma: desktop, tablet y móvil"
-          class="relative w-full object-contain rounded-2xl shadow-[0_32px_80px_rgba(0,0,0,.5)]"
-          loading="eager"
-          style="border:1px solid rgba(255,255,255,.08)"
-        />
-        <!-- Stats flotantes sobre la imagen -->
-        <div class="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[12px] font-bold px-3 py-1.5 rounded-full">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#27ae60] animate-pulse"></span>
-          SIFEN Conectado
-        </div>
-        <div class="absolute top-4 right-4 flex items-center gap-2 bg-black/60 backdrop-blur-md border border-white/10 text-[#C8963E] text-[12px] font-bold px-3 py-1.5 rounded-full">
-          iOS · Android · Web
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/30 text-[11px] font-medium tracking-widest uppercase">
-    <span>Scroll</span>
-    <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-    </svg>
-  </div>
-
-  <!-- Bottom flag stripe -->
-  <div class="absolute bottom-0 inset-x-0 h-1 flag-stripe opacity-40"></div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     ANNOUNCE — Eyebrow headline
-     ═══════════════════════════════════════════════════════════ -->
-<section class="bg-[#f7f7f9] py-20 px-6 text-center border-b border-[#e8e8e8] relative overflow-hidden">
-  <!-- Arte guaraní decorativo -->
-  <img
-    src="imagenes/ñanduti.png"
-    alt=""
-    aria-hidden="true"
-    class="absolute left-[-60px] top-1/2 -translate-y-1/2 w-52 h-52 object-contain opacity-[0.12] pointer-events-none"
-    loading="lazy"
-  />
-  <img
-    src="imagenes/ñanduti.png"
-    alt=""
-    aria-hidden="true"
-    class="absolute right-[-60px] top-1/2 -translate-y-1/2 w-52 h-52 object-contain opacity-[0.12] pointer-events-none scale-x-[-1]"
-    loading="lazy"
-  />
-  <div class="max-w-[680px] mx-auto reveal relative z-10">
-    <p class="text-[12px] font-black tracking-[.25em] uppercase text-[#D52B1E] mb-4">Por qué elegirnos</p>
-    <h2 class="font-black leading-tight text-[#1a1a1a]" style="font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-.02em;">
-      Soluciones <span class="grad-flag">digitales</span><br>con alma paraguaya.
-    </h2>
-    <p class="mt-5 text-[19px] text-[#4a4a4a] font-light leading-relaxed">
-      Más de 5 años construyendo software que entiende el mercado local. Facturación, ventas, inventario — todo en un solo ecosistema.
-    </p>
-  </div>
-</section>
-
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     SERVICIOS — 2×2 Apple shelf grid
-     ═══════════════════════════════════════════════════════════ -->
-<section id="servicios" class="bg-[#f7f7f9] pb-4 px-3">
-  <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 stagger">
-
-    <!-- Card 1: Apps Móviles — Oscura con azul PY -->
-    <div class="reveal card-zoom rounded-[28px] overflow-hidden flex flex-col min-h-[520px] relative"
-         style="background:linear-gradient(145deg,#0a0f1e,#0d1a3a,#0038A8)">
-      <div class="absolute inset-0" style="background:radial-gradient(circle at 80% 20%,rgba(0,56,168,.6),transparent 60%)"></div>
-      <div class="relative z-10 p-10 flex flex-col h-full">
-        <p class="text-[11px] font-black tracking-[.2em] uppercase text-white/50 mb-3">Desarrollo</p>
-        <h3 class="text-[40px] font-black leading-none text-white tracking-tight">
-          Apps<br>Móviles
-        </h3>
-        <p class="mt-3 text-[17px] font-light text-white/70 max-w-[280px] leading-relaxed">
-          iOS y Android nativos. Diseño intuitivo, rendimiento extremo.
-        </p>
-        <div class="flex gap-5 mt-4">
-          <a href="#contacto" class="text-[15px] text-white hover:text-[#C8963E] font-semibold flex items-center gap-1 transition-colors">Más info <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-          <a href="#contacto" class="text-[15px] text-[#C8963E] hover:text-white font-semibold flex items-center gap-1 transition-colors">Cotizar <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-        </div>
-        <!-- Visual: equipo de desarrollo -->
-        <div class="zoom-target flex-1 flex items-end justify-center pt-4 pb-2">
-          <img
-            src="imagenes/FabricaSoftwware.png"
-            alt="Fábrica de software"
-            class="w-full max-w-[320px] object-contain drop-shadow-2xl"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 2: Páginas Web — Blanca -->
-    <div class="reveal card-zoom bg-white rounded-[28px] overflow-hidden flex flex-col min-h-[520px]">
-      <div class="p-10 flex flex-col h-full">
-        <p class="text-[11px] font-black tracking-[.2em] uppercase text-[#86868b] mb-3">Presencia digital</p>
-        <h3 class="text-[40px] font-black leading-none text-[#1a1a1a] tracking-tight">
-          Páginas<br>Web
-        </h3>
-        <p class="mt-3 text-[17px] font-light text-[#4a4a4a] max-w-[280px] leading-relaxed">
-          Responsivas, rápidas y optimizadas para SEO. Desde landing pages a portales.
-        </p>
-        <div class="flex gap-5 mt-4">
-          <a href="#contacto" class="text-[15px] text-[#0038A8] hover:text-[#D52B1E] font-semibold flex items-center gap-1 transition-colors">Más info <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-          <a href="#contacto" class="text-[15px] text-[#D52B1E] hover:text-[#A82015] font-semibold flex items-center gap-1 transition-colors">Cotizar <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-        </div>
-        <!-- Visual: foto real web design -->
-        <div class="zoom-target flex-1 flex items-end justify-center pt-6">
-          <img
-            src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=380&fit=crop&q=85&auto=format"
-            alt="Diseño web en laptop"
-            class="w-full max-w-[340px] h-48 object-cover rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,.12)] border border-[#e8e8e8]"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 3: Ecommerce — Foto real con overlay -->
-    <div class="reveal card-zoom rounded-[28px] overflow-hidden flex flex-col min-h-[420px] relative">
-      <!-- Foto de fondo Unsplash -->
-      <img
-        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop&q=80&auto=format"
-        alt="Ecommerce tienda online"
-        class="zoom-target absolute inset-0 w-full h-full object-cover"
-        loading="lazy"
-      />
-      <!-- Overlay degradado dorado oscuro -->
-      <div class="absolute inset-0" style="background:linear-gradient(145deg,rgba(26,18,6,.92) 0%,rgba(45,31,8,.85) 50%,rgba(61,42,10,.75) 100%)"></div>
-      <div class="absolute inset-0" style="background:radial-gradient(circle at 20% 80%,rgba(200,150,62,.25),transparent 60%)"></div>
-      <div class="relative z-10 p-10 flex flex-col h-full">
-        <p class="text-[11px] font-black tracking-[.2em] uppercase text-[#C8963E]/70 mb-3">Ventas online</p>
-        <h3 class="text-[40px] font-black leading-none text-white tracking-tight">
-          Ecommerce
-        </h3>
-        <p class="mt-3 text-[17px] font-light text-white/65 max-w-[300px] leading-relaxed">
-          Tiendas online completas con pagos, inventario y panel admin.
-        </p>
-        <div class="flex gap-5 mt-4">
-          <a href="#contacto" class="text-[15px] text-[#C8963E] font-semibold flex items-center gap-1 hover:text-white transition-colors">Más info <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-          <a href="#contacto" class="text-[15px] text-white/60 font-semibold flex items-center gap-1 hover:text-[#C8963E] transition-colors">Cotizar <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-        </div>
-        <!-- Badge flotante -->
-        <div class="flex-1 flex items-end pb-2">
-          <span class="inline-flex items-center gap-2 bg-[#C8963E]/20 border border-[#C8963E]/40 text-[#C8963E] text-[13px] font-bold px-4 py-2 rounded-full backdrop-blur-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-            Pasarelas de pago integradas
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4: SaaS — Foto tech con overlay azul -->
-    <div class="reveal card-zoom rounded-[28px] overflow-hidden flex flex-col min-h-[420px] relative">
-      <!-- Foto de fondo Unsplash: data center / nube -->
-      <img
-        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop&q=80&auto=format"
-        alt="Infraestructura en la nube"
-        class="zoom-target absolute inset-0 w-full h-full object-cover"
-        loading="lazy"
-      />
-      <!-- Overlay azul Paraguay -->
-      <div class="absolute inset-0" style="background:linear-gradient(145deg,rgba(0,39,122,.93) 0%,rgba(0,56,168,.85) 60%,rgba(0,80,200,.70) 100%)"></div>
-      <div class="p-10 relative z-10 flex flex-col h-full">
-        <p class="text-[11px] font-black tracking-[.2em] uppercase text-white/50 mb-3">En la nube</p>
-        <h3 class="text-[40px] font-black leading-none text-white tracking-tight">
-          SaaS
-        </h3>
-        <p class="mt-3 text-[17px] font-light text-white/70 max-w-[280px] leading-relaxed">
-          Plataformas escalables en la nube. Suscripción mensual, acceso desde cualquier lugar.
-        </p>
-        <div class="flex gap-5 mt-4">
-          <a href="#contacto" class="text-[15px] text-white font-semibold flex items-center gap-1 hover:text-[#C8963E] transition-colors">Más info <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-          <a href="#contacto" class="text-[15px] text-[#C8963E] font-semibold flex items-center gap-1 hover:text-white transition-colors">Cotizar <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-        </div>
-        <!-- Badge flotante -->
-        <div class="flex-1 flex items-end pb-2">
-          <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-[13px] font-bold px-4 py-2 rounded-full backdrop-blur-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
-            Infraestructura 99.9% uptime
-          </span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     FÉNIX — Sistema estrella, sección oscura premium
-     ═══════════════════════════════════════════════════════════ -->
-<section id="fenix" class="relative overflow-hidden py-2 bg-[#f7f7f9]">
-  <div class="mx-3 rounded-[28px] overflow-hidden relative"
-       style="background:linear-gradient(160deg,#111015 0%,#16101a 35%,#1a1018 70%,#0f0f16 100%)">
-
-    <!-- Foto circuito impreso como textura sutil -->
-    <img
-      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&h=900&fit=crop&q=50&auto=format"
-      alt=""
-      aria-hidden="true"
-      class="absolute inset-0 w-full h-full object-cover opacity-[0.05] mix-blend-luminosity pointer-events-none"
-      loading="lazy"
-    />
-    <!-- Glows -->
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-25" style="background:radial-gradient(circle,#D52B1E,transparent 65%);filter:blur(80px)"></div>
-      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-20" style="background:radial-gradient(circle,#0038A8,transparent 65%);filter:blur(80px)"></div>
-    </div>
-
-    <div class="relative z-10 max-w-[1100px] mx-auto px-8 md:px-16 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-      <!-- Left: texto -->
-      <div class="reveal">
-        <span class="inline-block bg-white/10 text-[#ffb74d] text-[11px] font-black tracking-[.2em] uppercase px-4 py-1.5 rounded-full mb-4 backdrop-blur-sm">
-          🔥 Sistema Estrella
-        </span>
-        <p class="text-[13px] font-black tracking-[.3em] uppercase text-white/40 mb-2">F · E · N · I · X</p>
-        <h2 class="font-black leading-tight text-white" style="font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.02em;">
-          <span class="grad-fire">Fénix</span><br>
-          Facturación<br>Electrónica
-        </h2>
-        <p class="mt-2 text-[13px] font-semibold tracking-widest uppercase text-white/35">
-          Facturación Electrónica Nacional Integrada y eXpress
-        </p>
-        <p class="mt-5 text-[17px] text-white/65 leading-relaxed font-light max-w-[460px]">
-          El sistema emblema de Sistemas Paraguay. Diseñado para enviar, administrar y gestionar documentos electrónicos en total cumplimiento con la
-          <strong class="text-white font-semibold">SIFEN</strong>. Rápido, seguro y siempre actualizado.
-        </p>
-
-        <!-- Features grid -->
-        <div class="mt-7 grid grid-cols-2 gap-3">
-          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
-            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
-            Comunicación SIFEN directa
-          </div>
-          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
-            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
-            Envío y recepción de DE
-          </div>
-          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
-            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
-            Dashboard en tiempo real
-          </div>
-          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
-            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
-            Respaldos automáticos
-          </div>
-          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
-            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
-            Multiempresa y sucursales
-          </div>
-          <div class="flex items-center gap-2.5 text-[14px] text-white/75 font-medium">
-            <span class="w-5 h-5 rounded-full bg-[#C8963E]/20 border border-[#C8963E]/40 flex items-center justify-center text-[#C8963E] font-bold text-[11px]">✓</span>
-            Soporte técnico 24/7
-          </div>
-        </div>
-
-        <a href="https://wa.me/595984935082?text=Hola,%20quisiera%20informaci%C3%B3n%20sobre%20F%C3%A9nix"
-           target="_blank" rel="noopener"
-           class="btn-lift mt-8 inline-flex items-center gap-2.5 bg-[#D52B1E] text-white text-[17px] font-bold px-7 py-3.5 rounded-full shadow-[0_6px_22px_rgba(213,43,30,.45)] hover:bg-[#A82015] transition-colors">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Consultar por Fénix
-        </a>
-      </div>
-
-      <!-- Right: imágenes reales Fénix -->
-      <div class="reveal-scale flex flex-col items-center justify-center gap-6">
-
-        <!-- Logo Fénix versión light (blanco, sobre fondo oscuro) -->
-        <div class="relative">
-          <div class="absolute inset-0 rounded-full opacity-50 animate-flicker"
-               style="background:radial-gradient(circle,rgba(213,43,30,.4),rgba(0,56,168,.3),transparent 70%);filter:blur(40px)"></div>
-          <img
-            src="imagenes/Fenix_ligth.png"
-            alt="Logo Fénix"
-            class="relative z-10 w-72 object-contain drop-shadow-2xl"
-            loading="lazy"
-          />
-        </div>
-
-        <!-- Badge DENIT — certificación oficial -->
-        <div class="flex items-center gap-3 bg-white/08 border border-white/15 rounded-2xl px-4 py-3 backdrop-blur-sm">
-          <img
-            src="imagenes/Logo-DENIT.svg"
-            alt="DENIT Paraguay"
-            class="h-8 w-auto object-contain brightness-0 invert opacity-80"
-            loading="lazy"
-          />
-          <div class="text-left">
-            <p class="text-[11px] font-black uppercase tracking-wider text-white/50">Integrado oficialmente con</p>
-            <p class="text-[13px] font-bold text-white leading-tight">DENIT · Sistema SIFEN</p>
-          </div>
-        </div>
-
-        <!-- Ilustración facturación electrónica -->
-        <div class="relative w-full max-w-[340px]">
-          <img
-            src="imagenes/FacturaElectronica.png"
-            alt="Facturación electrónica"
-            class="w-full object-contain drop-shadow-xl animate-float-sm"
-            style="animation-delay:.4s"
-            loading="lazy"
-          />
-        </div>
-
-        <!-- SIFEN badge -->
-        <div class="sifen-badge text-white text-[12px] font-black tracking-widest uppercase px-5 py-2 rounded-full shadow-lg">
-          🔗 Integrado con SIFEN
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     TU PRIMER SISTEMA — Free POS, light section
-     ═══════════════════════════════════════════════════════════ -->
-<section id="tuprimersistema" class="bg-[#fdfaf5] py-2 px-3 mt-3">
-  <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-16 px-6 md:px-10 bg-white rounded-[28px] shadow-[0_2px_40px_rgba(0,0,0,.06)]">
-
-    <!-- Left: info -->
-    <div class="reveal">
-      <span class="inline-block bg-[#27ae60] text-white text-[11px] font-black tracking-[.2em] uppercase px-4 py-1.5 rounded-full mb-5 shadow-[0_4px_14px_rgba(39,174,96,.3)]">
-        🎁 100% Gratis para siempre
-      </span>
-      <h2 class="font-black leading-tight text-[#1a1a1a] tracking-tight" style="font-size:clamp(2rem,4.5vw,3rem);">
-        Tu Primer<br>
-        <span class="text-[#C8963E]">Sistema</span>
-      </h2>
-      <p class="mt-4 text-[17px] text-[#4a4a4a] leading-relaxed font-light max-w-[440px]">
-        Un <strong class="font-semibold text-[#1a1a1a]">sistema POS completo</strong> con control de inventario, compras y ventas. Ideal para pequeños negocios que quieren dar el salto digital <strong class="font-semibold text-[#1a1a1a]">sin inversión inicial.</strong>
-      </p>
-
-      <!-- Módulos -->
-      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
-          <svg class="w-4 h-4 text-[#C8963E]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-          Punto de Venta
-        </div>
-        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
-          <svg class="w-4 h-4 text-[#0038A8]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-          Inventario
-        </div>
-        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
-          <svg class="w-4 h-4 text-[#D52B1E]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-          Compras
-        </div>
-        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
-          <svg class="w-4 h-4 text-[#27ae60]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Ventas
-        </div>
-        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
-          <svg class="w-4 h-4 text-[#9b59b6]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-          Reportes
-        </div>
-        <div class="flex items-center gap-2 bg-[#f7f7f9] border border-[#e8e8e8] rounded-xl px-3 py-2.5 text-[13px] font-semibold text-[#2d2d2d] hover:border-[#C8963E] hover:bg-[#fffdf7] transition-all cursor-default">
-          <svg class="w-4 h-4 text-[#e67e22]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          Clientes
-        </div>
-      </div>
-
-      <!-- Migración note -->
-      <div class="mt-5 flex items-start gap-3 bg-[#fffcf2] border-2 border-dashed border-[#C8963E]/50 rounded-2xl p-4">
-        <svg class="w-5 h-5 text-[#C8963E] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-        </svg>
-        <p class="text-[14px] text-[#4a4a4a] font-medium leading-relaxed">
-          ¿Tu negocio creció? <strong class="text-[#D52B1E] font-bold">Migrá a Fénix</strong> cuando lo necesites y accedé a facturación electrónica, sucursales y funcionalidades avanzadas.
-        </p>
-      </div>
-
-      <a href="descargas/tu-primer-sistema-setup.exe"
-         class="btn-lift mt-7 inline-flex items-center gap-3 bg-[#C8963E] text-[#1a1a1a] text-[17px] font-black px-7 py-3.5 rounded-full shadow-[0_6px_22px_rgba(200,150,62,.4)] hover:bg-[#a07830] transition-colors"
-         download>
-        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-        </svg>
-        Descargar Tu Primer Sistema — Gratis
-      </a>
-    </div>
-
-    <!-- Right: imagen real del producto -->
-    <div class="reveal-scale flex flex-col items-center justify-center gap-5">
-      <!-- Glow de fondo -->
-      <div class="relative flex items-center justify-center">
-        <div class="absolute w-72 h-72 rounded-full opacity-30"
-             style="background:radial-gradient(circle,#C8963E,#D52B1E,transparent 70%);filter:blur(50px)"></div>
-        <img
-          src="imagenes/logoPrimerSistema.png"
-          alt="Tu Primer Sistema — Sistema POS para Pymes"
-          class="relative z-10 w-full max-w-[420px] object-contain drop-shadow-2xl animate-float-sm"
-          style="animation-delay:.2s"
-          loading="lazy"
-        />
-      </div>
-      <!-- Ilustración persona facturando -->
-      <img
-        src="imagenes/POS.png"
-        alt="Persona usando el sistema de ventas"
-        class="w-full max-w-[320px] object-contain drop-shadow-lg"
-        loading="lazy"
-      />
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     TICKER — Features marquee
-     ═══════════════════════════════════════════════════════════ -->
-<div class="bg-[#1a1a1a] py-4 overflow-hidden ticker-wrap my-0">
-  <div class="ticker-inner select-none">
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Facturación Electrónica</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">SIFEN Integrado</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Apps Móviles iOS & Android</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Páginas Web Profesionales</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Ecommerce Completo</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-[#C8963E]/60">POS Gratuito</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Soporte 24/7</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Tecnología Paraguaya</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">SaaS en la Nube</span>
-    <span class="px-3 text-white/20">·</span>
-    <!-- Clone for seamless loop -->
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Facturación Electrónica</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">SIFEN Integrado</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Apps Móviles iOS & Android</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Páginas Web Profesionales</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Ecommerce Completo</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-[#C8963E]/60">POS Gratuito</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Soporte 24/7</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">Tecnología Paraguaya</span>
-    <span class="px-3 text-white/20">·</span>
-    <span class="px-8 text-[13px] font-black uppercase tracking-[.2em] text-white/40">SaaS en la Nube</span>
-    <span class="px-3 text-white/20">·</span>
+<div class="mobile-menu" id="menu-movil">
+  <nav aria-label="Menú para celulares">
+    <ul class="mobile-menu__list">
+      <li><a class="mobile-menu__link" href="index.html" aria-current="page">Inicio <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a class="mobile-menu__link" href="servicios.html">Servicios <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a class="mobile-menu__link" href="fenix.html">Fénix <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a class="mobile-menu__link" href="tu-primer-sistema.html">Tu Primer Sistema <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a class="mobile-menu__link" href="nosotros.html">Nosotros <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a class="mobile-menu__link" href="contacto.html">Contacto <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
+    </ul>
+  </nav>
+  <div class="mobile-menu__actions">
+    <a class="btn btn--whatsapp btn--block" href="https://wa.me/595984935082?text=%C2%A1Hola%2C%20Sistemas%20Paraguay%21%20Quisiera%20hacerles%20una%20consulta." target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Escribinos por WhatsApp</a>
+    <a class="btn btn--secondary btn--block" href="mailto:hola@sistemasparaguay.com.py"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg> hola@sistemasparaguay.com.py</a>
   </div>
 </div>
 
-
-<!-- ═══════════════════════════════════════════════════════════
-     STATS — Count-up numbers
-     ═══════════════════════════════════════════════════════════ -->
-<section class="bg-[#1a1a1a] py-24 px-6 relative overflow-hidden">
-  <!-- Foto de equipo de fondo, muy sutil -->
-  <img
-    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&h=700&fit=crop&q=60&auto=format"
-    alt=""
-    aria-hidden="true"
-    class="absolute inset-0 w-full h-full object-cover opacity-[0.07] mix-blend-luminosity pointer-events-none"
-    loading="lazy"
-  />
-  <div class="max-w-[980px] mx-auto text-center mb-14 reveal relative z-10">
-    <h2 class="font-black text-white tracking-tight" style="font-size:clamp(2rem,5vw,3rem);">Números que hablan.</h2>
-    <p class="mt-2 text-[17px] text-[#86868b] font-light">Resultados reales. Clientes reales. Paraguay.</p>
-  </div>
-  <div class="max-w-[980px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 stagger relative z-10">
-    <div class="reveal text-center">
-      <p class="font-black text-white leading-none" style="font-size:clamp(2.5rem,6vw,4rem);">
-        <span data-countup="500">0</span>+
-      </p>
-      <p class="mt-2 text-[14px] text-[#86868b] font-medium">Clientes activos</p>
-    </div>
-    <div class="reveal text-center">
-      <p class="font-black text-[#C8963E] leading-none" style="font-size:clamp(2.5rem,6vw,4rem);">
-        <span data-countup="98">0</span>%
-      </p>
-      <p class="mt-2 text-[14px] text-[#86868b] font-medium">Satisfacción</p>
-    </div>
-    <div class="reveal text-center">
-      <p class="font-black text-white leading-none" style="font-size:clamp(2.5rem,6vw,4rem);">
-        <span data-countup="5">0</span>+
-      </p>
-      <p class="mt-2 text-[14px] text-[#86868b] font-medium">Años de experiencia</p>
-    </div>
-    <div class="reveal text-center">
-      <p class="font-black text-[#D52B1E] leading-none" style="font-size:clamp(2.5rem,6vw,4rem);">
-        24/7
-      </p>
-      <p class="mt-2 text-[14px] text-[#86868b] font-medium">Soporte técnico</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     CTA FINAL — Rojo PY, WhatsApp
-     ═══════════════════════════════════════════════════════════ -->
-<section id="contacto" class="relative overflow-hidden py-32 px-6 text-center"
-  style="background:linear-gradient(135deg,#D52B1E 0%,#A82015 55%,#7a1008 100%)">
-
-  <!-- Pattern overlay -->
-  <div class="absolute inset-0 hero-dots opacity-10 pointer-events-none"></div>
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-    <div class="absolute top-0 left-[10%] w-80 h-80 rounded-full opacity-15" style="background:radial-gradient(circle,rgba(255,255,255,.3),transparent);filter:blur(60px)"></div>
-  </div>
-
-  <!-- Franja bandera top -->
-  <div class="absolute top-0 inset-x-0 h-1" style="background:linear-gradient(90deg,#fff 33%,#fff 33% 66%,#0038A8 66%)"></div>
-
-  <div class="relative max-w-[680px] mx-auto reveal">
-    <!-- Mini bandera PY -->
-    <div class="flex justify-center mb-5">
-      <svg viewBox="0 0 42 28" class="w-12 h-8 rounded-md shadow-lg">
-        <rect width="42" height="28" fill="#D52B1E"/>
-        <rect y="9.33" width="42" height="9.33" fill="#fff"/>
-        <rect y="18.67" width="42" height="9.33" fill="#0038A8"/>
-        <circle cx="21" cy="14" r="4.5" fill="none" stroke="#C8963E" stroke-width="1.5"/>
-      </svg>
-    </div>
-    <h2 class="font-black leading-tight text-white" style="font-size:clamp(2rem,6vw,3.5rem);letter-spacing:-.02em;">
-      ¿Listo para transformar<br>tu empresa?
-    </h2>
-    <p class="mt-5 text-[19px] font-light text-white/80 leading-relaxed">
-      Escribinos por WhatsApp y conversemos sobre tu proyecto.<br>
-      Estamos en Paraguay, atendemos a todo el país.
-    </p>
-    <a href="https://wa.me/595984935082?text=Hola%20Sistemas%20Paraguay,%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios."
-       target="_blank" rel="noopener noreferrer"
-       class="btn-lift mt-10 inline-flex items-center gap-3 bg-[#25D366] text-white text-[19px] font-black px-8 py-4 rounded-full shadow-[0_8px_28px_rgba(37,211,102,.5)] hover:bg-[#1ebc57] transition-colors">
-      <svg class="w-6 h-6 fill-white flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Chatear por WhatsApp · +595 984 935 082
-    </a>
-    <p class="mt-4 text-[13px] text-white/50">Sin compromisos. Respondemos en minutos.</p>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     FOOTER — Multi-column, dark
-     ═══════════════════════════════════════════════════════════ -->
-<footer class="bg-[#111015] pt-14 pb-6 px-6">
-  <div class="max-w-[1100px] mx-auto">
-
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 pb-10 border-b border-white/08">
-
-      <!-- Brand col -->
-      <div class="col-span-2 lg:col-span-1">
-        <!-- Logo footer real -->
-        <div class="mb-4">
-          <img
-            src="imagenes/ICONO.png"
-            alt="Sistemas Paraguay"
-            class="h-9 w-auto object-contain brightness-0 invert opacity-90"
-            loading="lazy"
-          />
-          <p class="text-[10px] text-white/30 font-semibold tracking-wider mt-2">Hecho con ❤️ en Paraguay</p>
-        </div>
-        <p class="text-[13px] text-[#86868b] leading-relaxed">
-          Desarrollo de software con identidad paraguaya. Apps, web, ecommerce, SaaS y facturación electrónica.
-        </p>
-        <!-- WhatsApp footer btn -->
-        <a href="https://wa.me/595984935082" target="_blank" rel="noopener"
-           class="mt-4 inline-flex items-center gap-2 bg-[#25D366] text-white text-[12px] font-bold px-4 py-2 rounded-full hover:bg-[#1ebc57] transition-colors">
-          <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          +595 984 935 082
+<main id="contenido">
+<!-- ============================ HERO ============================ -->
+<section class="hero" aria-labelledby="hero-titulo">
+  <svg class="nanduti" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><use href="#nanduti"></use></svg>
+  <div class="container hero__grid">
+    <div>
+      <p class="eyebrow eyebrow--hello"><span class="wave" aria-hidden="true">👋</span> ¡Mba'éichapa! Somos Sistemas Paraguay</p>
+      <h1 id="hero-titulo">Software tejido <span class="thread">a tu medida</span>.</h1>
+      <p class="lead hero__lead">Creamos páginas web, apps, tiendas online y sistemas de gestión para negocios de todo Paraguay. Hablamos claro, cumplimos plazos y te acompañamos después de la entrega.</p>
+      <div class="hero__actions">
+        <a class="btn btn--lg" href="contacto.html">Contanos tu idea <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="btn btn--lg btn--secondary" href="servicios.html">Ver servicios</a>
+      </div>
+      <ul class="hero__trust">
+        <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m16 9-5.5 5.5L8 12"/></svg> +500 clientes activos</li>
+        <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m16 9-5.5 5.5L8 12"/></svg> Soporte de personas reales</li>
+        <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m16 9-5.5 5.5L8 12"/></svg> Presupuesto sin costo</li>
+      </ul>
+      <div class="hero__products">
+        <a class="mini-product" href="fenix.html">
+          <img src="assets/img/productos/fenix-isotipo.webp" alt="" width="44" height="44">
+          <span class="mini-product__text"><b>Fénix</b><span>Facturación electrónica SIFEN</span></span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+        <a class="mini-product" href="tu-primer-sistema.html">
+          <img src="assets/img/productos/tu-primer-sistema.webp" alt="" width="44" height="44">
+          <span class="mini-product__text"><b>Tu Primer Sistema</b><span>Punto de venta 100% gratis</span></span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
         </a>
       </div>
-
-      <!-- Servicios -->
-      <div>
-        <h4 class="text-[12px] font-black uppercase tracking-[.15em] text-white mb-4">Servicios</h4>
-        <ul class="space-y-2.5">
-          <li><a href="#servicios" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Apps Móviles</a></li>
-          <li><a href="#servicios" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Páginas Web</a></li>
-          <li><a href="#servicios" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Ecommerce</a></li>
-          <li><a href="#servicios" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">SaaS</a></li>
-        </ul>
-      </div>
-
-      <!-- Productos -->
-      <div>
-        <h4 class="text-[12px] font-black uppercase tracking-[.15em] text-white mb-4">Productos</h4>
-        <ul class="space-y-2.5">
-          <li><a href="#fenix" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Fénix · Facturación</a></li>
-          <li><a href="#tuprimersistema" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Tu Primer Sistema (POS)</a></li>
-          <li><a href="#fenix" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Integración SIFEN</a></li>
-        </ul>
-      </div>
-
-      <!-- Empresa -->
-      <div>
-        <h4 class="text-[12px] font-black uppercase tracking-[.15em] text-white mb-4">Empresa</h4>
-        <ul class="space-y-2.5">
-          <li><a href="#inicio" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Nosotros</a></li>
-          <li><a href="#contacto" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Contacto</a></li>
-          <li><a href="mailto:info@sistemasparaguay.com" class="text-[13px] text-[#86868b] hover:text-[#C8963E] transition-colors font-medium">Email</a></li>
-        </ul>
-      </div>
-
-      <!-- Contacto -->
-      <div>
-        <h4 class="text-[12px] font-black uppercase tracking-[.15em] text-white mb-4">Contacto</h4>
-        <ul class="space-y-2.5">
-          <li class="text-[13px] text-[#86868b] font-medium">📍 Asunción, Paraguay</li>
-          <li><a href="https://wa.me/595984935082" target="_blank" rel="noopener" class="text-[13px] text-[#86868b] hover:text-[#25D366] transition-colors font-medium">📱 +595 984 935 082</a></li>
-          <li class="text-[13px] text-[#86868b] font-medium">🕐 Lun–Vie 8:00–18:00</li>
-        </ul>
-      </div>
-
     </div>
 
-    <!-- Bottom bar -->
-    <div class="pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-      <p class="text-[12px] text-[#515154]">
-        © 2026 Sistemas Paraguay. Todos los derechos reservados.
-      </p>
-      <div class="flex items-center gap-1.5">
-        <svg viewBox="0 0 21 14" class="w-6 h-4 rounded-[2px]">
-          <rect width="21" height="14" fill="#D52B1E"/>
-          <rect y="4.67" width="21" height="4.67" fill="#fff"/>
-          <rect y="9.33" width="21" height="4.67" fill="#0038A8"/>
-        </svg>
-        <span class="text-[12px] text-[#515154]">Hecho con orgullo en Paraguay</span>
+    <div class="showcase" role="img" aria-label="Ejemplo de un panel de ventas en la web y de una tienda en el celular, hechos por Sistemas Paraguay">
+      <svg class="nanduti nanduti--spin" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><use href="#nanduti"></use></svg>
+      <div class="mock-browser">
+        <div class="mock-browser__bar"><i></i><i></i><i></i><span class="mock-browser__url">panel.tuempresa.com.py</span></div>
+        <div class="mock-browser__body">
+          <div class="mock-side">
+            <span class="is-active"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span>
+            <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 16H8"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg></span>
+            <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg></span>
+            <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></span>
+            <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg></span>
+          </div>
+          <div class="mock-main">
+            <div class="mock-kpi">
+              <div>
+                <div class="mock-kpi__label">Ventas de hoy</div>
+                <div class="mock-kpi__value">₲ 1.240.000</div>
+              </div>
+              <span class="mock-pill"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg> +12% vs. ayer</span>
+            </div>
+            <div class="mock-bars">
+              <span style="--h:38%" data-d="Lun"></span>
+              <span style="--h:55%" data-d="Mar"></span>
+              <span style="--h:46%" data-d="Mié"></span>
+              <span style="--h:70%" data-d="Jue"></span>
+              <span style="--h:62%" data-d="Vie"></span>
+              <span style="--h:84%" data-d="Sáb"></span>
+              <span style="--h:96%" data-d="Hoy"></span>
+            </div>
+            <div class="mock-rows">
+              <div class="mock-row">
+                <span class="mock-row__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 16H8"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg></span>
+                <span><b>Factura 001-001-0001284</b><small>Despensa Ña Rosa · aprobada</small></span>
+                <span class="mock-row__amount">₲ 85.000</span>
+              </div>
+              <div class="mock-row">
+                <span class="mock-row__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg></span>
+                <span><b>Stock al día</b><small>342 productos actualizados</small></span>
+                <span class="mock-row__amount"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m16 9-5.5 5.5L8 12"/></svg></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mock-phone">
+        <div class="mock-phone__screen">
+          <span class="mock-phone__notch"></span>
+          <div class="mock-app__head"><small>¡Hola, Rosa!</small><b>Mi Tienda</b></div>
+          <div class="mock-app__grid">
+            <div class="mock-app__item"><i style="--c:var(--chipa-100)"></i><b></b><span>₲ 45.000</span></div>
+            <div class="mock-app__item"><i style="--c:var(--pitanga-50)"></i><b></b><span>₲ 32.000</span></div>
+            <div class="mock-app__item"><i style="--c:var(--terere-50)"></i><b></b><span>₲ 18.500</span></div>
+            <div class="mock-app__item"><i style="--c:var(--ypacarai-100)"></i><b></b><span>₲ 60.000</span></div>
+          </div>
+          <div class="mock-app__cta">Agregar al carrito</div>
+        </div>
+      </div>
+      <div class="float-chip chip-a">
+        <span class="float-chip__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m16 9-5.5 5.5L8 12"/></svg></span>
+        <span><b>Factura aprobada</b><small>SIFEN · hace 2 segundos</small></span>
+      </div>
+      <div class="float-chip chip-b">
+        <span class="float-chip__icon float-chip__icon--chipa"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></svg></span>
+        <span><b>¡Nueva venta!</b><small>₲ 85.000 · tienda online</small></span>
       </div>
     </div>
+  </div>
+</section>
 
+<!-- ============================ RUBROS ============================ -->
+<section class="section section--white section--tight" aria-labelledby="rubros-titulo">
+  <div class="container">
+    <h2 id="rubros-titulo" class="rubros__title">Tejemos soluciones para negocios de todo tipo</h2>
+  </div>
+  <div class="marquee">
+    <ul class="marquee__track">
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"/><path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"/><path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"/></svg> Despensas</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg> Ferreterías</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg> Farmacias</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg> Clínicas</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> Colegios</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg> Estudios contables</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg> Distribuidoras</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg> Restaurantes</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/><path d="M5 21h14"/></svg> Agro</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Inmobiliarias</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg> Tiendas de ropa</li>
+      <li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></svg> Talleres</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"/><path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"/><path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"/></svg> Despensas</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg> Ferreterías</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg> Farmacias</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg> Clínicas</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> Colegios</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg> Estudios contables</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg> Distribuidoras</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg> Restaurantes</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/><path d="M5 21h14"/></svg> Agro</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Inmobiliarias</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg> Tiendas de ropa</li>
+      <li class="chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></svg> Talleres</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ SERVICIOS ============================ -->
+<section class="section" id="servicios" aria-labelledby="servicios-titulo">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">Servicios</p>
+      <h2 id="servicios-titulo">Todo lo digital que tu negocio necesita, en un solo equipo</h2>
+      <p>Diseñamos, programamos y te acompañamos. Vos te enfocás en tu negocio y nosotros en que la tecnología funcione.</p>
+    </div>
+    <div class="grid grid--3 grid--3-fixed">
+      <article class="card card--hover" data-reveal>
+        <span class="tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
+        <h3>Páginas web</h3>
+        <p>Sitios rápidos, lindos y fáciles de encontrar en Google. Desde una página para tu emprendimiento hasta un portal completo.</p>
+        <a class="link-arrow card__link" href="servicios.html#paginas-web">Ver más<span class="visually-hidden"> sobre páginas web</span> <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </article>
+      <article class="card card--hover" data-reveal style="--delay:.08s">
+        <span class="tile tile--red"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span>
+        <h3>Apps móviles</h3>
+        <p>Aplicaciones para Android y iPhone que tus clientes van a querer usar todos los días.</p>
+        <a class="link-arrow card__link" href="servicios.html#apps-moviles">Ver más<span class="visually-hidden"> sobre apps móviles</span> <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </article>
+      <article class="card card--hover" data-reveal style="--delay:.16s">
+        <span class="tile tile--chipa"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m2.05 2.05 1.099-.028a1 1 0 0 1 1.008.815l2.69 14.347A1 1 0 0 0 7.83 18H18"/><path d="M4.563 5h16.435a1 1 0 0 1 .981 1.204l-1.026 6.226A2 2 0 0 1 18.962 14H6.25"/><circle cx="18" cy="20" r="2"/><circle cx="8" cy="20" r="2"/></svg></span>
+        <h3>Tiendas online</h3>
+        <p>Vendé las 24 horas con catálogo, carrito y pagos con tarjeta, QR o transferencia.</p>
+        <a class="link-arrow card__link" href="servicios.html#tiendas-online">Ver más<span class="visually-hidden"> sobre tiendas online</span> <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </article>
+      <article class="card card--hover" data-reveal>
+        <span class="tile tile--green"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span>
+        <h3>Sistemas a medida</h3>
+        <p>Software de gestión hecho para tu forma de trabajar: stock, ventas, turnos, cobranzas o lo que necesites.</p>
+        <a class="link-arrow card__link" href="servicios.html#sistemas-a-medida">Ver más<span class="visually-hidden"> sobre sistemas a medida</span> <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </article>
+      <article class="card card--hover" data-reveal style="--delay:.08s">
+        <span class="tile tile--pink"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+        <h3>Plataformas SaaS</h3>
+        <p>Llevamos tu idea a la nube, con suscripciones mensuales y acceso desde cualquier lugar.</p>
+        <a class="link-arrow card__link" href="servicios.html#plataformas-saas">Ver más<span class="visually-hidden"> sobre plataformas SaaS</span> <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </article>
+      <article class="card card--hover" data-reveal style="--delay:.16s">
+        <span class="tile tile--ink"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 16H8"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg></span>
+        <h3>Facturación electrónica</h3>
+        <p>Emití comprobantes válidos ante la SIFEN con Fénix, o conectá tu sistema actual con nuestra integración.</p>
+        <a class="link-arrow card__link" href="fenix.html">Conocé Fénix <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRODUCTOS ============================ -->
+<section class="section section--white" id="productos" aria-labelledby="productos-titulo">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Nuestros productos</p>
+      <h2 id="productos-titulo">Hechos en casa, listos para usar</h2>
+      <p>Además de proyectos a medida, creamos nuestras propias soluciones para que empieces hoy mismo.</p>
+    </div>
+    <div class="products">
+      <article class="product product--fenix" data-reveal>
+        <svg class="nanduti nanduti--white nanduti--spin" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><use href="#nanduti"></use></svg>
+        <div class="product__top">
+          <img class="product__logo" src="assets/img/productos/fenix-logo-blanco.webp" alt="Fénix" width="118" height="56">
+          <span class="badge badge--light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m16 9-5.5 5.5L8 12"/></svg> Integrado con SIFEN</span>
+        </div>
+        <h3>Facturación electrónica sin dolores de cabeza</h3>
+        <p class="product__lead">Fénix (Facturación Electrónica Nacional Integrada y eXpress) emite, envía y gestiona tus comprobantes electrónicos en total cumplimiento con la SIFEN.</p>
+        <ul class="checks checks--light checks--cols">
+          <li>Comunicación directa con SIFEN</li>
+          <li>Envío y recepción de documentos</li>
+          <li>Panel en tiempo real</li>
+          <li>Multiempresa y sucursales</li>
+          <li>Respaldos automáticos</li>
+          <li>Soporte técnico 24/7</li>
+        </ul>
+        <div class="product__actions">
+          <a class="btn btn--chipa" href="fenix.html">Conocé Fénix <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="btn btn--outline-light" href="https://wa.me/595984935082?text=%C2%A1Hola%21%20Quisiera%20pedir%20una%20demo%20de%20F%C3%A9nix%2C%20el%20sistema%20de%20facturaci%C3%B3n%20electr%C3%B3nica." target="_blank" rel="noopener">Pedí una demo</a>
+        </div>
+      </article>
+      <article class="product product--tps" data-reveal style="--delay:.1s">
+        <svg class="nanduti nanduti--chipa nanduti--spin" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><use href="#nanduti"></use></svg>
+        <div class="product__top">
+          <img class="product__logo" src="assets/img/productos/tu-primer-sistema.webp" alt="Tu Primer Sistema" width="57" height="56">
+          <span class="badge badge--green"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 7v14"/><path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"/><rect x="3" y="7" width="18" height="4" rx="1"/></svg> 100% gratis</span>
+        </div>
+        <h3>Tu Primer Sistema</h3>
+        <p class="product__lead">Un punto de venta completo, gratis para siempre. Ideal para pequeños negocios que quieren dar el salto digital sin inversión inicial.</p>
+        <ul class="modules" aria-label="Módulos incluidos">
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M8 7v10"/><path d="M12 7v10"/><path d="M17 7v10"/></svg> Punto de venta</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg> Inventario</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></svg> Compras</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg> Ventas</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> Reportes</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg> Clientes</li>
+        </ul>
+        <p class="product__note"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg> ¿Tu negocio creció? Migrá a Fénix cuando lo necesites.</p>
+        <div class="product__actions">
+          <a class="btn" href="tu-primer-sistema.html">Ver y descargar gratis <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROCESO ============================ -->
+<section class="section" id="como-trabajamos" aria-labelledby="proceso-titulo">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2 id="proceso-titulo">Como el ñandutí: hilo por hilo y con vos en el centro</h2>
+      <p>Un proceso simple y transparente, para que siempre sepas en qué etapa está tu proyecto.</p>
+    </div>
+    <ol class="steps">
+      <li class="card step" data-reveal>
+        <div class="step__top"><span class="step__num">1</span><span class="tile tile--chipa"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 8 1.75 12.28a2 2 0 0 0 2 1.72h4.54a2 2 0 0 0 2-1.72L18 8"/><path d="M5 8h14"/><path d="M7 15a6.47 6.47 0 0 1 5 0 6.47 6.47 0 0 0 5 0"/><path d="m12 8 1-6h2"/></svg></span></div>
+        <h3>Charlamos</h3>
+        <p>Nos contás tu idea con un tereré de por medio. Te escuchamos y te enviamos una propuesta clara, sin letra chica.</p>
+      </li>
+      <li class="card step" data-reveal style="--delay:.08s">
+        <div class="step__top"><span class="step__num">2</span><span class="tile tile--pink"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 7 8.7 2.7a2.41 2.41 0 0 0-3.4 0L2.7 5.3a2.41 2.41 0 0 0 0 3.4L7 13"/><path d="m8 6 2-2"/><path d="m18 16 2-2"/><path d="m17 11 4.3 4.3c.94.94.94 2.46 0 3.4l-2.6 2.6c-.94.94-2.46.94-3.4 0L11 17"/><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg></span></div>
+        <h3>Diseñamos</h3>
+        <p>Armamos un prototipo que podés ver y tocar antes de escribir una sola línea de código.</p>
+      </li>
+      <li class="card step" data-reveal style="--delay:.16s">
+        <div class="step__top"><span class="step__num">3</span><span class="tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span></div>
+        <h3>Tejemos</h3>
+        <p>Programamos en etapas cortas. Cada dos semanas ves avances reales y nos das tu opinión.</p>
+      </li>
+      <li class="card step" data-reveal style="--delay:.24s">
+        <div class="step__top"><span class="step__num">4</span><span class="tile tile--green"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"/></svg></span></div>
+        <h3>Te acompañamos</h3>
+        <p>Capacitamos a tu equipo, publicamos y seguimos a tu lado con soporte y mejoras.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ POR QUÉ + NÚMEROS ============================ -->
+<!-- [EJEMPLO] Los números vienen del sitio anterior: confirmalos antes de publicar. -->
+<section class="section section--ink" aria-labelledby="porque-titulo">
+  <svg class="nanduti nanduti--white nanduti--spin why__deco" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><use href="#nanduti"></use></svg>
+  <div class="container">
+    <div class="split">
+      <div data-reveal>
+        <p class="eyebrow eyebrow--light">¿Por qué Sistemas Paraguay?</p>
+        <h2 id="porque-titulo" class="why__title">Tecnología que se entiende, con gente que te entiende</h2>
+        <p class="lead why__lead">Somos paraguayos, conocemos cómo se trabaja acá y nos encanta explicar las cosas fácil. Por eso cientos de negocios ya confían en nosotros.</p>
+        <div class="cluster mt-32">
+          <a class="btn btn--light" href="nosotros.html">Conocé al equipo <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="grid grid--4">
+        <div class="card card--glass" data-reveal>
+          <span class="tile tile--glass"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"/></svg></span>
+          <h3>Hablamos claro</h3>
+          <p>Sin tecnicismos ni vueltas. Si algo no se entiende, la culpa es nuestra.</p>
+        </div>
+        <div class="card card--glass" data-reveal style="--delay:.08s">
+          <span class="tile tile--glass"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m16 9-5.5 5.5L8 12"/></svg></span>
+          <h3>Precios transparentes</h3>
+          <p>Presupuestos por etapas, sin costos ocultos ni sorpresas a fin de mes.</p>
+        </div>
+        <div class="card card--glass" data-reveal style="--delay:.16s">
+          <span class="tile tile--glass"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"/></svg></span>
+          <h3>Personas reales</h3>
+          <p>Te atiende gente que conoce tu sistema y tu negocio, no un robot.</p>
+        </div>
+        <div class="card card--glass" data-reveal style="--delay:.24s">
+          <span class="tile tile--glass"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3>Seguro y actual</h3>
+          <p>Herramientas modernas, respaldos diarios y buenas prácticas de seguridad.</p>
+        </div>
+      </div>
+    </div>
+    <ul class="stats mt-48" aria-label="Sistemas Paraguay en números">
+      <li class="stat" data-reveal><span class="stat__num">+<span data-count="500">500</span></span><span class="stat__label">clientes activos</span></li>
+      <li class="stat" data-reveal style="--delay:.08s"><span class="stat__num"><span data-count="98">98</span>%</span><span class="stat__label">de clientes satisfechos</span></li>
+      <li class="stat" data-reveal style="--delay:.16s"><span class="stat__num">+<span data-count="5">5</span></span><span class="stat__label">años tejiendo software</span></li>
+      <li class="stat" data-reveal style="--delay:.24s"><span class="stat__num">24/7</span><span class="stat__label">soporte para Fénix</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ TESTIMONIOS ============================ -->
+<!-- [EJEMPLO] Testimonios ficticios. Reemplazalos por testimonios reales, con permiso de cada cliente, antes de publicar. -->
+<section class="section" id="testimonios" aria-labelledby="testimonios-titulo">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">Lo que dicen nuestros clientes</p>
+      <h2 id="testimonios-titulo">Clientes que se volvieron amigos</h2>
+    </div>
+    <div class="grid grid--3 grid--3-fixed">
+      <figure class="card quote" data-reveal>
+        <div class="quote__stars" role="img" aria-label="5 de 5 estrellas"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg></div>
+        <blockquote><p>“Antes facturábamos a mano y perdíamos horas. Con Fénix emitimos facturas electrónicas en segundos, y el equipo nos acompañó en todo el proceso con la DNIT.”</p></blockquote>
+        <figcaption><span class="avatar" aria-hidden="true">LB</span><span class="quote__who"><b>Laura Benítez</b><span>Administradora · Distribuidora en Luque</span></span></figcaption>
+      </figure>
+      <figure class="card quote" data-reveal style="--delay:.08s">
+        <div class="quote__stars" role="img" aria-label="5 de 5 estrellas"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg></div>
+        <blockquote><p>“Nos hicieron la tienda online en tres semanas. Lo mejor es que te explican todo sin tecnicismos y te contestan rapidito por WhatsApp.”</p></blockquote>
+        <figcaption><span class="avatar avatar--red" aria-hidden="true">DF</span><span class="quote__who"><b>Diego Fernández</b><span>Dueño · Tienda deportiva en Encarnación</span></span></figcaption>
+      </figure>
+      <figure class="card quote" data-reveal style="--delay:.16s">
+        <div class="quote__stars" role="img" aria-label="5 de 5 estrellas"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg></div>
+        <blockquote><p>“Empezamos con Tu Primer Sistema en la despensa y, cuando crecimos, nos pasamos a Fénix sin perder ningún dato. ¡Recomendadísimos!”</p></blockquote>
+        <figcaption><span class="avatar avatar--green" aria-hidden="true">RG</span><span class="quote__who"><b>Rosa Giménez</b><span>Despensa en San Lorenzo</span></span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PREGUNTAS ============================ -->
+<section class="section section--white" id="preguntas" aria-labelledby="faq-titulo">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2 id="faq-titulo">¿Tenés dudas? Te las respondemos</h2>
+    </div>
+    <div class="faq" data-reveal>
+      <details>
+        <summary>¿Cuánto cuesta desarrollar mi proyecto? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="faq__answer"><p>Depende de lo que necesites. Charlamos sobre tu idea y en 48 horas hábiles te enviamos un presupuesto claro, dividido por etapas y sin compromiso.</p></div>
+      </details>
+      <details>
+        <summary>¿Cuánto tiempo lleva? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="faq__answer"><p>Una página web suele estar lista en 2 a 4 semanas. Una app o un sistema a medida lleva entre 2 y 6 meses, según su tamaño. En la propuesta te damos fechas concretas para cada etapa.</p></div>
+      </details>
+      <details>
+        <summary>¿Trabajan con negocios del interior? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="faq__answer"><p>¡Claro! Atendemos a todo Paraguay. Nos reunimos por videollamada o WhatsApp y, si hace falta, vamos a visitarte.</p></div>
+      </details>
+      <details>
+        <summary>¿Necesito saber de tecnología? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="faq__answer"><p>Para nada, ese es nuestro trabajo. Te explicamos cada paso con palabras simples y capacitamos a tu equipo para que use el sistema con confianza.</p></div>
+      </details>
+      <details>
+        <summary>¿Qué pasa después de la entrega? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="faq__answer"><p>Seguimos con vos. Incluimos un período de garantía y ofrecemos planes de soporte y mantenimiento mensuales para que tu sistema esté siempre al día.</p></div>
+      </details>
+      <details>
+        <summary>¿El código y los datos son míos? <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="faq__answer"><p>Sí. En los desarrollos a medida, el código fuente y la información de tu negocio te pertenecen. Lo dejamos por escrito en el contrato.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LLAMADO A LA ACCIÓN ============================ -->
+<section class="section" aria-labelledby="cta-titulo">
+  <div class="container">
+    <div class="cta" data-reveal>
+      <svg class="nanduti nanduti--white nanduti--spin" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><use href="#nanduti"></use></svg>
+      <svg class="nanduti nanduti--white" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><use href="#nanduti"></use></svg>
+      <p class="eyebrow eyebrow--light">¿Jaha? ¡Vamos!</p>
+      <h2 id="cta-titulo">Contanos tu idea y la tejemos juntos</h2>
+      <p>La primera charla es gratis y sin compromiso. Escribinos por WhatsApp o completá el formulario, y te respondemos el mismo día hábil.</p>
+      <div class="cta__actions">
+        <a class="btn btn--light btn--lg" href="https://wa.me/595984935082?text=%C2%A1Hola%2C%20Sistemas%20Paraguay%21%20Quisiera%20hacerles%20una%20consulta." target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Escribinos por WhatsApp</a>
+        <a class="btn btn--outline-light btn--lg" href="contacto.html">Ir al formulario</a>
+      </div>
+      <p class="cta__note">Atendemos de lunes a viernes, de 8:00 a 18:00 · +595 984 935 082</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <svg class="nanduti" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><use href="#nanduti"></use></svg>
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <a class="brand brand--light" href="index.html">
+          <svg class="brand__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><rect width="100" height="100" rx="27" fill="#2453D6"/><g stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M50 37.5L50 17M56.25 39.17L66.5 21.42M60.83 43.75L78.58 33.5M62.5 50L83 50M60.83 56.25L78.58 66.5M56.25 60.83L66.5 78.58M50 62.5L50 83M43.75 60.83L33.5 78.58M39.17 56.25L21.42 66.5M37.5 50L17 50M39.17 43.75L21.42 33.5M43.75 39.17L33.5 21.42"/><path d="M50 26.5Q55.11 30.93 61.75 29.65Q63.96 36.04 70.35 38.25Q69.07 44.89 73.5 50Q69.07 55.11 70.35 61.75Q63.96 63.96 61.75 70.35Q55.11 69.07 50 73.5Q44.89 69.07 38.25 70.35Q36.04 63.96 29.65 61.75Q30.93 55.11 26.5 50Q30.93 44.89 29.65 38.25Q36.04 36.04 38.25 29.65Q44.89 30.93 50 26.5Z"/></g><g fill="#fff"><circle cx="50" cy="13.2" r="3.8"/><circle cx="68.4" cy="18.13" r="3.8"/><circle cx="81.87" cy="31.6" r="3.8"/><circle cx="86.8" cy="50" r="3.8"/><circle cx="81.87" cy="68.4" r="3.8"/><circle cx="68.4" cy="81.87" r="3.8"/><circle cx="50" cy="86.8" r="3.8"/><circle cx="31.6" cy="81.87" r="3.8"/><circle cx="18.13" cy="68.4" r="3.8"/><circle cx="13.2" cy="50" r="3.8"/><circle cx="18.13" cy="31.6" r="3.8"/><circle cx="31.6" cy="18.13" r="3.8"/></g><circle cx="50" cy="50" r="9.6" fill="#E5432E" stroke="#fff" stroke-width="3.2"/></svg>
+          <span class="brand__name"><b>Sistemas</b><span>Paraguay</span></span>
+        </a>
+        <p>Software tejido a tu medida. Somos un equipo paraguayo que crea tecnología clara, útil y cercana para negocios de todo el país.</p>
+        <a class="btn btn--whatsapp btn--sm" href="https://wa.me/595984935082?text=%C2%A1Hola%2C%20Sistemas%20Paraguay%21%20Quisiera%20hacerles%20una%20consulta." target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Escribinos</a>
+        <!-- Redes sociales: descomentá y completá cuando estén confirmadas.
+        <ul class="cluster mt-24 list-reset">
+          <li><a class="chip chip--dark" href="https://www.instagram.com/TU_USUARIO">Instagram</a></li>
+          <li><a class="chip chip--dark" href="https://www.facebook.com/TU_PAGINA">Facebook</a></li>
+          <li><a class="chip chip--dark" href="https://www.linkedin.com/company/TU_EMPRESA">LinkedIn</a></li>
+        </ul>
+        -->
+      </div>
+      <div>
+        <h2 class="footer__title">Servicios</h2>
+        <ul class="footer__links">
+          <li><a href="servicios.html#paginas-web">Páginas web</a></li>
+          <li><a href="servicios.html#apps-moviles">Apps móviles</a></li>
+          <li><a href="servicios.html#tiendas-online">Tiendas online</a></li>
+          <li><a href="servicios.html#sistemas-a-medida">Sistemas a medida</a></li>
+          <li><a href="servicios.html#plataformas-saas">Plataformas SaaS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__title">Productos</h2>
+        <ul class="footer__links">
+          <li><a href="fenix.html">Fénix · Facturación electrónica</a></li>
+          <li><a href="tu-primer-sistema.html">Tu Primer Sistema · POS gratis</a></li>
+          <li><a href="fenix.html#integracion">Integración con SIFEN</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__title">Empresa</h2>
+        <ul class="footer__links">
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="index.html#preguntas">Preguntas frecuentes</a></li>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__title">Contacto</h2>
+        <ul class="footer__links">
+          <li><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><a href="https://wa.me/595984935082?text=%C2%A1Hola%2C%20Sistemas%20Paraguay%21%20Quisiera%20hacerles%20una%20consulta." target="_blank" rel="noopener">+595 984 935 082</a></li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg><a href="mailto:hola@sistemasparaguay.com.py">hola@sistemasparaguay.com.py</a></li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>Asunción, Paraguay</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Lunes a viernes, de 8:00 a 18:00</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span data-year>2026</span> Sistemas Paraguay. Todos los derechos reservados.</p>
+      <p>Tejido con <span class="footer__heart" role="img" aria-label="amor">♥</span> en Asunción, Paraguay</p>
+    </div>
   </div>
 </footer>
 
-
-<!-- ═══════════════════════════════════════════════════════════
-     WHATSAPP FLOAT BUTTON
-     ═══════════════════════════════════════════════════════════ -->
-<a href="https://wa.me/595984935082?text=Hola%20Sistemas%20Paraguay,%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
-   target="_blank" rel="noopener noreferrer"
-   class="fixed bottom-7 right-7 z-[999] w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center
-          shadow-[0_8px_28px_rgba(37,211,102,.5)] animate-pulse-wsp hover:scale-110 hover:[animation:none]
-          transition-transform"
-   aria-label="Chatear por WhatsApp">
-  <svg class="w-[30px] h-[30px] fill-white" viewBox="0 0 24 24">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-<!-- Tooltip -->
-<div class="fixed bottom-[34px] right-[74px] z-[999] bg-white text-[#1a1a1a] text-[13px] font-bold
-            px-3 py-1.5 rounded-full shadow-lg pointer-events-none opacity-0 hover:opacity-0
-            whitespace-nowrap transition-opacity" id="wsp-tip">
-  ¡Chateá con nosotros!
-</div>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     JAVASCRIPT
-     ═══════════════════════════════════════════════════════════ -->
-<script>
-(function(){
-  /* --- Nav scroll --- */
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 40){
-      nav.style.background = 'rgba(255,255,255,.97)';
-      nav.style.boxShadow  = '0 1px 0 rgba(0,0,0,.08)';
-    } else {
-      nav.style.background = 'rgba(255,255,255,.88)';
-      nav.style.boxShadow  = 'none';
-    }
-  }, { passive: true });
-
-  /* --- Mobile nav toggle --- */
-  const toggle = document.getElementById('nav-toggle');
-  const menu   = document.getElementById('mobile-menu');
-  const b1     = document.getElementById('bar1');
-  const b2     = document.getElementById('bar2');
-  const b3     = document.getElementById('bar3');
-  let open = false;
-  toggle.addEventListener('click', () => {
-    open = !open;
-    menu.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-    if(open){
-      b1.style.transform = 'rotate(45deg) translate(5px,6px)';
-      b2.style.opacity   = '0';
-      b3.style.transform = 'rotate(-45deg) translate(5px,-6px)';
-    } else {
-      b1.style.transform = b3.style.transform = '';
-      b2.style.opacity   = '1';
-    }
-  });
-  menu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      open = false;
-      menu.classList.remove('open');
-      document.body.style.overflow = '';
-      b1.style.transform = b3.style.transform = '';
-      b2.style.opacity = '1';
-    });
-  });
-
-  /* --- Smooth scroll --- */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if(!t) return;
-      e.preventDefault();
-      const offset = nav.offsetHeight + 10;
-      window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
-    });
-  });
-
-  /* --- Scroll reveal --- */
-  const revealEls = document.querySelectorAll('.reveal, .reveal-scale');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(el => io.observe(el));
-
-  /* --- Count-up --- */
-  function countUp(el){
-    const target = parseFloat(el.dataset.countup);
-    const dur = 1600;
-    const start = performance.now();
-    const isFloat = String(target).includes('.');
-    (function step(now){
-      const p = Math.min((now-start)/dur, 1);
-      const eased = 1 - Math.pow(1-p, 3);
-      el.textContent = isFloat ? (eased*target).toFixed(1) : Math.floor(eased*target).toLocaleString();
-      if(p < 1) requestAnimationFrame(step);
-    })(performance.now());
-  }
-  const cio = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){ countUp(e.target); cio.unobserve(e.target); } });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-countup]').forEach(el => cio.observe(el));
-
-  /* --- WSP tooltip hover --- */
-  const wspBtn = document.querySelector('.wsp-float, a[aria-label="Chatear por WhatsApp"]');
-  const wspTip = document.getElementById('wsp-tip');
-  if(wspBtn && wspTip){
-    wspBtn.addEventListener('mouseenter', () => wspTip.style.opacity = '1');
-    wspBtn.addEventListener('mouseleave', () => wspTip.style.opacity = '0');
-  }
-})();
-</script>
-
+<a class="wa-fab" href="https://wa.me/595984935082?text=%C2%A1Hola%2C%20Sistemas%20Paraguay%21%20Quisiera%20hacerles%20una%20consulta." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span class="wa-fab__tip" aria-hidden="true">¿Charlamos?</span></a>
 </body>
 </html>
