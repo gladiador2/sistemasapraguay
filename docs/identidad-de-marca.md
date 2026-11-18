@@ -59,6 +59,7 @@ Somos **ese amigo que sabe de computadoras y siempre te da una mano**: explica s
   - ¡Jaha! (¡Vamos!)
   - Aguyje (Gracias)
   - Ndaipóri (No hay)
+  - ¡Ejopy pépe! (¡Apretá ahí!). Es nuestra invitación en jopará para que nos escriban: “¡Ejopy pépe! Apretá ahí nomás y charlamos, o te pasamos tu presupuesto sin compromiso.”
 - **Sabor local en los ejemplos:** chipá, tereré, yerba, guaraníes (₲), ciudades del país.
 
 ### Decimos y evitamos
@@ -89,8 +90,9 @@ Somos **ese amigo que sabe de computadoras y siempre te da una mano**: explica s
 
 | Correcto | Incorrecto |
 |---|---|
-| Fénix | Fenix, FENIX |
-| Tu Primer Sistema | tu primer sistema, TPS (en textos públicos) |
+| Factura Pya'e | Factura Pyae, Pya'e Factura |
+| Ñañemu POS | Nanemu POS, Ñemu POS |
+| Karu Restaurante | Karu Restaurant, Karú Restaurante |
 | SIFEN, DNIT, KuDE | Sifen, dnit, Kude |
 | WhatsApp | Whatsapp, wsp |
 | ₲ 85.000 | Gs 85000, 85.000 gs |
@@ -102,10 +104,15 @@ Somos **ese amigo que sabe de computadoras y siempre te da una mano**: explica s
 
 ### Isotipo: el ñandutí digital
 
-- **12 hilos** que salen del centro y terminan en **nodos**: cada nodo es una conexión, una persona.
-- Un **anillo tejido** que une los hilos: la trama del ñandutí.
+Es un ñandutí con estructura clara, que se lee de adentro hacia afuera, igual que se teje:
+
 - Un **centro rojo Pitanga**: el cliente, “vos en el centro”.
+- Una **flor de seis pétalos** dentro de un anillo: el corazón del encaje.
+- Una **telaraña de 12 hilos** con su trama curva: las conexiones entre personas y sistemas.
+- Un **borde de 12 festones** con **piquitos**: la terminación típica del ñandutí de Itauguá.
 - Un **mosaico azul con esquinas redondeadas**: amigable y reconocible como ícono de app.
+
+En tamaños chicos se usa una versión simplificada con 8 hilos, anillo, festones y centro rojo.
 
 ### Logotipo
 
@@ -125,6 +132,7 @@ Todos los archivos están en `assets/img/marca/`.
 | `isotipo.svg` e `isotipo-512.png` | Avatar de redes, íconos y espacios cuadrados. |
 | `isotipo-linea.svg` | Isotipo sin mosaico, para fondos claros y decoración. |
 | `isotipo-blanco.svg` | Isotipo sin mosaico, para fondos oscuros. |
+| `nanduti-encaje.svg` y `nanduti-encaje-blanco.svg` | Encaje de ñandutí para fondos, portadas y piezas impresas. No reemplaza al logo. |
 | `/favicon.svg` y `/favicon.ico` | Versión simplificada de 8 hilos para tamaños chicos. |
 
 Los SVG tienen el texto convertido a curvas: se ven igual en cualquier computadora o imprenta, sin instalar la tipografía.
@@ -194,7 +202,10 @@ Todos los colores están definidos como variables al principio de `assets/css/st
 
 ## 7. Elementos gráficos
 
-- **Rosetón de ñandutí.** Textura de fondo entre 6 % y 16 % de opacidad. Puede girar muy despacio en pantallas.
+- **Encaje de ñandutí.** Es el elemento gráfico más reconocible de la marca. Tiene 12 abanicos tipo concha con borde de piquitos, una flor central de 8 pétalos tejidos, una corona de hojas, margaritas y estrellas, y una telaraña de 24 rayos.
+  - Como textura de fondo, va entre 6 % y 20 % de opacidad, sobre todo en las esquinas de tarjetas y secciones. Puede girar muy despacio en pantallas.
+  - Como pieza protagonista, va en blanco sobre azul marino a opacidad completa, como en la sección “¿Por qué el ñandutí?”.
+  - Archivos: `assets/img/marca/nanduti-encaje.svg` en azul y `nanduti-encaje-blanco.svg` en blanco.
 - **Hilo dibujado a mano.** Subrayado rojo para resaltar de 2 a 4 palabras clave de un titular. Uno por pantalla, como máximo.
 - **Hilo tricolor.** Rojo, blanco y azul, solo como una línea fina, por ejemplo en el pie de página o la imagen para redes. No usamos la bandera ni el escudo completos.
 - **Íconos.** Librería Lucide (licencia ISC): trazo de 2 px y puntas redondeadas, dentro de mosaicos de color de 56 px con esquinas de 18 px.
@@ -206,17 +217,32 @@ Todos los colores están definidos como variables al principio de `assets/css/st
 
 ## 8. Arquitectura de marca
 
-| Marca | Rol | Cómo se presenta |
-|---|---|---|
-| **Sistemas Paraguay** | Marca madre | Logo propio y colores completos. |
-| **Fénix** | Producto de facturación electrónica | Conserva su logo del fénix. En el sitio usa paneles Tinta con botones Chipá. Se presenta como “Fénix, de Sistemas Paraguay”. |
-| **Tu Primer Sistema** | Punto de venta gratuito | Conserva su logo actual. En el sitio usa paneles cálidos color Chipá. |
+**Sistemas Paraguay** es la marca madre. Sus sistemas propios forman una familia con una regla de nombre simple: **cada nombre combina una palabra en guaraní con el tipo de producto en castellano.**
 
-Recomendación para una próxima etapa: redibujar los logos de Fénix y de Tu Primer Sistema con el mismo estilo plano y redondeado del nuevo isotipo, para que toda la familia se vea coherente.
+| Sistema | Qué es | Significado | Color | Ícono | Lema |
+|---|---|---|---|---|---|
+| **Factura Pya'e** | Facturación electrónica con SIFEN | *Pya'e* = rápido | Azul Ypacaraí | Documento con tilde | Rápido. Seguro. Paraguayo. |
+| **Ñañemu POS** | Punto de venta para comercios | *Ñañemu* = vendemos | Rojo Pitanga | Local comercial | Simple. Eficiente. Paraguayo. |
+| **Karu Restaurante** | Gestión gastronómica | *Karu* = comer | Amarillo Chipá sobre Tinta | Campana de servicio | Tu restaurante, en buenas manos. |
+
+- **Íconos:** mosaico redondeado con el color del sistema y un ícono de línea. Archivos en `assets/img/productos/`.
+- **En el sitio:** cada sistema tiene una tarjeta y un encabezado de página con su color de fondo, el encaje en una esquina y el lema con el hilo tricolor debajo.
+- **Nombres anteriores:** Factura Pya'e reemplaza a Fénix y Ñañemu POS reemplaza a Tu Primer Sistema. Las direcciones viejas `fenix.html` y `tu-primer-sistema.html` redirigen a las nuevas.
 
 ---
 
 ## 9. Aplicaciones listas para usar
+
+### Globito “¡Ejopy pépe!” del sitio
+
+Junto al botón flotante de WhatsApp aparece un globito con el texto “¡Ejopy pépe! Apretá ahí nomás y charlamos, o te pasamos tu presupuesto sin compromiso.”
+
+- Aparece a los pocos segundos, una sola vez por visita, y se oculta solo.
+- Se puede cerrar con la cruz, y también se muestra al pasar el mouse por el botón.
+- En el llamado final del inicio, la misma frase aparece como una nota dibujada a mano, con una flecha que señala el botón de WhatsApp.
+- El mensaje que se abre en WhatsApp sigue el chiste: “¡Mba'éichapa! Ejopy pépe nomás 😄 Quisiera charlar sobre un proyecto o pedir un presupuesto.”
+
+Usala con moderación: su gracia está en que sorprende, no en que se repite.
 
 ### Mensaje de bienvenida de WhatsApp Business
 
@@ -224,7 +250,7 @@ Recomendación para una próxima etapa: redibujar los logos de Fénix y de Tu Pr
 
 ### Respuesta fuera de horario
 
-> ¡Hola! Ahora estamos fuera de horario, pero tu mensaje ya nos llegó. Mañana a primera hora te respondemos. Si sos cliente de Fénix y es urgente, escribí “URGENTE” y te atendemos enseguida.
+> ¡Hola! Ahora estamos fuera de horario, pero tu mensaje ya nos llegó. Mañana a primera hora te respondemos. Si sos cliente de Factura Pya'e y es urgente, escribí “URGENTE” y te atendemos enseguida.
 
 ### Firma de correo
 

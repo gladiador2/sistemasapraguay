@@ -91,6 +91,70 @@
     counters.forEach(function (counter) { counterObserver.observe(counter); });
   }
 
+  /* Desplegable "Sistemas" del menú principal ------------------------------ */
+  var menuTriggers = document.querySelectorAll('.nav__trigger');
+  function closeMenus(except) {
+    menuTriggers.forEach(function (trigger) {
+      if (trigger !== except) trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+  menuTriggers.forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var open = trigger.getAttribute('aria-expanded') === 'true';
+      closeMenus(trigger);
+      trigger.setAttribute('aria-expanded', String(!open));
+    });
+    var item = trigger.parentElement;
+    item.addEventListener('focusout', function (event) {
+      if (!item.contains(event.relatedTarget)) trigger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function (event) {
+    menuTriggers.forEach(function (trigger) {
+      if (!trigger.parentElement.contains(event.target)) trigger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'Escape') return;
+    menuTriggers.forEach(function (trigger) {
+      if (trigger.getAttribute('aria-expanded') === 'true') {
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
+      }
+    });
+  });
+
+  /* Globito "Ejopy pepe" (apreta ahi) junto al boton de WhatsApp --------- */
+  /* Aparece una sola vez por visita, se oculta solo y se puede cerrar.     */
+  var bubble = document.querySelector('.wa-bubble');
+  if (bubble) {
+    var fab = document.querySelector('.wa-fab');
+    var seenKey = 'sp-ejopy-visto';
+    var alreadySeen = false;
+    try { alreadySeen = window.sessionStorage.getItem(seenKey) === '1'; } catch (e) { /* sin almacenamiento */ }
+    var hideTimer = null;
+    var hideBubble = function () {
+      window.clearTimeout(hideTimer);
+      bubble.classList.remove('is-visible');
+    };
+    if (!alreadySeen) {
+      window.setTimeout(function () {
+        if (document.body.classList.contains('menu-open')) return;
+        bubble.classList.add('is-visible');
+        try { window.sessionStorage.setItem(seenKey, '1'); } catch (e) { /* sin almacenamiento */ }
+        hideTimer = window.setTimeout(hideBubble, 14000);
+      }, 3500);
+    }
+    bubble.addEventListener('click', function (event) {
+      if (event.target.closest('[data-wa-close]')) {
+        hideBubble();
+        bubble.classList.add('is-closed');
+        return;
+      }
+      if (fab) fab.click();
+    });
+  }
+
   /* Año actual en el pie de página ------------------------------------------- */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = String(new Date().getFullYear());

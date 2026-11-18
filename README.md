@@ -14,8 +14,11 @@ Es HTML, CSS y JavaScript puros: sin frameworks, sin paso de compilación y sin 
 ```
 ├── index.html                 Inicio
 ├── servicios.html             Servicios en detalle
-├── fenix.html                 Producto Fénix (facturación electrónica)
-├── tu-primer-sistema.html     Producto Tu Primer Sistema (POS gratis)
+├── factura-pyae.html          Sistema Factura Pya'e (facturación electrónica)
+├── nanemu-pos.html            Sistema Ñañemu POS (punto de venta)
+├── karu-restaurante.html      Sistema Karu Restaurante (gastronomía)
+├── fenix.html                 Redirige a factura-pyae.html (nombre anterior)
+├── tu-primer-sistema.html     Redirige a nanemu-pos.html (nombre anterior)
 ├── nosotros.html              Historia, valores y equipo
 ├── contacto.html              Canales y formulario
 ├── privacidad.html            Política de privacidad
@@ -24,8 +27,8 @@ Es HTML, CSS y JavaScript puros: sin frameworks, sin paso de compilación y sin 
 │   ├── css/styles.css         Todos los estilos; los colores y tamaños están al principio
 │   ├── js/main.js             Menú móvil, animaciones, contadores y formulario
 │   └── img/
-│       ├── marca/             Logos e isotipos (SVG y PNG)
-│       ├── productos/         Logos de Fénix y Tu Primer Sistema
+│       ├── marca/             Logos, isotipos y encaje de ñandutí (SVG y PNG)
+│       ├── productos/         Íconos de Factura Pya'e, Ñañemu POS y Karu Restaurante
 │       ├── og-image.png       Imagen al compartir en redes y WhatsApp
 │       └── icon-*.png         Íconos de la app
 ├── favicon.svg · favicon.ico · apple-touch-icon.png · site.webmanifest
@@ -56,10 +59,10 @@ Después abrí http://localhost:8000 en el navegador.
 ## Editar
 
 - **Textos:** editá directamente el `.html` de cada página.
-- **Encabezado y pie:** están repetidos en las 8 páginas. Si cambiás un enlace del menú o del pie, cambialo en todas, con buscar y reemplazar.
+- **Encabezado y pie:** están repetidos en las 9 páginas con diseño. Si cambiás un enlace del menú, del desplegable "Sistemas" o del pie, cambialo en todas, con buscar y reemplazar. Las dos páginas de redirección no los llevan.
 - **Colores, tipografías y tamaños:** son variables al principio de `assets/css/styles.css`. Por ejemplo, `--ypacarai` es el azul principal.
 - **Íconos:** son SVG de [Lucide](https://lucide.dev) pegados en el HTML. Para agregar uno, copiá el SVG desde lucide.dev y ponele `class="icon"`.
-- **Rosetón de ñandutí decorativo:** se dibuja con `<svg class="nanduti"><use href="#nanduti"></use></svg>` y se define una vez al principio de cada página.
+- **Encaje de ñandutí decorativo:** se dibuja con `<svg class="nanduti"><use href="#nanduti"></use></svg>` y se define una vez al principio de cada página. Su color sale de la clase: `nanduti--white`, `nanduti--chipa-light` o el azul por defecto.
 - **Animaciones al hacer scroll:** cualquier bloque con el atributo `data-reveal` aparece suavemente.
 - **Formulario de contacto:** no usa servidor. Arma el mensaje y abre WhatsApp o el correo. El número y el correo están en los atributos `data-whatsapp` y `data-email` del formulario.
 - **Página nueva:** copiá una página parecida, cambiá título, descripción, URL canónica y contenido, y agregala al menú de todas las páginas y a `sitemap.xml`.
@@ -69,4 +72,4 @@ Después abrí http://localhost:8000 en el navegador.
 - Íconos: [Lucide](https://lucide.dev), licencia ISC.
 - Ícono de WhatsApp: [Simple Icons](https://simpleicons.org), licencia CC0. WhatsApp es una marca registrada de Meta.
 - Tipografías: [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque) y [Figtree](https://fonts.google.com/specimen/Figtree), licencia SIL Open Font License.
-- Logos de Fénix y Tu Primer Sistema: propiedad de Sistemas Paraguay.
+- Logo, encaje de ñandutí e íconos de los sistemas: propiedad de Sistemas Paraguay.

@@ -12,7 +12,8 @@ Antes de editar, leé:
 - HTML, CSS y JavaScript puros. Sin frameworks, sin paso de compilación y sin CDN, salvo Google Fonts.
 - Textos en español de Paraguay con voseo (“contanos”, “tenés”), frases cortas y sin tecnicismos.
 - Colores, tipografías y espaciados: usá solo las variables de `:root` en `assets/css/styles.css`. No agregues colores sueltos.
-- El encabezado y el pie se repiten en las 8 páginas. Si cambiás uno, cambialo en todas.
+- El encabezado, con el desplegable "Sistemas", y el pie se repiten en las 9 páginas con diseño. Si cambiás uno, cambialo en todas.
+- Sistemas propios: Factura Pya'e, Ñañemu POS y Karu Restaurante, cada uno con su color. `fenix.html` y `tu-primer-sistema.html` son solo redirecciones a los nombres nuevos: no les agregues contenido.
 - `404.html` usa rutas absolutas que empiezan con `/`, porque GitHub Pages la sirve desde cualquier dirección. El resto usa rutas relativas.
 - Íconos: SVG de Lucide pegados en el HTML con `class="icon"` y `aria-hidden="true"`.
 - El contenido inventado está marcado con comentarios `[EJEMPLO]` o `[PENDIENTE]`. Cuando lo reemplaces por datos reales, borrá el comentario y actualizá `docs/contenido-pendiente.md`.

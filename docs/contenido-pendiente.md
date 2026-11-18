@@ -15,8 +15,8 @@ Esta lista dice qué es inventado y dónde está.
 - Nombre de la empresa, dominio `sistemasparaguay.com.py` y ubicación en Asunción.
 - WhatsApp **+595 984 935 082**.
 - Servicios: apps móviles, páginas web, ecommerce y SaaS.
-- **Fénix:** nombre completo, integración con SIFEN y sus seis funciones (comunicación con SIFEN, envío y recepción de documentos, panel en tiempo real, respaldos automáticos, multiempresa y sucursales, soporte 24/7).
-- **Tu Primer Sistema:** gratis, punto de venta, inventario, compras, ventas, reportes, clientes y la posibilidad de migrar a Fénix.
+- **Facturación electrónica, hoy Factura Pya'e:** integración con SIFEN y sus seis funciones. Son comunicación con SIFEN, envío y recepción de documentos, panel en tiempo real, respaldos automáticos, multiempresa y sucursales, y soporte 24/7. En el sitio anterior se llamaba Fénix.
+- **Punto de venta, hoy Ñañemu POS:** gratis, con punto de venta, inventario, compras, ventas, reportes, clientes y la posibilidad de pasar a facturación electrónica. En el sitio anterior se llamaba Tu Primer Sistema.
 - Números: +500 clientes activos, 98 % de satisfacción, +5 años de experiencia y soporte 24/7. Conviene confirmarlos igual.
 - Horario de lunes a viernes, de 8:00 a 18:00.
 
@@ -31,7 +31,8 @@ Esta lista dice qué es inventado y dónde está.
 | Equipo | `nosotros.html` | Las seis personas son inventadas. Reemplazá nombres, cargos y descripciones, y si querés, poné fotos en lugar de las iniciales. |
 | Historia y línea de tiempo | `nosotros.html` | Los años 2019, 2020, 2022, 2024 y 2026, y el relato de cómo nació la empresa. |
 | Correo `hola@sistemasparaguay.com.py` | Todas las páginas | Es inventado. El sitio anterior usaba `info@sistemasparaguay.com`. Creá la casilla o reemplazala por la real en todas las páginas. |
-| Instalador de Tu Primer Sistema | `tu-primer-sistema.html` | El botón apunta a `descargas/tu-primer-sistema-setup.exe`, que no existe. Ya daba error en el sitio anterior. GitHub no acepta archivos de más de 100 MB en el repositorio, así que conviene subirlo a **GitHub Releases** y cambiar el enlace. |
+| Instalador de Ñañemu POS | `nanemu-pos.html` | El botón apunta a `descargas/nanemu-pos-setup.exe`, que no existe. El instalador anterior tampoco estaba en el repositorio. GitHub no acepta archivos de más de 100 MB en el repositorio, así que conviene subirlo a **GitHub Releases** y cambiar el enlace. |
+| Karu Restaurante | `karu-restaurante.html` | Es un sistema nuevo y toda su página es de ejemplo: funciones, pasos, preguntas frecuentes y maqueta. Si todavía no existe, quitalo del menú, del pie y del inicio, o presentalo como “próximamente”. |
 | Política de privacidad | `privacidad.html` | Es un texto modelo. Pedí que la revise un profesional. |
 
 ---
@@ -48,7 +49,13 @@ Esta lista dice qué es inventado y dónde está.
 - [ ] Lista de tecnologías que usa el equipo (`servicios.html`).
 - [ ] Preguntas frecuentes del inicio: período de garantía, propiedad del código y presupuesto por etapas.
 
-**Fénix** (`fenix.html`)
+**Nombres de los sistemas**
+
+- [ ] Traducciones del guaraní que muestra el sitio: *pya'e* es “rápido”, *ñañemu* es “vendemos” y *karu* es “comer”. La de *ñañemu* conviene confirmarla con alguien que hable guaraní.
+- [ ] Ñañemu POS hereda los datos de Tu Primer Sistema: gratis y para Windows. Si el nuevo punto de venta no es gratis, cambiá la etiqueta “Gratis” del inicio y el texto de su página.
+- [ ] Las páginas viejas `fenix.html` y `tu-primer-sistema.html` ahora redirigen a las nuevas. Si se confirma que los nombres viejos no vuelven, pueden quedar así para siempre.
+
+**Factura Pya'e** (`factura-pyae.html`)
 
 - [ ] Envío del KuDE por WhatsApp y correo.
 - [ ] Integración por API. Si no existe, quitá la sección “Para desarrolladores”.
@@ -56,12 +63,19 @@ Esta lista dice qué es inventado y dónde está.
 - [ ] Los cuatro pasos para habilitarse ante la DNIT.
 - [ ] Documentos que emite: factura, nota de crédito, nota de débito, nota de remisión y autofactura.
 
-**Tu Primer Sistema** (`tu-primer-sistema.html`)
+**Ñañemu POS** (`nanemu-pos.html`)
 
 - [ ] Requisitos: Windows 10 u 11, 4 GB de RAM y 500 MB libres.
 - [ ] Funciona sin internet.
 - [ ] Importación de productos desde Excel.
-- [ ] Migración a Fénix con productos y clientes.
+- [ ] Migración a Factura Pya'e con productos y clientes.
+
+**Karu Restaurante** (`karu-restaurante.html`)
+
+- [ ] Funciones: mesas y salón, comandas a cocina, carta con QR, delivery, cuentas divididas, insumos y recetas, reportes y factura electrónica con Factura Pya'e.
+- [ ] Funciona en tablets y celulares.
+- [ ] Demo gratis con la carta del cliente y capacitación en una tarde.
+- [ ] Los platos de la maqueta son decorativos: sopa paraguaya, bife koygua, mbeju y jugo de mburucuyá.
 
 **Datos de ejemplo en las maquetas**
 
@@ -73,7 +87,7 @@ Despensa Ña Rosa, la factura 001-001-0001284 y los montos en guaraníes son dec
 
 - **Redes sociales:** hay un bloque comentado en el pie de cada página, listo para completar.
 - **Fotos reales** del equipo, la oficina y clientes.
-- **Capturas reales** de Fénix y Tu Primer Sistema, en lugar de las maquetas.
+- **Capturas reales** de Factura Pya'e, Ñañemu POS y Karu Restaurante, en lugar de las maquetas.
 - **Logos de clientes**, con su permiso.
 - **Dirección exacta** y un mapa de Google Maps en `contacto.html`.
 - **Formulario con envío directo**, por ejemplo con Formspree, si querés recibir mensajes sin que se abra WhatsApp o el correo.
@@ -104,8 +118,9 @@ Están guardadas en `_archivo/imagenes/` y **no se usan** en el sitio nuevo:
 - `POS.png` tiene un error de tipeo (“Gestión Fisca”) y un logo distinto al de la empresa.
 - `FacturaElectronica.png`, `PersonFacturando.png` y `FabricaSoftwware.png` parecen ilustraciones de bancos de imágenes. Si se reutilizan, revisá su licencia y si piden atribución.
 - `Logo-DENIT.svg` es el logo de la autoridad tributaria. Usarlo puede dar a entender un aval oficial, por eso se quitó.
-- `Fenix_ligth.png` tenía una marca de agua de una herramienta de IA en la esquina. La versión recortada en `assets/img/productos/` ya no la tiene.
-- Los logos anteriores de Sistemas Paraguay fueron reemplazados por la nueva identidad.
+- `Fenix_ligth.png` tiene una marca de agua de una herramienta de IA en la esquina.
+- Los logos anteriores de Sistemas Paraguay, Fénix y Tu Primer Sistema fueron reemplazados por la nueva identidad y los íconos de los tres sistemas.
+- `ñanduti.png`, la ilustración bordada con aves y mate, se reemplazó por el encaje de ñandutí dibujado para la marca.
 
 ---
 
