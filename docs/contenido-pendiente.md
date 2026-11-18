@@ -10,9 +10,11 @@ Esta lista dice qué es inventado y dónde está.
 
 ---
 
-## Lo que ya es real (viene del sitio anterior)
+## Lo que ya es real
 
-- Nombre de la empresa, dominio `sistemasparaguay.com.py` y ubicación en Asunción.
+- Nombre de la empresa y dominio `sistemasparaguay.com.py`.
+- Ubicación en San Juan Nepomuceno, departamento de Caazapá, con este [mapa](https://maps.app.goo.gl/9hSEquqGpwsc173g7). En Google Maps, ese lugar figura como “FULL INFORMÁTICA & CCTV”, no como Sistemas Paraguay.
+- Correo `comercial@sistemasparaguay.com.py`.
 - WhatsApp **+595 984 935 082**.
 - Servicios: apps móviles, páginas web, ecommerce y SaaS.
 - **Facturación electrónica, hoy Factura Pya'e:** integración con SIFEN y sus seis funciones. Son comunicación con SIFEN, envío y recepción de documentos, panel en tiempo real, respaldos automáticos, multiempresa y sucursales, y soporte 24/7. En el sitio anterior se llamaba Fénix.
@@ -29,8 +31,7 @@ Esta lista dice qué es inventado y dónde está.
 | Testimonios | `index.html` | Laura Benítez, Diego Fernández y Rosa Giménez son inventados. Usá testimonios reales, con permiso del cliente, o quitá la sección. |
 | Casos de éxito | `servicios.html` | Los tres proyectos y sus resultados (−60 %, ×3 y −45 %) son inventados. |
 | Equipo | `nosotros.html` | Las seis personas son inventadas. Reemplazá nombres, cargos y descripciones, y si querés, poné fotos en lugar de las iniciales. |
-| Historia y línea de tiempo | `nosotros.html` | Los años 2019, 2020, 2022, 2024 y 2026, y el relato de cómo nació la empresa. |
-| Correo `hola@sistemasparaguay.com.py` | Todas las páginas | Es inventado. El sitio anterior usaba `info@sistemasparaguay.com`. Creá la casilla o reemplazala por la real en todas las páginas. |
+| Historia y línea de tiempo | `nosotros.html` | Los años 2019, 2020, 2022, 2024 y 2026, y el relato de cómo nació la empresa. Ahora dice que nació en San Juan Nepomuceno, para coincidir con la ubicación real, pero el relato sigue siendo inventado. |
 | Instalador de Ñañemu POS | `nanemu-pos.html` | El botón apunta a `descargas/nanemu-pos-setup.exe`, que no existe. El instalador anterior tampoco estaba en el repositorio. GitHub no acepta archivos de más de 100 MB en el repositorio, así que conviene subirlo a **GitHub Releases** y cambiar el enlace. |
 | Karu Restaurante | `karu-restaurante.html` | Es un sistema nuevo y toda su página es de ejemplo: funciones, pasos, preguntas frecuentes y maqueta. Si todavía no existe, quitalo del menú, del pie y del inicio, o presentalo como “próximamente”. |
 | Política de privacidad | `privacidad.html` | Es un texto modelo. Pedí que la revise un profesional. |
@@ -44,7 +45,7 @@ Esta lista dice qué es inventado y dónde está.
 - [ ] Atención en guaraní y jopará (valor “Cercanía” en `nosotros.html`).
 - [ ] Horario de los sábados, de 8:00 a 12:00 (`contacto.html`).
 - [ ] Tiempos de respuesta: “el mismo día hábil”, “en 48 horas hábiles” y “menos de 24 horas hábiles”.
-- [ ] Atención presencial con cita previa en Asunción.
+- [ ] Atención presencial con cita previa en San Juan Nepomuceno.
 - [ ] Plazos estimados de cada servicio (`servicios.html`).
 - [ ] Lista de tecnologías que usa el equipo (`servicios.html`).
 - [ ] Preguntas frecuentes del inicio: período de garantía, propiedad del código y presupuesto por etapas.
@@ -62,6 +63,11 @@ Esta lista dice qué es inventado y dónde está.
 - [ ] Planes Emprendedor, Pyme y Empresa, con sus límites de 100 y 1.000 documentos. Los precios dicen “A consultar”.
 - [ ] Los cuatro pasos para habilitarse ante la DNIT.
 - [ ] Documentos que emite: factura, nota de crédito, nota de débito, nota de remisión y autofactura.
+
+**Guía de la SIFEN** (`guia-sifen.html`)
+
+- [ ] Se escribió el 18 de noviembre de 2026 con información de la DNIT. Pedile a tu contador que la revise, sobre todo los pasos para habilitarse y los plazos.
+- [ ] Actualizala cuando la DNIT cambie el calendario de obligados, que hoy llega hasta 2027, o el plazo de 72 horas para enviar una factura. Al actualizarla, cambiá la fecha visible y `dateModified` en sus datos estructurados.
 
 **Ñañemu POS** (`nanemu-pos.html`)
 
@@ -89,7 +95,7 @@ Despensa Ña Rosa, la factura 001-001-0001284 y los montos en guaraníes son dec
 - **Fotos reales** del equipo, la oficina y clientes.
 - **Capturas reales** de Factura Pya'e, Ñañemu POS y Karu Restaurante, en lugar de las maquetas.
 - **Logos de clientes**, con su permiso.
-- **Dirección exacta** y un mapa de Google Maps en `contacto.html`.
+- **Calle y número** de la oficina en `contacto.html` y en los datos estructurados de `index.html`. El enlace al mapa ya está.
 - **Formulario con envío directo**, por ejemplo con Formspree, si querés recibir mensajes sin que se abra WhatsApp o el correo.
 - **Estadísticas de visitas.** Si agregás Google Analytics u otra herramienta, actualizá la política de privacidad.
 
@@ -102,7 +108,8 @@ El encabezado y el pie de página están copiados en cada página. Para cambiar 
 | Dato | Buscar | Aparece en |
 |---|---|---|
 | Número de WhatsApp | `595984935082` y `+595 984 935 082` | Todas las páginas, en enlaces, pie y botón flotante |
-| Correo | `hola@sistemasparaguay.com.py` | Todas las páginas y los datos estructurados de `index.html` |
+| Correo | `comercial@sistemasparaguay.com.py` | Todas las páginas y los datos estructurados de `index.html` |
+| Ubicación | `San Juan Nepomuceno` y `maps.app.goo.gl/9hSEquqGpwsc173g7` | Pie de página, contacto, privacidad, nosotros y los datos estructurados de `index.html` |
 | Dominio | `https://sistemasparaguay.com.py` | Etiquetas de cada página, `sitemap.xml`, `robots.txt` y `CNAME` |
 | Horario | `8:00 a 18:00` | Pie de página, inicio y contacto |
 

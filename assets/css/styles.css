@@ -319,9 +319,12 @@ table { border-collapse: collapse; }
 .prose { max-width: 70ch; }
 .prose h2 { font-size: clamp(1.5rem, 1.3rem + .8vw, 2rem); margin-top: 48px; }
 .prose h3 { font-size: 1.25rem; margin-top: 32px; }
-.prose p, .prose ul { margin-top: 16px; }
-.prose ul { padding-left: 1.25em; }
+.prose p, .prose ul, .prose ol { margin-top: 16px; }
+.prose ul, .prose ol { padding-left: 1.25em; }
 .prose li + li { margin-top: 8px; }
+.prose .card > :first-child { margin-top: 0; }
+/* Recuadro de fuentes en la guía de la SIFEN */
+.guide-note__title { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--tinta); }
 
 /* 05. Botones, chips y etiquetas ------------------------------------------ */
 .btn {
