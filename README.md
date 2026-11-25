@@ -63,6 +63,7 @@ Después abrí http://localhost:8000 en el navegador.
 - **Textos:** editá directamente el `.html` de cada página.
 - **Encabezado y pie:** están repetidos en las 11 páginas con diseño. Si cambiás un enlace del menú, del desplegable "Sistemas" o del pie, cambialo en todas, con buscar y reemplazar. Las dos páginas de redirección no los llevan.
 - **Colores, tipografías y tamaños:** son variables al principio de `assets/css/styles.css`. Por ejemplo, `--ypacarai` es el azul principal.
+- **Después de cambiar `styles.css` o `main.js`:** buscá `?v=` en todos los archivos y reemplazá el número por la fecha del día, por ejemplo `?v=20261125` por `?v=20261203`. Así los navegadores descargan la versión nueva en lugar de usar la que guardaron.
 - **Íconos:** son SVG de [Lucide](https://lucide.dev) pegados en el HTML. Para agregar uno, copiá el SVG desde lucide.dev y ponele `class="icon"`.
 - **Encaje de ñandutí decorativo:** se dibuja con `<svg class="nanduti"><use href="#nanduti"></use></svg>` y se define una vez al principio de cada página. Su color sale de la clase: `nanduti--white`, `nanduti--chipa-light` o el azul por defecto.
 - **Animaciones al hacer scroll:** cualquier bloque con el atributo `data-reveal` aparece suavemente.

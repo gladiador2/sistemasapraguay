@@ -12,6 +12,7 @@ Antes de editar, leé:
 - HTML, CSS y JavaScript puros. Sin frameworks, sin paso de compilación y sin CDN, salvo Google Fonts.
 - Textos en español de Paraguay con voseo (“contanos”, “tenés”), frases cortas y sin tecnicismos.
 - Colores, tipografías y espaciados: usá solo las variables de `:root` en `assets/css/styles.css`. No agregues colores sueltos.
+- Cada vez que cambies `styles.css` o `main.js`, cambiá el número de `?v=` en sus enlaces de todas las páginas, por ejemplo `?v=20261125` por la fecha del día. Cloudflare les dice a los navegadores que guarden esos archivos 4 horas; sin el número nuevo, una página nueva puede verse con el CSS viejo.
 - El encabezado, con el desplegable "Sistemas", y el pie se repiten en las 11 páginas con diseño. Si cambiás uno, cambialo en todas.
 - Sistemas propios: Factura Pya'e, Ñañemu POS, Karu Restaurante y Japuka Dental, cada uno con su color. `fenix.html` y `tu-primer-sistema.html` son solo redirecciones a los nombres nuevos: no les agregues contenido.
 - `404.html` usa rutas absolutas que empiezan con `/`, porque GitHub Pages la sirve desde cualquier dirección. El resto usa rutas relativas.
