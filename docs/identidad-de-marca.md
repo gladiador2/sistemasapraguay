@@ -93,6 +93,7 @@ Somos **ese amigo que sabe de computadoras y siempre te da una mano**: explica s
 | Factura Pya'e | Factura Pyae, Pya'e Factura |
 | Ñañemu POS | Nanemu POS, Ñemu POS |
 | Karu Restaurante | Karu Restaurant, Karú Restaurante |
+| Japuka Dental | Japuka Tech, Japukadental, Japuká Dental |
 | SIFEN, DNIT, KuDE | Sifen, dnit, Kude |
 | WhatsApp | Whatsapp, wsp |
 | ₲ 85.000 | Gs 85000, 85.000 gs |
@@ -224,10 +225,11 @@ Todos los colores están definidos como variables al principio de `assets/css/st
 | **Factura Pya'e** | Facturación electrónica con SIFEN | *Pya'e* = rápido | Azul Ypacaraí | Documento con tilde | Rápido. Seguro. Paraguayo. |
 | **Ñañemu POS** | Punto de venta para comercios | *Ñañemu* = vendemos | Rojo Pitanga | Local comercial | Simple. Eficiente. Paraguayo. |
 | **Karu Restaurante** | Gestión gastronómica | *Karu* = comer | Amarillo Chipá sobre Tinta | Campana de servicio | Tu restaurante, en buenas manos. |
+| **Japuka Dental** | Gestión de clínicas dentales | *Japuka* = reímos | Verde Tereré | Sonrisa | Tu clínica, con una sonrisa. |
 
 - **Íconos:** mosaico redondeado con el color del sistema y un ícono de línea. Archivos en `assets/img/productos/`.
 - **En el sitio:** cada sistema tiene una tarjeta y un encabezado de página con su color de fondo, el encaje en una esquina y el lema con el hilo tricolor debajo.
-- **Nombres anteriores:** Factura Pya'e reemplaza a Fénix y Ñañemu POS reemplaza a Tu Primer Sistema. Las direcciones viejas `fenix.html` y `tu-primer-sistema.html` redirigen a las nuevas.
+- **Nombres anteriores:** Factura Pya'e reemplaza a Fénix, Ñañemu POS reemplaza a Tu Primer Sistema y Japuka Dental reemplaza a OdontoFlow, el nombre con el que se desarrolló el sistema dental. Las direcciones viejas `fenix.html` y `tu-primer-sistema.html` redirigen a las nuevas.
 
 ---
 

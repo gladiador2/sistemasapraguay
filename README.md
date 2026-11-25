@@ -18,6 +18,7 @@ Es HTML, CSS y JavaScript puros: sin frameworks, sin paso de compilación y sin 
 ├── guia-sifen.html            Guía de la SIFEN (artículo para atraer búsquedas)
 ├── nanemu-pos.html            Sistema Ñañemu POS (punto de venta)
 ├── karu-restaurante.html      Sistema Karu Restaurante (gastronomía)
+├── japuka-dental.html         Sistema Japuka Dental (clínicas dentales)
 ├── fenix.html                 Redirige a factura-pyae.html (nombre anterior)
 ├── tu-primer-sistema.html     Redirige a nanemu-pos.html (nombre anterior)
 ├── nosotros.html              Historia, valores y equipo
@@ -60,7 +61,7 @@ Después abrí http://localhost:8000 en el navegador.
 ## Editar
 
 - **Textos:** editá directamente el `.html` de cada página.
-- **Encabezado y pie:** están repetidos en las 10 páginas con diseño. Si cambiás un enlace del menú, del desplegable "Sistemas" o del pie, cambialo en todas, con buscar y reemplazar. Las dos páginas de redirección no los llevan.
+- **Encabezado y pie:** están repetidos en las 11 páginas con diseño. Si cambiás un enlace del menú, del desplegable "Sistemas" o del pie, cambialo en todas, con buscar y reemplazar. Las dos páginas de redirección no los llevan.
 - **Colores, tipografías y tamaños:** son variables al principio de `assets/css/styles.css`. Por ejemplo, `--ypacarai` es el azul principal.
 - **Íconos:** son SVG de [Lucide](https://lucide.dev) pegados en el HTML. Para agregar uno, copiá el SVG desde lucide.dev y ponele `class="icon"`.
 - **Encaje de ñandutí decorativo:** se dibuja con `<svg class="nanduti"><use href="#nanduti"></use></svg>` y se define una vez al principio de cada página. Su color sale de la clase: `nanduti--white`, `nanduti--chipa-light` o el azul por defecto.

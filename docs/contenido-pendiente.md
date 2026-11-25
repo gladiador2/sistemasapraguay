@@ -83,6 +83,17 @@ Esta lista dice qué es inventado y dónde está.
 - [ ] Demo gratis con la carta del cliente y capacitación en una tarde.
 - [ ] Los platos de la maqueta son decorativos: sopa paraguaya, bife koygua, mbeju y jugo de mburucuyá.
 
+**Japuka Dental** (`japuka-dental.html`)
+
+El texto sigue el guion del equipo del sistema, que se desarrolló con el nombre OdontoFlow. Las funciones están confirmadas en su documentación técnica, que vive en `documentacion/` y no se sube al repositorio público porque tiene contraseñas de demostración y notas de seguridad.
+
+- [ ] Nombre definitivo: el sitio lo llama Japuka Dental, aunque la propuesta fue “Japuka Tech”. Se eligió así para seguir la regla de nombres de la marca: una palabra en guaraní y el tipo de producto en castellano.
+- [ ] Traducción: el sitio dice que *japuka* significa “reímos”. Conviene confirmarla con alguien que hable guaraní.
+- [ ] Capturas: salen de la base de demostración y todos los datos son ficticios, con teléfonos del bloque 555. En las imágenes se reemplazó “OdontoFlow” por “Japuka Dental” en el menú lateral, y “OdontoFlow Clínica Dental” por “Japuka Clínica Dental” en la receta y en la configuración. Cuando el sistema cambie de nombre, regenerá las capturas con `node scripts/capturas-web.mjs` y convertílas a WebP de 1440 y 800 px de ancho.
+- [ ] Facturación: los recibos del sistema son comprobantes internos. No prometas factura electrónica con SIFEN hasta que esté integrada.
+- [ ] Demostración de 30 minutos por WhatsApp, sin publicar usuarios ni contraseñas.
+- [ ] Privacidad: `privacidad.html` dice que el sistema se instala en un servidor de la clínica y que solo vemos los datos de pacientes si la clínica lo pide para soporte. Confirmalo y pedí la asesoría legal sobre historia clínica que está pendiente.
+
 **Datos de ejemplo en las maquetas**
 
 Despensa Ña Rosa, la factura 001-001-0001284 y los montos en guaraníes son decorativos. Pueden quedar así o cambiarse por capturas reales.

@@ -42,7 +42,9 @@
   --chipa-50: #FEF6E4;
 
   --terere: #1E9E6B;        /* Verde Tereré: éxito y frescura */
+  --terere-900: #0B4A31;    /* Fondo oscuro de Japuka Dental */
   --terere-700: #11714B;
+  --terere-100: #D3F0E2;    /* Texto claro sobre los verdes oscuros */
   --terere-50: #E6F6EF;
 
   --lapacho: #E5689E;       /* Rosa Lapacho: toques creativos */
@@ -454,6 +456,7 @@ a.chip:hover { border-color: var(--ypacarai); color: var(--ypacarai-700); }
 .tile--pyae { --tile-bg: var(--ypacarai); --tile-fg: #fff; }
 .tile--nanemu { --tile-bg: var(--pitanga-700); --tile-fg: #fff; }
 .tile--karu { --tile-bg: var(--chipa); --tile-fg: var(--tinta); }
+.tile--japuka { --tile-bg: var(--terere-700); --tile-fg: var(--blanco); }
 .tile--lg { width: 64px; height: 64px; border-radius: 20px; }
 .tile--lg .icon { width: 32px; height: 32px; }
 .tile--sm { width: 44px; height: 44px; border-radius: 14px; }
@@ -915,7 +918,7 @@ body.menu-open { overflow: hidden; }
   list-style: none;
   animation: marquee 48s linear infinite;
 }
-.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee:hover .marquee__track, .marquee:focus-within .marquee__track { animation-play-state: paused; }
 .rubros__title { margin-bottom: 22px; text-align: center; font-weight: 700; color: var(--text-soft); }
 
 /* 08. Tarjetas, grillas y secciones --------------------------------------- */
@@ -985,6 +988,27 @@ body.menu-open { overflow: hidden; }
 .product--pyae .tile--pyae { --tile-bg: #fff; --tile-fg: var(--ypacarai); }
 .product--nanemu .tile--nanemu { --tile-bg: #fff; --tile-fg: var(--pitanga-700); }
 .product--karu { background: radial-gradient(120% 90% at 100% 0%, rgba(246, 181, 59, .22), transparent 55%), var(--tinta); color: #EFE6D4; }
+.product--japuka { background: linear-gradient(150deg, var(--terere-900) 0%, var(--terere-700) 100%); color: var(--terere-100); }
+.product--japuka .tile--japuka { --tile-bg: var(--blanco); --tile-fg: var(--terere-700); }
+
+/* Tarjeta ancha con captura: ocupa toda la fila, con el texto a la izquierda y la pantalla a la derecha */
+.product--wide { grid-column: 1 / -1; }
+.product__body { display: flex; flex-direction: column; }
+.product--wide .shot { margin-top: 32px; }
+@media (min-width: 900px) {
+  .product--wide { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 48px; align-items: center; }
+  .product--wide .shot { margin-top: 0; }
+}
+
+/* Capturas de pantalla de los sistemas */
+.shot { margin: 0; }
+.shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--blanco); box-shadow: var(--shadow-lg); }
+.shot figcaption { margin-top: 12px; font-size: var(--fs-xs); font-weight: 600; }
+.page-hero--product .shot img, .product .shot img { border-color: rgba(255, 255, 255, .25); }
+.shot-card .shot img { box-shadow: none; }
+.shot-link { display: block; border-radius: var(--radius); }
+.section-head .shot-note { margin-top: 18px; font-size: var(--fs-sm); font-weight: 600; color: var(--text-soft); }
+.shot-note .icon { display: inline-block; width: 18px; height: 18px; margin-right: 6px; vertical-align: -4px; color: var(--terere-700); }
 
 /* Lema de cada sistema con el hilo tricolor debajo */
 .tagline { margin-top: 14px; font-weight: 700; letter-spacing: .01em; }
@@ -1290,6 +1314,8 @@ body.menu-open { overflow: hidden; }
 .page-hero--karu { --hero-text: #EFE6D4; background: radial-gradient(90% 80% at 85% 10%, rgba(246, 181, 59, .25), transparent 60%), var(--tinta); }
 .page-hero--product .tile--pyae { --tile-bg: #fff; --tile-fg: var(--ypacarai); }
 .page-hero--product .tile--nanemu { --tile-bg: #fff; --tile-fg: var(--pitanga-700); }
+.page-hero--japuka { --hero-text: var(--terere-100); background: linear-gradient(150deg, var(--terere-900) 0%, var(--terere-700) 100%); }
+.page-hero--product .tile--japuka { --tile-bg: var(--blanco); --tile-fg: var(--terere-700); }
 .product-id { display: flex; align-items: center; gap: 14px; }
 .product-id__name { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; line-height: 1.1; color: #fff; }
 .product-id__meaning { margin-top: 2px; font-size: var(--fs-sm); color: var(--hero-text); }
@@ -1576,6 +1602,7 @@ select.input {
 }
 .cta h2 { max-width: 20ch; margin: 18px auto 0; font-size: var(--fs-h2); color: #fff; }
 .cta--karu { background: radial-gradient(90% 120% at 90% 0%, rgba(246, 181, 59, .28), transparent 60%), var(--tinta); color: #EFE6D4; }
+.cta--japuka { background: linear-gradient(150deg, var(--terere-900) 0%, var(--terere-700) 100%); color: var(--terere-100); }
 .cta p { max-width: 54ch; margin: 18px auto 0; font-size: var(--fs-lg); }
 .cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
 .cta__actions--nudge { margin-top: 92px; }
